@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Script Demo</title>
+</head>
+<body>
+    <div id="app-container">
+        <section class="one">
+            <label for="zoneData" class="standardLabel white">Enter Zones data</label>
+            <textArea id="zoneData" class="textArea-1"></textArea>
+            <label for="mapSelection" class="selectionLabel">Select Map</label>
+            <select id="mapSelection">
+                <option value="Blood In The Snow">Blood In The Snow</option>
+                <option value="The Shadows Of War">The Shadows Of War</option>
+                <option value="The Defense Of Aoi Village">The Defense Of Aoi Village</option>
+                <option value="The Shores Of Vengeance">The Shores Of Vengeance</option>
+                <option value="Twilight And Ashes">Twilight And Ashes</option>
+                <option value="Blood And Steel">Blood And Steel</option>
+            </select>
+            <div class="button-container">
+                <button class="btn">Template</button>
+                <button class="btn">Process</button>
+                <button class="btn">Clear</button>
+            </div>
+        </section>    
+        <h2 class="title white">Waves</h2>
+        <section class="two">
+            <div class="list-container">
+                <ul class="type_1">
+                    <!-- Normal Wave -->
+                    <li class="wave-container">
+                            <h2 class="wave-number normal">1</h2>
+                            <div class="normal wave">
+                                <div class="special-enemies"></div>
+                                <ul class="zones">
+                                    <li class="zone normal">1</li>
+                                    <li class="zone normal">2</li>
+                                    <li class="zone normal">3</li>
+                                </ul>
+                            </div>
+                    </li>
+                    <!-- Bonus Objective Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number bonus">2</h2>
+                        <div class="bonus wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone bonus">1</li>
+                                <li class="zone bonus">2</li>
+                                <li class="zone bonus">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines bonus"></div>
+                        <div class="bonus-objective bonus"></div>
+                        <p class="amount"></p>
+                    </li>
+                    <!-- Boss Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number boss">3</h2>
+                        <div class="boss wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone boss">1</li>
+                                <li class="zone boss">2</li>
+                                <li class="zone boss">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines boss"></div>
+                        <div class="boss-modifier boss"></div>
+                    </li>
+                    <!-- Bonus Objective Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number bonus">4</h2>
+                        <div class="bonus wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone bonus">1</li>
+                                <li class="zone bonus">2</li>
+                                <li class="zone bonus">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines bonus"></div>
+                        <div class="bonus-objective bonus"></div>
+                        <p class="amount"></p>
+                    </li>
+                    <!-- Normal Wave -->
+                    <li class="wave-container">  
+                        <h2 class="wave-number normal">5</h2>
+                        <div class="normal wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone normal">1</li>
+                                <li class="zone normal">2</li>
+                                <li class="zone normal">3</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Boss Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number boss">6</h2>
+                        <div class="boss wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone boss">1</li>
+                                <li class="zone boss">2</li>
+                                <li class="zone boss">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines boss"></div>
+                        <div class="boss-modifier boss"></div>
+                    </li>
+                    <!-- Bonus Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number bonus">7</h2>
+                        <div class="bonus wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone bonus">1</li>
+                                <li class="zone bonus">2</li>
+                                <li class="zone bonus">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines bonus"></div>
+                        <div class="bonus-objective bonus"></div>
+                        <p class="amount"></p>
+                    </li>
+                    <!-- Normal Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number normal">8</h2>
+                        <div class="normal wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone normal">1</li>
+                                <li class="zone normal">2</li>
+                                <li class="zone normal">3</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Boss Wave -->
+                    <li class="wave-container">  
+                        <h2 class="wave-number boss">9</h2>
+                        <div class="boss wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone boss">1</li>
+                                <li class="zone boss">2</li>
+                                <li class="zone boss">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines boss"></div>
+                        <div class="boss-modifier boss"></div>
+                    </li>
+                    <!-- Bonus Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number bonus">10</h2>
+                        <div class="bonus wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone bonus">1</li>
+                                <li class="zone bonus">2</li>
+                                <li class="zone bonus">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines bonus"></div>
+                        <div class="bonus-objective bonus"></div>
+                        <p class="amount"></p>
+                    </li>
+                    <!-- Normal Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number normal">11</h2>
+                        <div class="normal wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone normal">1</li>
+                                <li class="zone normal">2</li>
+                                <li class="zone normal">3</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Boss Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number boss">12</h2>
+                        <div class="boss wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone boss">1</li>
+                                <li class="zone boss">2</li>
+                                <li class="zone boss">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines boss"></div>
+                        <div class="boss-modifier boss"></div>
+                    </li>
+                </ul>
+                <ul class="type_2">
+                    <!-- Bonus Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number bonus">13</h2>
+                        <div class="bonus wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone bonus">1</li>
+                                <li class="zone bonus">2</li>
+                                <li class="zone bonus">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines bonus"></div>
+                        <div class="bonus-objective bonus"></div>
+                        <p class="amount"></p>
+                    </li>
+                    <!-- Normal Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number normal">14</h2>
+                        <div class="normal wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone normal">1</li>
+                                <li class="zone normal">2</li>
+                                <li class="zone normal">3</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Boss Wave -->
+                    <li class="wave-container">
+                        <h2 class="wave-number boss">15</h2>
+                        <div class="boss wave">
+                            <div class="special-enemies"></div>
+                            <ul class="zones">
+                                <li class="zone boss">1</li>
+                                <li class="zone boss">2</li>
+                                <li class="zone boss">3</li>
+                            </ul>
+                        </div>
+                        <div class="link-lines boss"></div>
+                        <div class="boss-modifier boss"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="info-container">
+                <p class="date">15 April 2022</p>
+                <p class="version">ver2.18</p>
+                <p class="credits"><span class="credits-label">Credits </span>darkenix8895, averil-4, & Fam_ACME (erikoo_h)</p>
+                <hr class="decorated-line-2">
+                <p class="designedBy">Designed By read2see</p>
+            </div>
+            <hr class="decorated-line">
+            <div class="weekly-modifiers">
+                <ul class="w-modifiers">
+                    <li class="week">Week #3</li>
+                    <li class="w-modifier">Slowed Revives</li>
+                    <li class="w-modifier">Disciples</li>
+                </ul>
+            </div>
+        </section>
+        <ul class="legend">
+            
+        </ul>
+    </div>
+</body>
+<script src="app.js"></script>
+</html>
