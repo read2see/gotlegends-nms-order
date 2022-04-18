@@ -13,7 +13,7 @@ body{
 }
 #app-container{
     width: 414px;
-	height: 736px;	
+    height: 100vh;
     margin: auto 39.2%;
     margin-top: 100px;
 }
