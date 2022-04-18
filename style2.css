@@ -13,12 +13,12 @@ body{
 }
 #app-container{
     width: 414px;
-    height: 736px;
     margin: auto 39.2%;
+    margin-top: 100px;
 }
 .one{
     width: 100%;
-    padding: 1rem;
+    padding: 0.7rem;
     margin: 10px 0;
     background-color: rgb(32, 19, 24);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -28,7 +28,7 @@ body{
 
 .two{
     width: 100%;
-    height:100%;
+    height:736px;
     display: grid;
     grid-template-rows: repeat(1fr,5) ;
     grid-template-columns: none;
@@ -43,9 +43,9 @@ body{
     display: none;;
 }
 
-/* .standardLabel{
-    
-} */
+.standardLabel{
+ padding-left: 1rem;   
+}
 
 .textArea-1{
     margin: 1rem;
@@ -62,6 +62,7 @@ body{
     color: white;
 }
 .selectionLabel{
+    padding: 1rem;
     color:#fff;
 }
 #mapSelection{
@@ -129,7 +130,7 @@ body{
 }
 
 .type_2 .wave-number{
-    left:78%;
+    left:74.5%;
 }
 .type_2 .wave-container{
     margin: 0 1rem;
@@ -171,8 +172,9 @@ body{
 .zone{
     font-size: 10px;
     border-bottom: 1px solid;
-    padding: 0.2rem;
+    padding: 0.1rem;
     color:#fff;
+    height: 22px;
 }
 
 .bonus-objective{
@@ -253,7 +255,7 @@ body{
     height: 90.1%;
     position: absolute;
     background-color:black;
-    opacity: 0.75;
+    opacity: 0.8;
     z-index: 2;
 }
 
@@ -288,7 +290,6 @@ body{
 }
 .credits{
     display: flex;
-    justify-content: center;
     align-items: center;
     width:70%;
     height: 15px;
@@ -302,21 +303,24 @@ body{
     margin:auto 62.5px;
     overflow: hidden;
 }
-
+.credits-input{
+    flex-basis: 200px;
+}
 .credits-label{
     display: block;
-    margin-right:20px ;
+    margin-right:10px;
     border-right: 1px solid #776B4A;
-    padding-right: 0.3rem;
+    padding-right: 0.1rem;
     color:#FF4477;
+    flex-basis: 66px;
 }
 .weekly-modifiers{
     border:1px solid #FF4477;
-    width: 226px;
+    width: 260px;
     height: 21px;
     border-radius: 10px;
     position: absolute;
-    left:94px;
+    left:77px;
     bottom: 80px;
     z-index: 2;
     overflow: hidden;
@@ -328,7 +332,7 @@ hr.decorated-line{
     position: absolute;
     bottom: 90px;
     z-index: 2;
-    clip-path: polygon(0% 0%,0% 100%, 22% 100%, 22% 0%,78% 0, 78% 100%, 100% 100%, 100% 0);
+    clip-path: polygon(0% 0%,0% 100%, 18% 100%, 18% 0%,82% 0, 82% 100%, 100% 100%, 100% 0);
 }
 hr.decorated-line-2{
     width: 100%;
@@ -384,12 +388,26 @@ hr.decorated-line-2{
     text-align: center;
     margin: 5px 4.1%;
 }
-
 .slide-in{
     animation-name: slide-in;
     animation-duration:1s;
     animation-timing-function: ease;
     visibility: visible;
+}
+
+.donateBtn{
+    color:#fff;
+    background-color: #FF4477;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    float: right;
+    margin-right: 22px;
+    cursor: pointer;
+}
+.donateBtn:hover{
+    background-color: rgb(255, 0, 76);
+    color: rgb(20, 20, 20);
 }
 
 @keyframes slide-in{
@@ -414,18 +432,7 @@ hr.decorated-line-2{
     0% {
 		opacity: 1;
 	}
-	50%{
-		opacity: 0.8;
-	}
-	65%{
-		opacity: 0.4;
-	}
-	80%{
-		opacity: 0.3;
-	}
-	95%{
-		opacity: 0.1;
-	}			
+	
 	100% {
 		opacity: 0;
         visibility: hidden;
@@ -436,19 +443,21 @@ hr.decorated-line-2{
 @media only Screen and (max-width:500px){
     #app-container{
         width: 414px;
-        height: 844px;
         margin: auto 7.1%;
     }
 }
 
-@media only screen and (max-width: 390px) {
+
+@media only screen and (max-width:390px){
     #app-container{
         width: 380px;
-        height: 844px;
-        margin: auto 0;
+        margin: 59% 0;
     }
     .one,.two{
         margin: 1% 1.5%;
+    }
+    .two{
+        height: 736px;
     }
     .title{
         width: 380px;
@@ -467,13 +476,13 @@ hr.decorated-line-2{
         opacity: 0.75;
         z-index: 2;
     }
-    
+    /* margin-top increase will push the bottom bar below */
     .overlay:after{
         content: "";
         width: 100%;
         height: 28px;
         color: white;
-        margin-top:214.8%;
+        margin-top:186.5%;
         display: block;
         background-color: black;
         opacity: 0.75;
@@ -481,12 +490,13 @@ hr.decorated-line-2{
     .type_1{
         gap:0.2rem;
     }
-
+    
     .type_2 .link-lines {
         margin-left:2.6rem;
     }
     .zone{
         font-size: 8px;
+        height: 22px;
     }
     .type_2 .amount{
         margin-left: 1.8rem;
@@ -498,18 +508,16 @@ hr.decorated-line-2{
         font-size: 9px;
     }
     .credits{
-
+    
     }
     .designedBy{
-
+    
     }
     .weekly-modifiers{
-        left:22%;
-        bottom: 22%;
+        left:15.7%;
     }
     hr.decorated-line{
-        clip-path: polygon(0% 0%,0% 100%, 21% 100%, 21% 0%,82.5% 0, 82.5% 100%, 100% 100%, 100% 0);
-        bottom: 23%;
+        clip-path: polygon(0% 0%,0% 100%, 15% 100%, 15% 0%,85% 0, 85% 100%, 100% 100%, 100% 0);
     }
     hr.decorated-line-2{
         clip-path: polygon(0% 0%,0% 100%, 15.5% 100%, 15.5% 0%,87% 0, 87% 100%, 100% 100%, 100% 0);
@@ -524,6 +532,93 @@ hr.decorated-line-2{
     .error-alert{
         margin: 5px 1.4%;
     }
-
+    /* ----------------------------sePlacements-------------------- */
+    .intersectIconPath-1{
+        clip-path: polygon(0 0,100% 0, 100% 14%, 98% 14%, 98% 30%, 100% 30%, 100% 100%, 0 100%);
+    }
+    .intersectIconPath-2{
+        clip-path: polygon(0 0,100% 0, 100% 38%, 98% 38%, 98% 54%, 100% 54%, 100% 100%, 0 100%);
+    }
+    .intersectIconPath-3{
+        clip-path: polygon(0 0,100% 0, 100% 63%, 98% 63%, 98% 79%, 100% 79%, 100% 100%, 0 100%);
+    }
+    
+    .intersectIconPath-1-2{
+        clip-path: polygon(0 0,100% 0, 100% 14%, 98% 14%, 98% 30%, 100% 30%, 100% 38%, 98% 38%, 98% 54%, 100% 54%, 100% 100%, 0 100%);
+    
+    }
+    
+    .intersectIconPath-1-3{
+        clip-path: polygon(0 0,100% 0, 100% 14%, 98% 14%, 98% 30%, 100% 30%, 100% 63%, 98% 63%, 98% 79%, 100% 79%, 100% 100%, 0 100%);
+    }
+    
+    .intersectIconPath-2-3{
+        clip-path: polygon(0 0,100% 0, 100% 38%, 98% 38%, 98% 54%, 100% 54%, 100% 63%, 98% 63%, 98% 79%, 100% 79%, 100% 100%, 0 100%);
+    }
+    
+    .intersectIconPath-1-2-3{
+        clip-path: polygon(0 0,100% 0, 100% 14%, 98% 14%, 98% 30%, 100% 30%,100% 38%, 98% 38%, 98% 54%, 100% 54%, 100% 63%, 98% 63%, 98% 79%, 100% 79%, 100% 100%, 0 100%);
+    }
+    .se-1, .se-13, .se-22, .se-31{
+        transform: translate(75.5px, -78px);
+    }
+    .se-2, .se-14, .se-23, .se-32{
+        transform: translate(75.5px, -56.5px);
+    }
+    .se-3, .se-15, .se-24, .se-33{
+        transform: translate(75.5px, -34.5px);
+    }
+    .se-4,.se-10, .se-19, .se-28{
+        transform: translate(75.5px, -117px);
+    }
+    .se-5,.se-11, .se-20, .se-29{
+        transform: translate(75.5px, -95.5px);
+    }
+    .se-6, .se-12, .se-21, .se-30{
+        transform: translate(75.5px, -73.5px);
+    }
+    .se-7, .se-16, .se-25, .se-34{
+        transform: translate(75.5px, -102px);
+    }
+    .se-8, .se-17, .se-26, .se-35{
+        transform: translate(75.5px, -80.5px);
+    }
+    .se-9, .se-18, .se-27, .se-36{
+        transform: translate(75.5px, -58.5px);
+    }
+    .se-37{
+        transform: translate(74.5px, -117px);
+    }
+    .se-38{
+        transform: translate(74.5px, -95.5px);
+    }
+    .se-39{
+        transform: translate(74.5px, -73.5px);
+    }
+    .se-40{
+        transform: translate(74.5px, -78px);
+    }
+    .se-41{
+        transform: translate(74.5px, -57px);
+    }
+    .se-42{
+        transform: translate(74.5px, -34.5px);
+    }
+    .se-43{
+        transform: translate(74.5px, -102px);
+    }
+    .se-44{
+        transform: translate(74.5px, -80.5px);
+    }
+    .se-45{
+        transform: translate(74.5px, -58px);
+    } 
+    .w-modifier-1{
+        transform: translate(-95px, -1px);
+    }
+    .w-modifier-2{
+        transform: translate(-68px, 0px);
+    }
 }
+
 
