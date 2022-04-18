@@ -172,7 +172,7 @@ body{
 .zone{
     font-size: 10px;
     border-bottom: 1px solid;
-    padding: 0.1rem;
+    padding-top: 0.2rem;
     color:#fff;
     height: 22px;
 }
@@ -410,6 +410,11 @@ hr.decorated-line-2{
     color: rgb(20, 20, 20);
 }
 
+.sp{
+    position: relative;
+    bottom: 20px;
+}
+
 @keyframes slide-in{
     0% {
 		transform: translateY(-100%);
@@ -438,23 +443,80 @@ hr.decorated-line-2{
         visibility: hidden;
 	}	
 }
-
-
-@media only Screen and (max-width:500px){
+@media only Screen and (max-width:1280px){
     #app-container{
-        width: 414px;
-        margin: auto 7.1%;
+        margin: auto 33.82%;
+    }
+}
+@media only Screen and (max-width:912px){
+    #app-container{
+        margin: auto 27.3%;
+    }
+}
+@media only Screen and (max-width:820px){
+    #app-container{
+        margin: auto 24.75%;
+    }
+}
+
+@media only Screen and (max-width:540px){
+    #app-container{
+        margin: auto 11.6%;
+    }
+}
+
+@media only Screen and (max-width:414px){
+    #app-container{
+        width: 400px;
+        margin: auto 0;
+    }
+    .one, .two{
+        margin: 1% 1.5%;
+    }
+    .two{
+        height: 736px;
+    }
+    .title{
+        width: 400px;
+        margin: 1% 1.5%;
+    }
+    .overlay{
+        width: 100%;
+        height: 87.5%;
+        position: absolute;
+        background-color:black;
+        opacity: 0.75;
+        z-index: 2;
+    }
+    /* margin-top increase will push the bottom bar below */
+    .overlay:after{
+        content: "";
+        width: 100%;
+        height: 60px;
+        color: white;
+        margin-top:170.5%;
+        display: block;
+        background-color: black;
+        opacity: 0.75;
+    }
+    .weekly-modifiers{
+        left:75px;
+        bottom:30px;
+    }
+    hr.decorated-line{
+        bottom: 40px;
+        clip-path: polygon(0% 0%,0% 100%, 18% 100%, 18% 0%,85% 0, 85% 100%, 100% 100%, 100% 0);
     }
 }
 
 
-@media only screen and (max-width:390px){
+@media only screen and (max-width:393px){
     #app-container{
         width: 380px;
         margin: 59% 0;
     }
     .one,.two{
-        margin: 1% 1.5%;
+        margin: 1% 1.2%;
     }
     .two{
         height: 736px;
@@ -514,11 +576,31 @@ hr.decorated-line-2{
     
     }
     .weekly-modifiers{
+        border:1px solid #FF4477;
+        width: 260px;
+        height: 21px;
+        border-radius: 10px;
+        position: absolute;
+        left:15.7%;
+        bottom: 80px;
+        z-index: 2;
+        overflow: hidden;
+    }
+    hr.decorated-line{
+        width: 100%;
+        border:none;
+        border-bottom:1px solid #FF4477;
+        position: absolute;
+        bottom: 90px;
+        z-index: 2;
+        clip-path: polygon(0% 0%,0% 100%, 15% 100%, 15% 0%,85% 0, 85% 100%, 100% 100%, 100% 0);
+    }
+    /* .weekly-modifiers{
         left:15.7%;
     }
     hr.decorated-line{
         clip-path: polygon(0% 0%,0% 100%, 15% 100%, 15% 0%,85% 0, 85% 100%, 100% 100%, 100% 0);
-    }
+    } */
     hr.decorated-line-2{
         clip-path: polygon(0% 0%,0% 100%, 15.5% 100%, 15.5% 0%,87% 0, 87% 100%, 100% 100%, 100% 0);
     }
@@ -617,8 +699,23 @@ hr.decorated-line-2{
         transform: translate(-95px, -1px);
     }
     .w-modifier-2{
-        transform: translate(-68px, 0px);
+        transform: translate(-68px, -1px);
     }
 }
 
 
+@media only screen and (max-width:375px){
+    .app-container{
+        width: 370px;
+        margin: 59% 1px;
+    }
+    .one{
+        margin: 5px 0;
+    }
+    .two{
+        margin: 0;
+    }
+    .title{
+        margin: 5px 0;
+    }
+}
