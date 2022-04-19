@@ -103,7 +103,7 @@ const templates = {
         tengu:["4-1","8-2","9-1#1, 9-2#2, 9-3#3"],
         dogs:[12],
         bears:[15],
-        background: "Blood In The Snow.png",
+        background: "Blood-In-The-Snow.webp",
     },
     shadowsOfWar:{
         week:6,
@@ -145,7 +145,7 @@ const templates = {
         tengu:["5-3","7-1"],
         dogs:[12],
         bears:[15],
-        background:"The Shadows Of War.png"
+        background:"The-Shadows-Of-War.webp"
     },
     defenseOfAoiVillage:{
         week:5,
@@ -187,7 +187,7 @@ const templates = {
         tengu:["4-1","8-2"],
         dogs:[9,12],
         bears:[9,15],
-        background: "The Defense Of Aoi Village.png"
+        background: "The-Defense-Of-Aoi-Village.webp"
     },
     shoresOfVengeance:{
         week:1,
@@ -229,7 +229,7 @@ const templates = {
         tengu:["5-3","7-1"],
         dogs:[12],
         bears:[12,15],
-        background:"The Shores Of Vengeance.png"
+        background:"The-Shores-Of-Vengeance.webp"
     },
     twilightAndAshes:{
         week:7,
@@ -272,7 +272,7 @@ const templates = {
         disciple:["3#2","12-1#1"],
         dogs:[12],
         bears:[12,15],
-        background: "Twilight And Ashes.png"
+        background: "Twilight-And-Ashes.webp"
     },
     bloodAndSteel:{
         week:4,
@@ -314,7 +314,7 @@ const templates = {
         tengu:["5-3","7-1"],
         dogs:[12],
         bears:[12,15],
-        background: "Blood And Steel.png"
+        background: "Blood-And-Steel.webp"
     }
 }
 
