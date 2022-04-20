@@ -1,5 +1,4 @@
-let selectedMap = {mapName: "Blood In The Snow", templatesIndex:0};
-let selectedObjectMap = {};
+// Interactive elements
 const elements = {
     textField: document.getElementsByClassName('textArea-1')[0],
     processBtn: document.querySelectorAll(".btn")[1],
@@ -25,9 +24,15 @@ const elements = {
     wave_12: document.querySelectorAll(".wave")[11],
     wave_15:document.querySelectorAll(".wave")[14],
 }
-const helpTemplate = "Current Week [Input a number]".concat("");
+
+// Properties
+// Stores the selected map name and index within the templates array of objects
+let selectedMap = {mapName: "Blood In The Snow", templatesIndex:0};
+// Stores the text area raw value
 let rawData = "";
+// Will store the processed raw value line for each index
 let processed = [];
+// Holds bonus objective info
 let bonusObjectives = [
     {objective: "Headshots", amount:25,svg:"b-headshots.svg",png:"b-headshots.png"},
     {objective: "Kill Inside Def. Area", amount:25,svg:"b-killsIn.svg",png:"b-killsIn.png"},
@@ -39,6 +44,7 @@ let bonusObjectives = [
     {objective: "Ranged Kills", amount:20,svg:"b-rangedKills.svg",png:"b-rangedKills.png"},
     {objective: "Assassinate | Crits", amount: 10,svg:"b-crits.svg",png:"b-crits.png"},
 ];
+// Holds boss wave modifiers info
 let bossWaveModifiers = [
     {modifier:"Wildfire",svg:"v-wildFire.svg",png:"v-wildFire.png"},
     {modifier:"Eruption",svg:"v-eruption.svg",png:"v-eruption.png"},
@@ -49,6 +55,7 @@ let bossWaveModifiers = [
     {modifier:"Immunity",svg:"v-immunity.svg",png:"v-immunity.png"},
     {modifier:"Tool Shortage",svg:"v-toolShortage.svg",png:"v-toolShortage.png"},
 ];
+//  Holds weekly modifiers info
 const w_modifiers_1 = [
     {modifier:"Barbed Arrows", svg:"w-barbedArrows.svg", png:"w-barbedArrows.png"},
     {modifier:"Empowered Foes", svg:"w-empoweredFoes.svg", png:"w-empoweredFoes.png"},
@@ -63,6 +70,7 @@ const w_modifiers_2 = [
     {modifier:"Eyes Of Iyo", svg:"w-eyesOfIyo.svg", png:"w-eyesOfIyo.png"},
     {modifier:"Disciples Of Iyo", svg:"w-disciple.svg", png:"w-disciple.png"},
 ];
+// Holds the template info
 const templates = {
     bloodInTheSnow:{
         week:2,
@@ -317,35 +325,53 @@ const templates = {
         background: "Blood-And-Steel.webp"
     }
 }
-
+// Will store the total 45 zones
+let listOfZones = [];
 let legend = {
 };
 
+// Adding Events to interactive elements
 elements.mapSelection.addEventListener("change", selectMapTemplate);
 elements.templateButton.addEventListener("click", addTemplateToTextArea);
 elements.clearBtn.addEventListener("click",clear)
 elements.processBtn.addEventListener("click",processData)
 
+// Selects a template then adds it to text area
+function selectMapTemplate(){
+    selectedMap.mapName = this.value;
+    const check = isMapAvailable(selectedMap.mapName);
+    if(check.isAvailable){
+        selectedMap.templatesIndex = check.id;
+    }
+    addTemplateToTextArea();
+}
+
+// Adds the template to text area
+function addTemplateToTextArea(){
+    const check =  isMapAvailable(selectedMap.mapName);
+       if(check.isAvailable){
+        elements.textField.value = templateToString(templates[Object.keys(templates)[check.id]]).concat("ver2.18");
+        }
+}
+
+// Processes the text area input, validates it then throw errors or populate the info-graph
 function processData(){
+    // Reset state of app on each click
     resetState();
+    // Throw an alert when no data is available in text area
     if(elements.textField.value == 0){
         showAlert("error","No data were provided!");
         return
     }
-    
+    // Finds the selected templates object and stores it based on selectedMap index property
     let selectedTemplate = templates[Object.keys(templates)[selectedMap.templatesIndex]];
+    // Add dogs and bears to the info-graph based on template info
     addSpecialEnemySideKick(selectedTemplate);
+    // Storing the raw text area value
     rawData = elements.textField.value;
+    // Storing raw value line by line in an array
     processed = rawData.split("\n").filter((element)=> element != "");
-
-    if(processed.length < 20){
-        showAlert("error", "Insuffecient Data, please use the template and modfiy it as needed.");
-        return
-    }
-
-    processedWaves = {};
-
-    // Check if map is available
+    // Select map from text area 
     const check = isMapAvailable(processed[1]);
     if(processed[1].toLowerCase() != selectedMap.mapName && check.isAvailable){
         selectedTemplate = templates[Object.keys(templates)[check.id]];
@@ -353,61 +379,133 @@ function processData(){
         selectedMap.mapName = processed[1];
         selectedMap.templatesIndex = check.id;
     }
-    // Adds each wave's zones to an object 
-    for(i = 0; i < 15; i++){
-        processedWaves["w".concat(i+1)] = processed[i+4].split(",");
+    //Validations
+    // Validate and show alert if insufficent lines are available does all other validations 
+    if(processed.length < 18){
+        showAlert("error", "Insuffecient Data, please use the template and modfiy it as needed.");
+        return
     }
-
-    let counter = 0;
-    let zoneCounter = 0;
-
-
-    for(i = 1; i < 16; i++){
-        let intersectCounter =  0;
-        for(j = 0; j<3; j++){                
-            zoneCounter++;
-            if(processedWaves["w".concat(i)][j].trim().length > 17){
-                showAlert("error",  "Zone maximum (17) characters exceeded!\n Cause:\""+processedWaves["w".concat(i)][j]+"\"");
-                return
+    // Validate required lines not empty
+    for(k=0; k < processed.length; k++){
+        if((k <= 3 || (k >=18 && k <20)) && processed[k].trim().length == 0){
+            showAlert("error", "Missing information. (Possibly: week number, map name, weekly modifiers)");
+            return
+        }else{
+            for(i = 4; i < processed.length-2; i++){
+                // Validate zones separation character
+                if(!processed[i].includes(",")){
+                    showAlert("error", "Zones must be separated with \",\" except for the last zone.")
+                    return
+                }
+                for(j=0; j < 3; j++){
+                    let waveZones = processed[i].split(",");
+                    if(waveZones[j].trim().length == 0 || waveZones.length < 3){
+                        showAlert("error", "Wave zone(s) are missing.");
+                        return
+                    }
+                    if(waveZones[j].trim().length > 17){
+                        showAlert("error",  "Zone maximum (17) characters exceeded!\n Cause:\""+processedWaves["w".concat(i)][j]+"\"");
+                        return
+                    }
+                }
             }
-            if(processedWaves["w".concat(i)][j].includes("*")){
-                intersectCounter++;
-                const flag = processedWaves["w".concat(i)][j].substring(processedWaves["w".concat(i)][j].indexOf("*")+1,processedWaves["w".concat(i)][j].length);
-                const specialEnemy = document.createElement("img");
-                specialEnemy.classList.add("se-"+zoneCounter);
-                if(intersectCounter == 1){
-                    elements.zones[counter].parentElement.parentElement.classList.add("intersectIconPath-"+findZonePlacement(counter));
-                }else{
-                    elements.zones[counter].parentElement.parentElement.classList
-                    .replace(elements.zones[counter].parentElement.parentElement.classList[elements.zones[counter].parentElement.parentElement.classList.length-1]
-                        ,"intersectIconPath-"+findTotalIntersects(intersectCounter));
-                }
-                switch(flag){
-                    case "T#1":
-                        specialEnemy.src = "img/svg/x-1-tengu.svg";
-                        break;
-                    case "T#2":
-                        specialEnemy.src = "img/svg/x-2-tengu.svg";
-                        break;
-                    case "T#3":
-                        specialEnemy.src = "img/svg/x-3-tengu.svg";
-                        break;
-                    case "D#1":
-                        specialEnemy.src = "img/svg/x-1-disciple.svg";
-                        break;
-                    case "D#2":
-                        specialEnemy.src = "img/svg/x-2-disciple.svg";
-                        break;
-                }
-                elements.zones[counter].innerText = processedWaves["w".concat(i)][j].substring(0, processedWaves["w".concat(i)][j].indexOf("*"));
-                elements.zones[counter].parentElement.parentElement.parentElement.appendChild(specialEnemy);   
-            }else{
-                elements.zones[counter].innerText = processedWaves["w".concat(i)][j];
-            }   
-        counter++;
         }
     }
+    if(typeof parseInt(processed[0].trim()) == "NaN" ){
+        showAlert("error", "Week number provided is not valid, must be a digit.");
+        return
+    }else{
+        elements.currentWeek.innerText = "Week #".concat(processed[0]);
+    }
+    tempValidaitonList = Object.entries(templates).map(anotherElement => anotherElement[1].map);
+    let isValid=false;
+    for(i = 0; i < tempValidaitonList.length; i++){
+        if(
+            tempValidaitonList[i].toLowerCase() == processed[1].trim().toLowerCase() ||
+            tempValidaitonList[i].toLowerCase().includes(processed[1].trim().toLowerCase().substring(0,10))){
+            isValid = true;
+            break;
+        }
+    }
+    if(!isValid){
+        showAlert("error", "Map name is not valid!");
+        return
+    }
+    tempValidaitonList = Object.entries(w_modifiers_2).map(anotherElement => anotherElement[1].modifier);
+    for(i = 0; i < tempValidaitonList.length; i++){
+        let isValid = processed[3].trim().toLowerCase() != tempValidaitonList[i].toLowerCase()
+        if(!isValid){
+            showAlert("error", "Weekly modifier is not valid!");
+            return
+        }else{
+            break;
+        }
+    }
+    // validate version line
+    if (processed[20].trim().length > 11) {
+        showAlert("error","Maximum version (11) characters exceeded!");
+        return
+    } else {
+        elements.version.innerText = processed[20] || "ver2.18";
+    }
+    // validates credits
+    if(processed[19].trim().length > 58){
+        showAlert("error","Credits maximum (58) characters exceeded!");
+        return
+    }else{
+        elements.credits.innerHTML = "<span class=\"credits-label\">Credits </span>".concat(processed[19]);
+    }
+    // populate listOfZones
+    for(i = 4; i < processed.length-2; i++){
+        processed[i].split(",").forEach(element => listOfZones.push(element.trim()))
+    }
+    let intersectCounter =  0;
 
+    // populate info-graph zones
+    elements.zones.forEach((element,index) => {
+        if((index+1)%3 == 0){
+            intersectCounter = 0;
+        }
+        if(listOfZones[index].includes("*")){
+            intersectCounter++;
+            // store zone flag
+            const flag = listOfZones[index].substring(listOfZones[index].indexOf("*")+1, listOfZones[index].length);
+            const specialEnemy = document.createElement("img");
+            specialEnemy.classList.add("se-"+(index+1));
+            if(intersectCounter == 1){
+                element.parentElement.parentElement.classList.add("intersectIconPath-"+findZonePlacement(index));
+            }else{
+                element.parentElement.parentElement.classList
+                .replace(element.parentElement.parentElement.classList[element.parentElement.parentElement.classList.length-1]
+                    ,"intersectIconPath-"+findTotalIntersects(intersectCounter));
+            }
+            switch(flag){
+                case "T#1":
+                    specialEnemy.src = "img/svg/x-1-tengu.svg";
+                    break;
+                case "T#2":
+                    specialEnemy.src = "img/svg/x-2-tengu.svg";
+                    break;
+                case "T#3":
+                    specialEnemy.src = "img/svg/x-3-tengu.svg";
+                    break;
+                case "D#1":
+                    specialEnemy.src = "img/svg/x-1-disciple.svg";
+                    break;
+                case "D#2":
+                    specialEnemy.src = "img/svg/x-2-disciple.svg";
+                    break;
+            }
+            element.innerText = listOfZones[index].substring(0, listOfZones[index].indexOf("*"));
+            element.classList.add("specialEnemyRed");
+            element.parentElement.parentElement.parentElement.appendChild(specialEnemy); 
+        }else{
+            element.innerText = listOfZones[index];
+        }
+        
+    });
+
+    // populate info-graph with bonus objectives based on selected template
     for(i = 0; i < elements.bonusObjectives.length; i++){
         if(selectedTemplate.bonus[i].objective.length >= 13 && selectedTemplate.bonus[i].objective.length < 20){
             elements.bonusObjectives[i].classList.add("tooLong");
@@ -418,6 +516,7 @@ function processData(){
         elements.bonusObjectives[i].innerText = selectedTemplate.bonus[i].objective;
         elements.bonusObjectives[i].previousSibling.previousSibling.previousSibling.previousSibling.style="background:url(img/svg/"+selectedTemplate.bonus[i].svg+") no-repeat center center";
     }
+    // populate info-graph with boss modifiers
     for(i = 0; i < elements.bossModifiers.length; i++){
         if(selectedTemplate.bossWave[i].length > 13){
             elements.bossModifiers[i].classList.add("tooLong");
@@ -425,10 +524,11 @@ function processData(){
         elements.bossModifiers[i].innerText =  selectedTemplate.bossWave[i].modifier;
         elements.bossModifiers[i].previousSibling.previousSibling.previousSibling.previousSibling.style="background:url(img/svg/"+selectedTemplate.bossWave[i].svg+") no-repeat center center";
     }
-
+    // populate info-graph with bonus objective kill amounts
     for(i = 0; i < elements.amounts.length; i++ ){
         elements.amounts[i].innerText =  selectedTemplate.bonus[i].amount;
     }
+    // Validate/Populate w-modifiers
     if (processed[2].trim().length > 16 || processed[3].trim().length > 16 ) {
         showAlert("error","Weekly modifiers (16) characters exceeded!");
         return
@@ -455,24 +555,6 @@ function processData(){
         elements.weeklyModifiers[1].append(modifier_2);
     }
 
-    if(processed[19].trim().length > 58){
-        showAlert("error","Credits maximum (58) characters exceeded!");
-        return
-    }else{
-        elements.credits.innerHTML = "<span class=\"credits-label\">Credits </span>".concat(processed[19]);
-    }
-    if(isNaN(processed[0])){
-        showAlert("error","Week number is not a number! Provided \""+processed[0]+"\"");
-        return
-    }else{
-        elements.currentWeek.innerText = "Week #".concat(processed[0]);
-    }
-   if (processed[20].trim().length > 11) {
-       showAlert("error","Maximum version (11) characters exceeded!");
-       return
-   } else {
-       elements.version.innerText = processed[20] || "ver2.18";
-   }
     const currentDate = new Date();
     elements.date.innerText = "".concat(currentDate.getDate()+" "+(getAlphaMonth(currentDate.getMonth()))+" "+currentDate.getFullYear());
     const image = document.createElement("img");
@@ -494,21 +576,7 @@ function processData(){
     elements.sectionTwoContainer.classList.add("setVisible","slide-in");
 }
 
-function selectMapTemplate(){
-    selectedMap.mapName = this.value;
-    const check = isMapAvailable(selectedMap.mapName);
-    if(check.isAvailable){
-        selectedMap.templatesIndex = check.id;
-    }
-    addTemplateToTextArea();
-}
-function addTemplateToTextArea(){
-    const check =  isMapAvailable(selectedMap.mapName);
-       if(check.isAvailable){
-        elements.textField.value = templateToString(templates[Object.keys(templates)[check.id]]).concat("ver2.18");
-        }
-}
-
+// clears text area
 function clear(){
     elements.appContainer.style.marginTop = "100px";
     elements.textField.value = "";
@@ -516,10 +584,8 @@ function clear(){
     elements.sectionTwoContainer.classList.replace("slide-in", "fade-out");
 }
 
-function displayTemplate(){
-    document.querySelectorAll(".textArea-1")[0].innerHTML = templateToString(templates.twilightAndAshes);
-}
-
+// Helper functions
+// Convert provided template object and spit out a formatted string text
 function templateToString(template){
     text=template.week+"\n"+template.map+"\n"+template.modifiers[0]+"\n"+template.modifiers[1]+"\n";
     for(i=0; i<template.zones.length; i++){
@@ -528,9 +594,19 @@ function templateToString(template){
 
     text = text.concat(template.credits[0]+", "+template.credits[1]+","+template.credits[2]+"\n");
     return text;
-    
 }
-
+// resets app to original state
+function resetState(){
+    listOfZones = [];
+    processed = [];
+    document.querySelectorAll("img").forEach((element)=> element.remove());
+    elements.zones.forEach(element=> element.classList.remove("specialEnemyRed"))
+    if(typeof document.querySelectorAll(".overlay")[0] != "undefined"){
+        document.querySelectorAll(".overlay")[0].remove();
+    }
+    revertToOGClasses(elements.zones);
+}
+// Standard alert function takes type of alert and a message
 function showAlert(type, message){
     if(typeof elements.previousAlert != "undefined"){
         elements.previousAlert.remove();
@@ -550,149 +626,7 @@ function showAlert(type, message){
         },3000);
     }
 }
-
-function isMapAvailable(otherMap){
-    if(typeof otherMap == "undefined"){
-        showAlert("error", "Insuffecient Data, please use the template and modfiy it as needed.");
-        return
-    }else{
-        const maps = Object.entries(templates).map(element => element[1].map);
-        let isAvailable = false;
-        let id= -1;
-        maps.forEach((element,index) => {
-            if(typeof otherMap != undefined && otherMap.toLowerCase() == element.toLowerCase()){
-                isAvailable =true;
-                id = index; 
-            }
-        });
-        return {isAvailable,id};
-    }
-}
-
-function getAlphaMonth(monthNumber){
-    const months = ["Jan", "Feb", "March", "April", "May"
-    , "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
-    switch(monthNumber){
-        case 0: return months[0];
-        break;
-        case 1: return months[1];
-        break;
-        case 2: return months[2];
-        break;
-        case 3: return months[3];
-        break;
-        case 4: return months[4];
-        break;
-        case 5: return months[5];
-        break;
-        case 6: return months[6];
-        break;
-        case 7: return months[7];
-        break;
-        case 8: return months[8];
-        break;
-        case 9: return months[9];
-        break;
-        case 10: return months[10];
-        break;
-        case 11: return months[11];
-        break;
-    }
-}
-function getOffset(el) {
-    const rect = el.getBoundingClientRect();
-    return {
-      left: rect.left + window.scrollX,
-      top: rect.top + window.scrollY
-    };
-  }
-function findZonePlacement(zoneCount){
-    let placement = 0;
-    if((zoneCount+1)%3 == 0){
-        placement = 3;
-    }else if((zoneCount+1)%3==2){
-        placement = 2;
-    }else if((zoneCount+1)%3==1){
-        placement = 1;
-    }
-    return placement;
-}
-
-function findTotalIntersects(count){
-    let intersect = "";
-    switch(count){
-        case 1: intersect = "1"
-            break;
-        case 2: intersect = "1-2"
-            break;
-        case 3: intersect = "1-2-3"
-            break;
-    }
-    return intersect;
-}
-
-function revertToOGClasses(elements){
-    let waveCount = 0;
-    elements.forEach((element, index) => {
-        if((index+1)%3 == 0){
-            element.parentElement.parentElement.classList.value="";
-            waveCount++;
-            switch(waveCount){
-                case 1:
-                case 5:
-                case 8:
-                case 11:
-                case 14:element.parentElement.parentElement.classList.add("normal","wave");
-                    break;
-                case 2:
-                case 4:
-                case 7:
-                case 10:
-                case 13:element.parentElement.parentElement.classList.add("bonus","wave");
-                    break;
-                case 3:
-                case 6:
-                case 9:
-                case 12:
-                case 15:element.parentElement.parentElement.classList.add("boss","wave");
-                    break;
-            }
-        }
-    });
-}
-
-// element additions
-function addSpecialEnemies(flag, counter, zCounter, intersectCounter){
-    const specialEnemy = document.createElement("img");
-    specialEnemy.classList.add("se-"+zCounter);
-    if(intersectCounter == 1){
-        elements.zones[counter].parentElement.parentElement.classList.add("intersectIconPath-"+findZonePlacement(counter));
-    }else{
-        elements.zones[counter].parentElement.parentElement.classList
-        .replace(elements.zones[counter].parentElement.parentElement.classList[elements.zones[counter].parentElement.parentElement.classList.length-1]
-            ,"intersectIconPath-"+findTotalIntersects(intersectCounter));
-    }
-    switch(flag){
-        case "T#1":
-            specialEnemy.src = "img/svg/x-1-tengu.svg";
-            break;
-        case "T#2":
-            specialEnemy.src = "img/svg/x-2-tengu.svg";
-            break;
-        case "T#3":
-            specialEnemy.src = "img/svg/x-3-tengu.svg";
-            break;
-        case "D#1":
-            specialEnemy.src = "img/svg/x-1-disciple.svg";
-            break;
-        case "D#2":
-            specialEnemy.src = "img/svg/x-2-disciple.svg";
-            break;
-    }
-    elements.zones[counter].innerText = processedWaves["w".concat(i)][j].substring(0, processedWaves["w".concat(i)][j].indexOf("*"));
-    elements.zones[counter].parentElement.parentElement.parentElement.appendChild(specialEnemy);
-}
-
+// adds dogs and bears to info-graph based on template object 
 function addSpecialEnemySideKick(selected){
     for(i = 0; i < selected.dogs.length; i++){
         if(selected.dogs[i] == 9){
@@ -731,33 +665,117 @@ function addSpecialEnemySideKick(selected){
         }
     }
 }
-
-// helper functions 
-function resetState(){
-    document.querySelectorAll("img").forEach((element)=> element.remove());
-    if(typeof document.querySelectorAll(".overlay")[0] != "undefined"){
-        document.querySelectorAll(".overlay")[0].remove();
-    }
-    revertToOGClasses(elements.zones);
-}
-// validation methods
-function validateElementValueEqualsLength(element,length, message){
-    if(element.length == length){
-        showAlert("error",message);
-    }
-    return
-}
-
-function validateElementValueLessLength(element, length, message){
-    if(element.length < length){
-        showAlert("error", message);
+// Check if map is available within provided tempaltes object
+function isMapAvailable(otherMap){
+    if(typeof otherMap == "undefined"){
+        showAlert("error", "Insuffecient Data, please use the template and modfiy it as needed.");
         return
+    }else{
+        const maps = Object.entries(templates).map(element => element[1].map);
+        let isAvailable = false;
+        let id= -1;
+        maps.forEach((element,index) => {
+            if(typeof otherMap != undefined && otherMap.toLowerCase() == element.toLowerCase()){
+                isAvailable =true;
+                id = index; 
+            }
+        });
+        return {isAvailable,id};
     }
 }
-
-function validateElementValueGreaterLength(element, length, message){
-    if(element.length > length){
-        showAlert("error", message);
-        return
+// converts month digit to a String month
+function getAlphaMonth(monthNumber){
+    const months = ["Jan", "Feb", "March", "April", "May"
+    , "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
+    let month = -1;
+    switch(monthNumber){
+        case 0: month = months[0];
+            break;
+        case 1: month = months[1];
+            break;
+        case 2: month = months[2];
+            break;
+        case 3: month = months[3];
+            break;
+        case 4: month = months[4];
+            break;
+        case 5: month = months[5];
+            break;
+        case 6: month = months[6];
+            break;
+        case 7: month = months[7];
+            break;
+        case 8: month = months[8];
+            break;
+        case 9: month = months[9];
+            break;
+        case 10: month = months[10];
+            break;
+        case 11: month = months[11];
+            break;
     }
+    return month;
+}
+
+// find total intersects and returns required post-class string
+function findTotalIntersects(count){
+    let intersect = "";
+    switch(count){
+        case 1: intersect = "1"
+            break;
+        case 2: intersect = "1-2"
+            break;
+        case 3: intersect = "1-2-3"
+            break;
+    }
+    return intersect;
+}
+// Finds correct zone placement when working with 0-2 zone indexes
+function findZonePlacement(zoneCount){
+    let placement = 0;
+    if((zoneCount+1)%3 == 0){
+        placement = 3;
+    }else if((zoneCount+1)%3==2){
+        placement = 2;
+    }else if((zoneCount+1)%3==1){
+        placement = 1;
+    }
+    return placement;
+}
+
+// Reverts classes back to original classes
+function revertToOGClasses(elements){
+    let waveCount = 0;
+    elements.forEach((element, index) => {
+        if((index+1)%3 == 0){
+            element.parentElement.parentElement.classList.value="";
+            waveCount++;
+            switch(waveCount){
+                case 1:
+                case 5:
+                case 8:
+                case 11:
+                case 14:element.parentElement.parentElement.classList.add("normal","wave");
+                    break;
+                case 2:
+                case 4:
+                case 7:
+                case 10:
+                case 13:element.parentElement.parentElement.classList.add("bonus","wave");
+                    break;
+                case 3:
+                case 6:
+                case 9:
+                case 12:
+                case 15:element.parentElement.parentElement.classList.add("boss","wave");
+                    break;
+            }
+        }
+    });
+}
+
+// debugger
+function dd(object){
+    let previous = elements.debug_screen.innerText + object+"\n"
+    elements.debug_screen.innerText = previous ;
 }

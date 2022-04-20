@@ -415,6 +415,13 @@ hr.decorated-line-2{
     position: relative;
     bottom: 20px;
 }
+.specialEnemyRed{
+    color:#FF7474;
+    border-color: #FF7474;
+}
+.statistics{
+    position: absolute;
+}
 
 @keyframes slide-in{
     0% {
