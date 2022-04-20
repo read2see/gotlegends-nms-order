@@ -800,7 +800,7 @@ function editZone(e){
         e.target.select();
     })
     editField.addEventListener("keyup", function(event){
-        if(event.key === "Enter"){
+        if(event.code === "Enter" || event.key === "Enter"){
             e.target.innerText = editField.value;
             this.target.parentElement.parentElement.remove(container);
         }
