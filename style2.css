@@ -423,6 +423,39 @@ hr.decorated-line-2{
     position: absolute;
 }
 
+.editForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+    width: 70px;
+    overflow: hidden;
+    top:2px;
+}
+.editField{
+    width:50px;
+    font-size: 7px;
+    background: transparent;
+    color: #fff;
+    border-radius: 2px ;
+    border: 0.05rem solid rgb(66, 119, 168);
+    
+}
+.editField:focus{
+    border-color:rgb(66, 119, 168);
+    outline: 0.1rem solid rgba(255, 202, 202, 0.527) ;
+    border-radius: 2px;
+}
+.saveBtn{
+    font-size: 5px;
+    background-color: #50C774;
+    color: #fff;
+    border: none;
+    border-radius: 5px ;
+    padding: 0 0.2rem;
+    margin-left: 2px;
+}
+
 @keyframes slide-in{
     0% {
 		transform: translateY(-100%);
@@ -567,6 +600,7 @@ hr.decorated-line-2{
     .zone{
         font-size: 8px;
         height: 22px;
+        cursor: pointer;
     }
     .type_2 .amount{
         margin-left: 1.8rem;
@@ -711,7 +745,12 @@ hr.decorated-line-2{
     }
 }
 
-
+@media only Screen and (max-width: 390px){
+    .tooLong{
+        font-size: 6px;
+        padding-top: 0.25rem;
+    }
+}
 @media only screen and (max-width:375px){
     .app-container{
         width: 370px;

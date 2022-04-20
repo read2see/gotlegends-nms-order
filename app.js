@@ -335,6 +335,7 @@ elements.mapSelection.addEventListener("change", selectMapTemplate);
 elements.templateButton.addEventListener("click", addTemplateToTextArea);
 elements.clearBtn.addEventListener("click",clear)
 elements.processBtn.addEventListener("click",processData)
+elements.zones.forEach( element => element.addEventListener("click", editZone));
 
 // Selects a template then adds it to text area
 function selectMapTemplate(){
@@ -518,7 +519,7 @@ function processData(){
     }
     // populate info-graph with boss modifiers
     for(i = 0; i < elements.bossModifiers.length; i++){
-        if(selectedTemplate.bossWave[i].length > 13){
+        if(selectedTemplate.bossWave[i].length > 12){
             elements.bossModifiers[i].classList.add("tooLong");
         }
         elements.bossModifiers[i].innerText =  selectedTemplate.bossWave[i].modifier;
@@ -772,6 +773,32 @@ function revertToOGClasses(elements){
             }
         }
     });
+}
+
+function editZone(e){
+    const container = document.createElement("div");
+    container.classList.add("editForm");
+    const saveButton = document.createElement("button");
+    saveButton.innerText = "Save";
+    saveButton.setAttribute("type", "button");
+    saveButton.classList.add("saveBtn");
+    const editField = document.createElement("input");
+    editField.setAttribute("type", "text");
+    editField.value = e.target.innerText;
+    e.target.innerText = "";
+    editField.classList.add("editField");
+    container.append(editField,saveButton);
+    e.target.append(container);
+    editField.focus();
+    editField.select();
+    saveButton.addEventListener("click", function(){
+        e.target.innerText = editField.value;
+        this.target.parentElement.parentElement.remove(container);
+    });
+    editField.addEventListener("click",function(e){
+        e.target.focus();
+        e.target.select();
+    })
 }
 
 // debugger
