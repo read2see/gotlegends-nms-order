@@ -721,7 +721,7 @@ function getAlphaMonth(monthNumber){
 // find total intersects and returns required post-class string
 function findTotalIntersects(count){
     let intersect = "";
-    switch(count){
+    switch(count+1){
         case 1: intersect = "1"
             break;
         case 2: intersect = "1-2"
