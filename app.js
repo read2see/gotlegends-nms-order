@@ -799,6 +799,12 @@ function editZone(e){
         e.target.focus();
         e.target.select();
     })
+    editField.addEventListener("keyup", function(event){
+        if(event.key === "Enter"){
+            e.target.innerText = editField.value;
+            this.target.parentElement.parentElement.remove(container);
+        }
+    });
 }
 
 // debugger
