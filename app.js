@@ -800,10 +800,10 @@ function editZone(e){
             otherEvent.target.parentElement.remove(container);
         }
     });
-    editField.addEventListener("click",function(e){
-        e.target.focus();
-        e.target.select();
-    });
+    // editField.addEventListener("click",function(e){
+    //     e.target.focus();
+    //     e.target.select();
+    // });
     editField.addEventListener("keyup", function(event){
         if(event.code === "Enter" || event.key === "Enter"){
             e.target.innerText = editField.value;
