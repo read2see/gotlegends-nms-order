@@ -791,7 +791,7 @@ function editZone(e){
     e.target.append(container);
     editField.focus();
     editField.select();
-    saveButton.addEventListener("click", function(){
+    saveButton.addEventListener("click", function(event){
         e.target.innerText = editField.value;
         this.target.parentElement.parentElement.remove(container);
     });
