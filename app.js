@@ -790,7 +790,7 @@ function editZone(e){
     container.append(editField,saveButton);
     e.target.append(container);
     editField.focus();
-    editField.select();
+    // editField.select();
     saveButton.addEventListener("click", function(otherEvent){
         if(editField.value.length > 17){
             showAlert("error","Exceeded maximum (17) charcters.")
@@ -800,12 +800,12 @@ function editZone(e){
             otherEvent.target.parentElement.remove(container);
         }
     });
-    // editField.addEventListener("click",function(e){
-    //     e.target.focus();
-    //     e.target.select();
-    // });
+    editField.addEventListener("click",function(e){
+        e.target.focus();
+        // e.target.select();
+    });
     editField.addEventListener("keyup", function(event){
-        if(event.code === "Enter" || event.key === "Enter"){
+        if(event.code === 13 || event.key === "Enter"){
             e.target.innerText = editField.value;
             event.target.parentElement.remove(container);
         }
