@@ -454,6 +454,7 @@ hr.decorated-line-2{
     border-radius: 5px ;
     padding: 0 0.2rem;
     margin-left: 2px;
+	cursor:pointer;
 }
 
 @keyframes slide-in{
