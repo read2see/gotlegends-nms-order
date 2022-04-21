@@ -779,30 +779,35 @@ function editZone(e){
     const container = document.createElement("div");
     container.classList.add("editForm");
     const saveButton = document.createElement("button");
-    saveButton.innerText = "Save";
+    saveButton.textContent = "Save";
     saveButton.setAttribute("type", "button");
     saveButton.classList.add("saveBtn");
     const editField = document.createElement("input");
     editField.setAttribute("type", "text");
-    editField.value = e.target.innerText;
+    editField.value = listOfZones[Array.from(elements.zones).indexOf(e.target)]
     e.target.innerText = "";
     editField.classList.add("editField");
     container.append(editField,saveButton);
     e.target.append(container);
     editField.focus();
     editField.select();
-    saveButton.addEventListener("click", function(event){
-        e.target.innerText = editField.value;
-        this.target.parentElement.parentElement.remove(container);
+    saveButton.addEventListener("click", function(otherEvent){
+        if(editField.value.length > 17){
+            showAlert("error","Exceeded maximum (17) charcters.")
+            return
+        }else{
+            e.target.innerText = editField.value;
+            otherEvent.target.parentElement.remove(container);
+        }
     });
     editField.addEventListener("click",function(e){
         e.target.focus();
         e.target.select();
-    })
+    });
     editField.addEventListener("keyup", function(event){
         if(event.code === "Enter" || event.key === "Enter"){
             e.target.innerText = editField.value;
-            this.target.parentElement.parentElement.remove(container);
+            event.target.parentElement.remove(container);
         }
     });
 }
