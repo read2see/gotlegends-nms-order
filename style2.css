@@ -20,7 +20,7 @@ body{
 .one{
     width: 100%;
     padding: 0.7rem;
-    margin: auto ;
+    margin: auto;
     background-color: rgb(32, 19, 24);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 5px;
@@ -89,7 +89,7 @@ body{
     flex-direction: row;
     flex-basis: 100px;
     overflow: hidden;
-    margin: 3% 13%;
+    margin: 3% 11%;
 }
 
 .title{
@@ -550,6 +550,75 @@ hr.decorated-line-2{
     cursor: pointer;
 }
 
+.legend{
+    padding: 0.5rem 0.2rem;
+    width: 100%;
+    background-color: rgba(35, 0, 44, 0.336);
+    margin: auto 5px;
+    border-radius: 5px;
+    display: block;
+}
+.legend-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.legend-title{
+    width:135px;
+    color:#FFBFD1;
+    border: 1px solid #FF4477;
+    border-radius: 30px;
+    padding: 0.1rem 0.2rem;
+    text-align: center;
+    margin: auto 127.5px;
+}
+hr.decorated-line-3{
+    width: 100%;
+    border:none;
+    position: relative;
+    border-bottom:2px solid #FF4477;
+    bottom: 20px;
+    z-index: 2;
+    clip-path: polygon(0% 0%,0% 100%, 30% 100%, 30% 0%,71.8% 0, 71.8% 100%, 100% 100%, 100% 0);
+}
+.line{
+    width: 20px;
+    height: 10px;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+.normal-font-color{
+    color:#AC51FB;
+}
+.bonus-font-color{
+    color:#50C774;
+}
+.boss-font-color{
+    color:#FF7474;
+}
+.normal-fill{
+    background-color: #AC51FB;
+}
+.bonus-fill{
+    background-color: #50C774;
+}
+.boss-fill{
+    background-color: #FF7474;
+}
+.legend-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.legend-list-2, .legend-list-3 {
+    color:#fff;
+}
+
+.legend-list-2 img, .legend-list-3 img {
+    margin-right: 10px;
+    transform: scale(1.2);
+    position: relative;
+}
 @keyframes slide-in{
     0% {
 		transform: translateY(-100%);

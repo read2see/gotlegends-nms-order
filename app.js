@@ -33,6 +33,8 @@ const elements = {
     subform_4: document.querySelectorAll(".subform-4")[0],
     nextBtns: document.querySelectorAll(".next"),
     previousBtns: document.querySelectorAll(".previous"),
+    legendBtn: document.querySelectorAll(".btn")[3],
+    legend: document.querySelectorAll(".legend")[0],
 }
 
 const formElements = {
@@ -361,6 +363,7 @@ const templates = {
 }
 // Will store the total 45 zones
 let listOfZones = [];
+let matches =[];
 let legend = {
 };
 
@@ -375,6 +378,7 @@ elements.methodBtns[0].addEventListener("click", toggleMethod);
 elements.methodBtns[1].addEventListener("click", toggleMethod);
 elements.nextBtns.forEach(element => element.addEventListener("click", goNext));
 elements.previousBtns.forEach(element => element.addEventListener("click", goBack));
+// elements.legendBtn.addEventListener("click", toggleLegend);
 
 
 // Selects a template then adds it to text area
@@ -438,7 +442,30 @@ function processData(){
                   +formElements.version.value.trim();
         elements.textField.value = rawData;
     }else{
-        rawData = elements.textField.value;
+        rawData = elements.textField.value.trim();
+        if(rawData.length > 450){
+            let uniqueZones = rawData.split("\n");
+            let matchedWeek = uniqueZones[0].charAt(uniqueZones[0].length-2);
+            let matchedMap = uniqueZones[0].substring(0,uniqueZones[0].indexOf("(")).trim();
+            let matchedModifier = uniqueZones[1].substring(uniqueZones[1].indexOf(":")+1, uniqueZones[1].length).trim();
+            let matchedHazard = uniqueZones[2].substring(uniqueZones[2].indexOf(":")+1, uniqueZones[2].indexOf("/")).trim();
+            let matchedCredits = uniqueZones[uniqueZones.length-1];
+            matches = [...rawData.matchAll(/(?<!\()(?![\w\s]*[\)])\b[^0-9.(,]+\b/g)];
+            rawData = "";
+            rawData = matchedWeek+"\n"
+                    +matchedMap+"\n"
+                    +matchedModifier+"\n"
+                    +matchedHazard+"\n";
+            for(i = 5; i < matches.length-1; i++){
+                if((i-5+1)%3 == 0){
+                    rawData = rawData.concat(matches[i][0].trim()+"\n");
+                }else{
+                    rawData = rawData.concat(matches[i][0].trim()+", ");
+                }
+            }
+            rawData  = rawData.concat(matchedCredits+"\n"+"ver2.18");
+            elements.textField.value = rawData;
+        }
         lines = rawData.split("\n").filter((element)=> element != "");
         formElements.currentWeek.value = lines[0];
         formElements.wave_1.value = lines[4]; 
@@ -459,6 +486,7 @@ function processData(){
         formElements.credits.value = lines[19];
         formElements.version.value = lines[20];
     }
+    
     // Storing raw value line by line in an array
     processed = rawData.split("\n").filter((element)=> element != "");
     // Select map from text area 
@@ -944,6 +972,16 @@ function goBack(e){
             break;
     }
 }
+
+// function toggleLegend(e){
+//     if(elements.legend.style.display == "none"){
+//         elements.textField.style.display = "none";
+//         elements.legend.style.display = "block";
+//     }else{
+//         elements.textField.style.display = "block";
+//         elements.legend.style.display = "none";
+//     }
+// }
 // debugger
 function dd(object){
     let previous = elements.debug_screen.innerText + object+"\n"
