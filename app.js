@@ -443,7 +443,7 @@ function processData(){
         elements.textField.value = rawData;
     }else{
         rawData = elements.textField.value.trim();
-        if(rawData.split("\n").length > 20){
+        if(rawData.split("\n").length > 21){
             let uniqueZones = rawData.split("\n");
             let matchedWeek = uniqueZones[0].charAt(uniqueZones[0].length-2);
             let matchedMap = uniqueZones[0].substring(0,uniqueZones[0].indexOf("(")).trim();
