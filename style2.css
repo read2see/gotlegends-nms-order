@@ -608,7 +608,7 @@ hr.decorated-line-2{
         width: 400px;
         margin: auto 0;
     }
-    .button-container-2{
+    .button-container-2, .form{
         margin: auto 5px ;
     }
     .one, .two{
@@ -656,6 +656,7 @@ hr.decorated-line-2{
         width: 380px;
         margin: 59% 0;
     }
+
     .one,.two{
         margin: 1% 1.2%;
     }
