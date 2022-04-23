@@ -23,9 +23,42 @@ const elements = {
     wave_9: document.querySelectorAll(".wave")[8],
     wave_12: document.querySelectorAll(".wave")[11],
     wave_15:document.querySelectorAll(".wave")[14],
+    btnsContainer_2: document.querySelectorAll(".button-container-2")[0],
+    methodBtns: document.querySelectorAll(".input-method"),
+    form: document.querySelectorAll(".form")[0],
+    subform_1: document.querySelectorAll(".subform-1")[0],
+    subform_2: document.querySelectorAll(".subform-2")[0],
+    subform_3: document.querySelectorAll(".subform-3")[0],
+    subform_4: document.querySelectorAll(".subform-4")[0],
+    nextBtns: document.querySelectorAll(".next"),
+    previousBtns: document.querySelectorAll(".previous"),
 }
 
+const formElements = {
+    currentWeek: document.getElementById("currentWeek"),
+    weeklyModifier: document.getElementById("weeklyModifier"),
+    weeklyHazard: document.getElementById("weeklyHazard"),
+    version: document.getElementById("version"),
+    credits: document.getElementById("credits"),
+    wave_1: document.getElementById("wave-1"),
+    wave_2: document.getElementById("wave-2"),
+    wave_3: document.getElementById("wave-3"),
+    wave_4: document.getElementById("wave-4"),
+    wave_5: document.getElementById("wave-5"),
+    wave_6: document.getElementById("wave-6"),
+    wave_7: document.getElementById("wave-7"),
+    wave_8: document.getElementById("wave-8"),
+    wave_9: document.getElementById("wave-9"),
+    wave_10: document.getElementById("wave-10"),
+    wave_11: document.getElementById("wave-11"),
+    wave_12: document.getElementById("wave-12"),
+    wave_13: document.getElementById("wave-13"),
+    wave_14: document.getElementById("wave-14"),
+    wave_15: document.getElementById("wave-15"),
+}
 // Properties
+// Method mode
+let mode = "text";
 // Stores the selected map name and index within the templates array of objects
 let selectedMap = {mapName: "Blood In The Snow", templatesIndex:0};
 // Stores the text area raw value
@@ -333,9 +366,14 @@ let legend = {
 // Adding Events to interactive elements
 elements.mapSelection.addEventListener("change", selectMapTemplate);
 elements.templateButton.addEventListener("click", addTemplateToTextArea);
-elements.clearBtn.addEventListener("click",clear)
-elements.processBtn.addEventListener("click",processData)
+elements.clearBtn.addEventListener("click",clear);
+elements.processBtn.addEventListener("click",processData);
 elements.zones.forEach( element => element.addEventListener("click", editZone));
+elements.methodBtns[0].addEventListener("click", toggleMethod);
+elements.methodBtns[1].addEventListener("click", toggleMethod);
+elements.nextBtns.forEach(element => element.addEventListener("click", goNext));
+elements.previousBtns.forEach(element => element.addEventListener("click", goBack));
+
 
 // Selects a template then adds it to text area
 function selectMapTemplate(){
@@ -369,7 +407,32 @@ function processData(){
     // Add dogs and bears to the info-graph based on template info
     addSpecialEnemySideKick(selectedTemplate);
     // Storing the raw text area value
-    rawData = elements.textField.value;
+    if(mode == "form"){
+        rawData = formElements.currentWeek.value.trim()+"\n"
+                  +elements.mapSelection.value.trim()+"\n"
+                  +formElements.weeklyModifier.value.trim()+"\n"
+                  +formElements.weeklyHazard.value.trim()+"\n"
+                  +formElements.wave_1.value.trim()+"\n"
+                  +formElements.wave_2.value.trim()+"\n"
+                  +formElements.wave_3.value.trim()+"\n"
+                  +formElements.wave_4.value.trim()+"\n"
+                  +formElements.wave_5.value.trim()+"\n"
+                  +formElements.wave_6.value.trim()+"\n"
+                  +formElements.wave_7.value.trim()+"\n"
+                  +formElements.wave_8.value.trim()+"\n"
+                  +formElements.wave_9.value.trim()+"\n"
+                  +formElements.wave_10.value.trim()+"\n"
+                  +formElements.wave_11.value.trim()+"\n"
+                  +formElements.wave_12.value.trim()+"\n"
+                  +formElements.wave_13.value.trim()+"\n"
+                  +formElements.wave_14.value.trim()+"\n"
+                  +formElements.wave_15.value.trim()+"\n"
+                  +formElements.credits.value.trim()+"\n"
+                  +formElements.version.value.trim();
+    }else{
+        rawData = elements.textField.value;
+        
+    }
     // Storing raw value line by line in an array
     processed = rawData.split("\n").filter((element)=> element != "");
     // Select map from text area 
@@ -404,8 +467,8 @@ function processData(){
                         showAlert("error", "Wave zone(s) are missing.");
                         return
                     }
-                    if(waveZones[j].trim().length > 17){
-                        showAlert("error",  "Zone maximum (17) characters exceeded!\n Cause:\""+processedWaves["w".concat(i)][j]+"\"");
+                    if(waveZones[j].trim().length > 18){
+                        showAlert("error",  "Zone maximum (17) characters exceeded!\n Cause:\""+waveZones[j]+"\"");
                         return
                     }
                 }
@@ -615,7 +678,7 @@ function showAlert(type, message){
     window.scroll(0,0);
     const alert = document.createElement("p");
     alert.innerText = message;
-    elements.appContainer.insertBefore(alert,elements.sectionOneContainer);
+    elements.appContainer.insertBefore(alert,elements.btnsContainer_2);
     if(type="error"){
         alert.classList.add("error-alert", "slide-in");
     }
@@ -811,7 +874,49 @@ function editZone(e){
         }
     });
 }
+function toggleMethod(e){
+    if(typeof e.target.classList[1] == "undefined"){
+        e.target.classList.add("active-method");
+        Array.from(elements.methodBtns).filter(element => element != e.target)[0].classList.remove("active-method");
+        if(e.target.innerText == "Form (Slower/Informative)" ){
+            elements.form.style.display = "block";
+            elements.sectionOneContainer.style.display = "none";
+            mode = "form";
+        }else{
+            elements.sectionOneContainer.style.display = "block";
+            elements.form.style.display = "none";
+            mode = "text";
+        }
+    }
+}
 
+function goNext(e){
+    index = Array.from(elements.nextBtns).indexOf(e.target);
+    switch(index){
+        case 0: elements.subform_1.style.display = "none"; elements.subform_2.style.display = "block";
+            break;
+        case 1: elements.subform_2.style.display = "none"; elements.subform_3.style.display = "block";
+            break;
+        case 2: elements.subform_3.style.display = "none"; elements.subform_4.style.display = "block";
+            break;
+        case 3: processData();
+            break;
+    }
+}
+
+function goBack(e){
+    index = Array.from(elements.previousBtns).indexOf(e.target);
+    switch(index){
+        case 0: console.log(-1);
+            break;
+        case 1: elements.subform_1.style.display = "block"; elements.subform_2.style.display = "none";
+            break;
+        case 2: elements.subform_2.style.display = "block"; elements.subform_3.style.display = "none";
+            break;
+        case 3: elements.subform_3.style.display = "block"; elements.subform_4.style.display = "none";
+            break;
+    }
+}
 // debugger
 function dd(object){
     let previous = elements.debug_screen.innerText + object+"\n"

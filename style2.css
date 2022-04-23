@@ -15,12 +15,12 @@ body{
     width: 414px;
     height: 100vh;
     margin: auto 39.2%;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 .one{
     width: 100%;
     padding: 0.7rem;
-    margin: 10px 0;
+    margin: 0;
     background-color: rgb(32, 19, 24);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 5px;
@@ -454,7 +454,100 @@ hr.decorated-line-2{
     border-radius: 5px ;
     padding: 0 0.2rem;
     margin-left: 2px;
-	cursor:pointer;
+    cursor: pointer;
+}
+
+.button-container-2{
+    width:100%;
+    margin: 0 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input-method{
+    padding: 0.5rem 1.7rem;
+    background-color: rgb(168, 37, 87);
+    cursor: pointer;
+    color: #fff;
+    border: none;
+}
+
+.active-method{
+    background-color: rgb(32, 19, 24);
+}
+
+.form{
+    display: none;
+    width: 100%;
+    padding: 0.7rem;
+    margin: 0 5px;
+    background-color: rgb(32, 19, 24);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.form h2{
+    color:#fff;
+    margin: .5rem 0;
+    border-bottom: 1px solid #fff;
+}
+
+.subform-1{
+
+}
+.subform-1 .previous{
+    cursor: not-allowed ;
+}
+
+.subform-2, .subform-3, .subform-4{
+    display: none;
+}
+
+.input-item{
+    margin: 0 0 .5rem 0;
+}
+.form .selectionLabel {
+    display: block;
+    padding: 0;
+    margin-bottom: 0.2rem;
+}
+.input-item label{
+    display: block;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.input-item input[type="text"]{
+    font-size: 1rem;
+    padding: 0.2rem;;
+    width: 100%;
+}
+
+.subform-1 .inputs .input-item:nth-last-child(1),
+.subform-2 .inputs .input-item:nth-last-child(1),
+.subform-3 .inputs .input-item:nth-last-child(1),
+.subform-4 .inputs .input-item:nth-last-child(1){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.previous {
+    padding: .2rem 1rem;
+    background-color: transparent;
+    border: 1px solid #fff;
+    color:#fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.next{
+    padding: .2rem 1rem;
+    background-color: rgb(168, 37, 87);
+    border: 1px solid #333;
+    color:#fff;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 @keyframes slide-in{
@@ -489,6 +582,9 @@ hr.decorated-line-2{
     #app-container{
         margin: auto 33.82%;
     }
+    .button-container-2{
+        margin: auto 0 ;
+    }
 }
 @media only Screen and (max-width:912px){
     #app-container{
@@ -511,6 +607,9 @@ hr.decorated-line-2{
     #app-container{
         width: 400px;
         margin: auto 0;
+    }
+    .button-container-2{
+        margin: auto 5px ;
     }
     .one, .two{
         margin: 1% 1.5%;
