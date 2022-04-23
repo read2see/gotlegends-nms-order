@@ -9,6 +9,7 @@ const elements = {
     templateButton: document.querySelectorAll(".btn")[0],
     amounts: document.querySelectorAll(".amount"),
     mapSelection: document.querySelectorAll("#mapSelection")[0],
+    mapSelection_2: document.querySelectorAll("#mapSelection-2")[0],
     appContainer: document.querySelectorAll("#app-container")[0],
     body: document.body,
     sectionOneContainer: document.querySelectorAll(".one")[0],
@@ -365,6 +366,7 @@ let legend = {
 
 // Adding Events to interactive elements
 elements.mapSelection.addEventListener("change", selectMapTemplate);
+elements.mapSelection_2.addEventListener("change", selectMapTemplate);
 elements.templateButton.addEventListener("click", addTemplateToTextArea);
 elements.clearBtn.addEventListener("click",clear);
 elements.processBtn.addEventListener("click",processData);
@@ -376,7 +378,12 @@ elements.previousBtns.forEach(element => element.addEventListener("click", goBac
 
 
 // Selects a template then adds it to text area
-function selectMapTemplate(){
+function selectMapTemplate(e){
+    if(e.target == elements.mapSelection){
+        elements.mapSelection_2.value = e.target.value;
+    }else{
+        elements.mapSelection.value = e.target.value;
+    }
     selectedMap.mapName = this.value;
     const check = isMapAvailable(selectedMap.mapName);
     if(check.isAvailable){
@@ -409,7 +416,7 @@ function processData(){
     // Storing the raw text area value
     if(mode == "form"){
         rawData = formElements.currentWeek.value.trim()+"\n"
-                  +elements.mapSelection.value.trim()+"\n"
+                  +elements.mapSelection_2.value.trim()+"\n"
                   +formElements.weeklyModifier.value.trim()+"\n"
                   +formElements.weeklyHazard.value.trim()+"\n"
                   +formElements.wave_1.value.trim()+"\n"
@@ -429,6 +436,7 @@ function processData(){
                   +formElements.wave_15.value.trim()+"\n"
                   +formElements.credits.value.trim()+"\n"
                   +formElements.version.value.trim();
+        elements.textField.value = rawData;
     }else{
         rawData = elements.textField.value;
         
