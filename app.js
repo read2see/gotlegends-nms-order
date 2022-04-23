@@ -144,7 +144,7 @@ const templates = {
             bossWaveModifiers[1],
         ],
         credits:["player#1", "player#2", "player#n"],
-        tengu:["4-1","8-2","9-1#1, 9-2#2, 9-3#3"],
+        tengu:["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
         dogs:[12],
         bears:[15],
         background: "Blood-In-The-Snow.webp",
@@ -186,7 +186,7 @@ const templates = {
             "Fighting Blind", "Burning Blades", "Toxic Clouds", "Wildfire", "Eruption"
         ],
         credits:["player#1", "player#2", "player#n"],
-        tengu:["5-3","7-1"],
+        tengu:["15*T#2","19*T#2"],
         dogs:[12],
         bears:[15],
         background:"The-Shadows-Of-War.webp"
@@ -228,7 +228,7 @@ const templates = {
             "Toxic Clouds", "Eruption", "Fighting Blind", "Slowed Revives", "Eruption"
         ],
         credits:["player#1", "player#2", "player#n"],
-        tengu:["4-1","8-2"],
+        tengu:["10*T#2","23*T#2"],
         dogs:[9,12],
         bears:[9,15],
         background: "The-Defense-Of-Aoi-Village.webp"
@@ -270,7 +270,7 @@ const templates = {
             "Eruption", "Toxic Clouds", "Burning Blades", "Wildfire", "Eruption"
         ],
         credits:["player#1", "player#2", "player#n"],
-        tengu:["5-3","7-1"],
+        tengu:["15*T#2","19*T#2"],
         dogs:[12],
         bears:[12,15],
         background:"The-Shores-Of-Vengeance.webp"
@@ -312,8 +312,8 @@ const templates = {
             "Toxic Clouds", "Wildfire", "Fighting Blind", "Immunity", "Eruption"
         ],
         credits:["player#1", "player#2", "player#n"],
-        tengu:["5-3","7-1"],
-        disciple:["3#2","12-1#1"],
+        tengu:["15*T#2","19*T#2"],
+        disciple:["4*D#2","5*D#2","6*D#2","34*D#1"],
         dogs:[12],
         bears:[12,15],
         background: "Twilight-And-Ashes.webp"
@@ -355,7 +355,7 @@ const templates = {
             "Fighting Blind", "Slowed Revives", "Burning Blades", "Toxic Clouds", "Eruption"
         ],
         credits:["player#1", "player#2", "player#n"],
-        tengu:["5-3","7-1"],
+        tengu:["15*T#2","19*T#2","34*T#2", "35*T#2", "36*T#2"],
         dogs:[12],
         bears:[12,15],
         background: "Blood-And-Steel.webp"
@@ -443,7 +443,7 @@ function processData(){
         elements.textField.value = rawData;
     }else{
         rawData = elements.textField.value.trim();
-        if(rawData.length > 450){
+        if(rawData.split("\n").length > 20){
             let uniqueZones = rawData.split("\n");
             let matchedWeek = uniqueZones[0].charAt(uniqueZones[0].length-2);
             let matchedMap = uniqueZones[0].substring(0,uniqueZones[0].indexOf("(")).trim();
@@ -451,13 +451,43 @@ function processData(){
             let matchedHazard = uniqueZones[2].substring(uniqueZones[2].indexOf(":")+1, uniqueZones[2].indexOf("/")).trim();
             let matchedCredits = uniqueZones[uniqueZones.length-1];
             matches = [...rawData.matchAll(/(?<!\()(?![\w\s]*[\)])\b[^0-9.(,]+\b/g)];
+            if(matches.length > 45){
+                matches.shift()
+                matches.shift()
+                matches.shift()
+                matches.shift()
+                matches.shift()
+                matches.pop();
+                if(matches.length  == 46)
+                    matches.pop();
+            }
+            if(!rawData.includes("*")){
+                // console.log(matches[45][0])
+                let matchedTemplate = Object.entries(templates).filter(element => element[1].map.toLowerCase() == matchedMap.toLowerCase())[0][1];
+                let tcounter = 0;
+                let dcounter = 0;
+                for(i = 0; i < matches.length; i++){
+                    if(tcounter < matchedTemplate.tengu.length){
+                        if(matches.length == 45 && i == parseInt(matchedTemplate.tengu[tcounter].split("*")[0])-1){
+                            matches[i][0] = matches[i][0].trim().concat("*"+matchedTemplate.tengu[tcounter].split("*")[1]);
+                            tcounter++;
+                        }
+                    }
+                    if(typeof matchedTemplate.disciple != "undefined" && dcounter < matchedTemplate.disciple.length){
+                        if(matches.length == 45 && i == parseInt(matchedTemplate.disciple[dcounter].split("*")[0])-1){
+                            matches[i][0] = matches[i][0].trim().concat("*"+matchedTemplate.disciple[dcounter].split("*")[1]);
+                            dcounter++;
+                        }
+                    }
+                }
+            }
             rawData = "";
             rawData = matchedWeek+"\n"
                     +matchedMap+"\n"
                     +matchedModifier+"\n"
                     +matchedHazard+"\n";
-            for(i = 5; i < matches.length-1; i++){
-                if((i-5+1)%3 == 0){
+            for(i = 0; i < matches.length; i++){
+                if((i+1)%3 == 0){
                     rawData = rawData.concat(matches[i][0].trim()+"\n");
                 }else{
                     rawData = rawData.concat(matches[i][0].trim()+", ");
@@ -466,6 +496,7 @@ function processData(){
             rawData  = rawData.concat(matchedCredits+"\n"+"ver2.18");
             elements.textField.value = rawData;
         }
+        
         lines = rawData.split("\n").filter((element)=> element != "");
         formElements.currentWeek.value = lines[0];
         formElements.wave_1.value = lines[4]; 
