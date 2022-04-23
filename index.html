@@ -12,6 +12,153 @@
 </head>
 <body>
     <div id="app-container">
+        <div class="button-container-2">
+            <button class="input-method active-method" type="button">Text (Faster/Constrained)</button>
+            <button class="input-method" type="button">Form (Slower/Informative)</button>
+        </div>
+        <div class="form">
+            <label for="zoneData" class="standardLabel white">Enter Zones data</label>
+            <form class="sp" action="https://www.paypal.com/paypalme/read2see"><button class="donateBtn">Donate</button></form>
+            <div class="subform-1">
+                <h2>Form 1/4</h2>
+                <ul class="inputs">
+                    <li class="input-item">
+                        <label for="mapSelection" class="selectionLabel">Select Map</label>
+                        <select id="mapSelection">
+                            <option value="Blood In The Snow">Blood In The Snow</option>
+                            <option value="The Shadows Of War">The Shadows Of War</option>
+                            <option value="The Defense Of Aoi Village">The Defense Of Aoi Village</option>
+                            <option value="The Shores Of Vengeance">The Shores Of Vengeance</option>
+                            <option value="Twilight And Ashes">Twilight And Ashes</option>
+                            <option value="Blood And Steel">Blood And Steel</option>
+                        </select>
+                    </li>
+                    <li class="input-item">
+                        <label for="currentWeek">Current Week</label>
+                        <input type="text" name="currentWeek" id="currentWeek" placeholder="i.e. 1, 2, 3, 4, 5, 6, 7, 8">
+                    </li>
+                    <li class="input-item">
+                        <label for="weeklyModifier">Weekly Modifier</label>
+                        <select name="weeklyModifier" id="weeklyModifier">
+                            <option value="Barbed Arrows">Barbed Arrows</option>
+                            <option value="Empowered Foes">Empowered Foes</option>
+                            <option value="Immunity">Immunity</option>
+                            <option value="Incapacitated">Incapacitated</option>
+                            <option value="Reduced Healing">Reduced Healing</option>
+                            <option value="Slowed Revives">Slowed Revives</option>
+                            <option value="Tool Shortage">Tool Shortage</option>
+                        </select>
+                    </li>
+                    <li class="input-item">
+                        <label for="weeklyHazard">Weekly Hazard</label>
+                        <select name="weeklyHazard" id="weeklyHazard">
+                            <option value="Hwachas">Hwachas</option>
+                            <option value="Eyes of Iyo">Eyes of Iyo</option>
+                            <option value="Disciples">Disciples</option>
+                        </select>
+                    </li>
+                    <li class="input-item">
+                        <label for="version">Version</label>
+                        <input type="text" name="version" id="version" placeholder="ver2.18">
+                    </li>
+                    <li class="input-item">
+                        <label for="credits">Credits</label>
+                        <input type="text" name="credits" id="credits" placeholder="player#1, player#2, player#3, player#n">
+                    </li>
+                    <li class="input-item">
+                        <button class="previous" type="button" disabled>Back</button>
+                        <button class="next" type="button">Next</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="subform-2">
+                <h2>Form 2/4</h2>
+                <ul class="inputs">
+                    <li class="input-item">
+                        <label for="Wave-1">Wave #1</label>
+                        <input type="text" name="wave-1" id="wave-1" placeholder="zone#1, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-2">Wave #2</label>
+                        <input type="text" name="wave-2" id="wave-2" placeholder="zone#1, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-3">Wave #3</label>
+                        <input type="text" name="wave-3" id="wave-3" placeholder="zone#1*D#2, zone#2*D#2, zone#3*D#2">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-4">Wave #4</label>
+                        <input type="text" name="wave-4" id="wave-4" placeholder="zone#1*T#2, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-5">Wave #5</label>
+                        <input type="text" name="wave-5" id="wave-5" placeholder="zone#1, zone#2, zone#3*T#2">
+                    </li>
+                    <li class="input-item">
+                        <button class="previous" type="button">Back</button>
+                        <button class="next" type="button">Next</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="subform-3">
+                <h2>Form 3/4</h2>
+                <ul class="inputs">
+                    <li class="input-item">
+                        <label for="Wave-6">Wave #6</label>
+                        <input type="text" name="wave-6" id="wave-6" placeholder="zone#1, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-7">Wave #7</label>
+                        <input type="text" name="wave-7" id="wave-7" placeholder="zone#1*T#2, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-8">Wave #8</label>
+                        <input type="text" name="wave-8" id="wave-8" placeholder="zone#1, zone#2*T#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-9">Wave #9</label>
+                        <input type="text" name="wave-9" id="wave-9" placeholder="zone#1*T#1, zone#2*T#2, zone#3*T#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-10">Wave #10</label>
+                        <input type="text" name="wave-10" id="wave-10" placeholder="zone#1, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <button class="previous" type="button">Back</button>
+                        <button class="next" type="button">Next</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="subform-4">
+                <h2>Form 4/4</h2>
+                <ul class="inputs">
+                    <li class="input-item">
+                        <label for="Wave-11">Wave #11</label>
+                        <input type="text" name="wave-11" id="wave-11" placeholder="zone#1, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-12">Wave #12</label>
+                        <input type="text" name="wave-12" id="wave-12" placeholder="zone#1*D#1, zone#2*T#2, zone#3*T#2">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-13">Wave #13</label>
+                        <input type="text" name="wave-13" id="wave-13" placeholder="zone#1, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-14">Wave #14</label>
+                        <input type="text" name="wave-14" id="wave-14" placeholder="zone#1, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <label for="Wave-15">Wave #15</label>
+                        <input type="text" name="wave-15" id="wave-15" placeholder="zone#1, zone#2, zone#3">
+                    </li>
+                    <li class="input-item">
+                        <button class="previous" type="button">Back</button>
+                        <button class="next" type="button">Process</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <section class="one">
             <label for="zoneData" class="standardLabel white">Enter Zones data</label>
             <form class="sp" action="https://www.paypal.com/paypalme/read2see"><button class="donateBtn">Donate</button></form>
