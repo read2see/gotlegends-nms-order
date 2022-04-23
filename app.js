@@ -325,17 +325,17 @@ const templates = {
             "Island-Left", "Island-Cart", "Camp-Right",
             "Cliff-Cart", "Cliff-Top", "Camp-Right",
             "Island-Left", "Island-Cart", "Camp-Left",
-            "Island-Left", "Camp-Right", "Isalnd-Cart*T#2",
-            "Cliff-Cart", "Camp-Left", "Isalnd-Cart",
+            "Island-Left", "Camp-Right", "Island-Cart*T#2",
+            "Cliff-Cart", "Camp-Left", "Island-Cart",
             "Camp-Right*T#2", "Cliff-Top", "Cliff-Top",
-            "Camp-Left", "Isalnd-Cart", "Isalnd-Cart",
-            "Camp-Right", "Island-Left", "Isalnd-Cart",
+            "Camp-Left", "Island-Cart", "Island-Cart",
+            "Camp-Right", "Island-Left", "Island-Cart",
             "Cliff-Top", "Island-Left", "Cliff-Top",
             "Island-Left", "Camp-Left", "Cliff-Cart", 
             "Cliff-Top*T#2", "Island-Left*T#2", "Camp-Right*T#2",
-            "Isalnd-Cart", "Cliff-Top", "Island-Left",
+            "Island-Cart", "Cliff-Top", "Island-Left",
             "Camp-Right", "Island-Cart", "Camp-Right",
-            "Isalnd-Left", "Camp-Right", "Camp-Right"
+            "Island-Left", "Camp-Right", "Camp-Right"
         ],
         bonus: [
             bonusObjectives[8],
@@ -439,7 +439,25 @@ function processData(){
         elements.textField.value = rawData;
     }else{
         rawData = elements.textField.value;
-        
+        lines = rawData.split("\n").filter((element)=> element != "");
+        formElements.currentWeek.value = lines[0];
+        formElements.wave_1.value = lines[4]; 
+        formElements.wave_2.value = lines[5];
+        formElements.wave_3.value = lines[6];
+        formElements.wave_4.value = lines[7];
+        formElements.wave_5.value = lines[8];
+        formElements.wave_6.value = lines[9];
+        formElements.wave_7.value = lines[10];
+        formElements.wave_8.value = lines[11];
+        formElements.wave_9.value = lines[12];
+        formElements.wave_10.value = lines[13];
+        formElements.wave_11.value = lines[14];
+        formElements.wave_12.value = lines[15];
+        formElements.wave_13.value = lines[16];
+        formElements.wave_14.value = lines[17];
+        formElements.wave_15.value = lines[18];
+        formElements.credits.value = lines[19];
+        formElements.version.value = lines[20];
     }
     // Storing raw value line by line in an array
     processed = rawData.split("\n").filter((element)=> element != "");
@@ -654,6 +672,7 @@ function clear(){
     elements.textField.value = "";
     elements.title.classList.replace("slide-in","fade-out");
     elements.sectionTwoContainer.classList.replace("slide-in", "fade-out");
+    Object.entries(formElements).map(element => element[1]).forEach(element => element.value ="");
 }
 
 // Helper functions
