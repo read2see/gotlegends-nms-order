@@ -33,8 +33,8 @@ const elements = {
     subform_4: document.querySelectorAll(".subform-4")[0],
     nextBtns: document.querySelectorAll(".next"),
     previousBtns: document.querySelectorAll(".previous"),
-    legendBtn: document.querySelectorAll(".btn")[3],
-    legend: document.querySelectorAll(".legend")[0],
+    // legendBtn: document.querySelectorAll(".btn")[3],
+    // legend: document.querySelectorAll(".legend")[0],
 }
 
 const formElements = {
@@ -363,9 +363,6 @@ const templates = {
 }
 // Will store the total 45 zones
 let listOfZones = [];
-let matches =[];
-let legend = {
-};
 
 // Adding Events to interactive elements
 elements.mapSelection.addEventListener("change", selectMapTemplate);
@@ -450,19 +447,20 @@ function processData(){
             let matchedModifier = uniqueZones[1].substring(uniqueZones[1].indexOf(":")+1, uniqueZones[1].length).trim();
             let matchedHazard = uniqueZones[2].substring(uniqueZones[2].indexOf(":")+1, uniqueZones[2].indexOf("/")).trim();
             let matchedCredits = uniqueZones[uniqueZones.length-1];
-            matches = [...rawData.matchAll(/(?<!\()(?![\w\s]*[\)])\b[^0-9.(,]+\b/g)];
+            let matches = [...rawData.matchAll(/(?![\w\s]*[\)])\b[^0-9.(,]+\b/g)];
+            // let matches = rawData.matchAll(/(?<!\()(?![\w\s]*[\)])\b[^0-9.(,]+\b/g);
+            console.log(matches);
             if(matches.length > 45){
-                matches.shift()
-                matches.shift()
-                matches.shift()
-                matches.shift()
-                matches.shift()
+                matches.shift();
+                matches.shift();
+                matches.shift();
+                matches.shift();
+                matches.shift();
                 matches.pop();
                 if(matches.length  == 46)
                     matches.pop();
             }
             if(!rawData.includes("*")){
-                // console.log(matches[45][0])
                 let matchedTemplate = Object.entries(templates).filter(element => element[1].map.toLowerCase() == matchedMap.toLowerCase())[0][1];
                 let tcounter = 0;
                 let dcounter = 0;
@@ -1014,7 +1012,3 @@ function goBack(e){
 //     }
 // }
 // debugger
-function dd(object){
-    let previous = elements.debug_screen.innerText + object+"\n"
-    elements.debug_screen.innerText = previous ;
-}
