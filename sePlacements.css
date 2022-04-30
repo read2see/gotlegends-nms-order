@@ -32,8 +32,7 @@
 , .se-30, .se-31, .se-32, .se-33, .se-34, .se-35, .se-36
 , .se-37, .se-38, .se-39, .se-40, .se-41, .se-42, .se-43
 ,.se-44, .se-45, .se-dogs-9,.se-bears-9, .se-dogs-12
-, .se-bears-12, .se-dogs-15, .se-bears-15, .w-modifier-1
-, .w-modifier-2{
+, .se-bears-12, .se-dogs-15, .se-bears-15{
     position: absolute;
 }
 .se-1, .se-13, .se-22, .se-31{
@@ -55,13 +54,13 @@
     transform: translate(80px, -74.5px);
 }
 .se-7, .se-16, .se-25, .se-34{
-    transform: translate(80px, -102px);
+    transform: translate(80px, -103px);
 }
 .se-8, .se-17, .se-26, .se-35{
-    transform: translate(80px, -81px);
+    transform: translate(80px, -82px);
 }
 .se-9, .se-18, .se-27, .se-36{
-    transform: translate(80px, -59.5px);
+    transform: translate(80px, -60.5px);
 }
 .se-37{
     transform: translate(85px, -117px);
@@ -116,9 +115,9 @@
 }
 
 .w-modifier-1{
-    transform: translate(-90px, -1px);
+    /* transform: translate(-90px, -1px); */
 }
 
 .w-modifier-2{
-    transform: translate(-72px, 1px);
+    /* transform: translate(-72px, -1px); */
 }

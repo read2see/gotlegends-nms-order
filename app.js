@@ -63,7 +63,9 @@ const formElements = {
 // Method mode
 let mode = "text";
 // Stores the selected map name and index within the templates array of objects
-let selectedMap = {mapName: "Blood In The Snow", templatesIndex:0};
+let selectedMap = {mapName: "Twilight And Ashes", templatesIndex:4};
+elements.mapSelection.value = selectedMap.mapName;
+elements.mapSelection_2.value = selectedMap.mapName;
 // Stores the text area raw value
 let rawData = "";
 // Will store the processed raw value line for each index
@@ -276,25 +278,25 @@ const templates = {
         background:"The-Shores-Of-Vengeance.webp"
     },
     twilightAndAshes:{
-        week:7,
-        map: "Twilight And Ashes",
-        modifiers:["Incapacitated", "Hwachas"],
+        week: 5,
+        map: "Twilight and Ashes",
+        modifiers:["Incapacitated","Disciples of Iyo"],
         zones:[
-            "Boulder-Ledge", "Obelisk", "Cliff-Ledge",
-            "Side-LH", "Side-LH", "Boulder-Ledge",
-            "Side-LH*D#2", "Obelisk*D#2", "Cliff-Ledge*D#2",
-            "Cliff-Ledge", "Boulder-LH", "Boulder-Ledge",
-            "Side-LH", "Side-LH", "Cliff-Ledge*T#2",
-            "Side-LH", "Boulder-Ledge", "Obelisk",
-            "Cliff-LH*T#2", "Obelisk", "Cliff-Ledge",
-            "Side-LH", "Side-LH", "Obelisk",
-            "Obelisk", "Obelisk", "Cliff-Ledge",
-            "Cliff-LH", "Cliff-Ledge", "Obelisk",
-            "Obelisk", "Cliff-LH", "Obelisk", 
-            "Side-LH*D#1", "Side-LH", "Obelisk",
-            "Obelisk", "Obelisk", "Cliff-LH",
-            "Boulder-LH", "Obelisk", "Boulder-Ledge",
-            "Obelisk", "Obelisk", "Boulder-LH"
+            "Obelisk", "Boulder L", "Side LH",
+            "Cliff L", "Side LH", "Side LH",
+            "Boulder L*D#2", "Obelisk*D#2", "Cliff L*D#2",
+            "Cliff L", "Boulder L", "Side LH",
+            "Obelisk", "Side LH", "Boulder LH*T#2",
+            "Cliff L", "Obelisk", "Boulder L",
+            "Side LH*T#2", "Obelisk", "Obelisk",
+            "Obelisk", "Boulder LH", "Obelisk",
+            "Obelisk", "Cliff L", "Side LH",
+            "Cliff LH", "Obelisk", "Obelisk",
+            "Side LH", "Boulder L", "Side LH",
+            "Obelisk*D#1", "Boulder LH", "Boulder L",
+            "Boulder LH", "Obelisk", "Boulder L",
+            "Cliff L", "Cliff LH", "Obelisk",
+            "Cliff L", "Side LH", "Obelisk",
         ],
         bonus: [
             bonusObjectives[0],
@@ -311,9 +313,9 @@ const templates = {
             bossWaveModifiers[1],
             "Toxic Clouds", "Wildfire", "Fighting Blind", "Immunity", "Eruption"
         ],
-        credits:["player#1", "player#2", "player#n"],
+        credits:["darkenix8895", "jin_sakai2021", "CB9ITOLLIA10RUS" , "MyXaMaToS"],
         tengu:["15*T#2","19*T#2"],
-        disciple:["4*D#2","5*D#2","6*D#2","34*D#1"],
+        disciple:["7*D#2","8*D#2","9*D#2","34*D#1"],
         dogs:[12],
         bears:[12,15],
         background: "Twilight-And-Ashes.webp"
@@ -397,7 +399,7 @@ function selectMapTemplate(e){
 function addTemplateToTextArea(){
     const check =  isMapAvailable(selectedMap.mapName);
        if(check.isAvailable){
-        elements.textField.value = templateToString(templates[Object.keys(templates)[check.id]]).concat("ver2.18");
+            elements.textField.value = templateToString(templates[Object.keys(templates)[check.id]]).concat("ver2.18");
         }
 }
 
@@ -441,15 +443,22 @@ function processData(){
     }else{
         rawData = elements.textField.value.trim();
         if(rawData.split("\n").length > 21){
+            let matches = [];
             let uniqueZones = rawData.split("\n");
             let matchedWeek = uniqueZones[0].charAt(uniqueZones[0].length-2);
             let matchedMap = uniqueZones[0].substring(0,uniqueZones[0].indexOf("(")).trim();
             let matchedModifier = uniqueZones[1].substring(uniqueZones[1].indexOf(":")+1, uniqueZones[1].length).trim();
-            let matchedHazard = uniqueZones[2].substring(uniqueZones[2].indexOf(":")+1, uniqueZones[2].indexOf("/")).trim();
+            let matchedHazard = 
+                uniqueZones[2].substring(
+                    uniqueZones[2].indexOf(":")+1, 
+                    (
+                        uniqueZones[2].indexOf("/") == -1? uniqueZones[2].length:
+                        uniqueZones[2].indexOf("/")
+                        )
+                    ).trim();
             let matchedCredits = uniqueZones[uniqueZones.length-1];
-            let matches = [...rawData.matchAll(/(?![\w\s]*[\)])\b[^0-9.(,]+\b/g)];
+            matches = [...rawData.matchAll(/(?![\w\s]*[\)])\b[^0-9.(,]+\b/g)];
             // let matches = rawData.matchAll(/(?<!\()(?![\w\s]*[\)])\b[^0-9.(,]+\b/g);
-            console.log(matches);
             if(matches.length > 45){
                 matches.shift();
                 matches.shift();
@@ -520,9 +529,10 @@ function processData(){
     processed = rawData.split("\n").filter((element)=> element != "");
     // Select map from text area 
     const check = isMapAvailable(processed[1]);
-    if(processed[1].toLowerCase() != selectedMap.mapName && check.isAvailable){
+    if(processed[1].toLowerCase() != selectedMap.mapName.toLowerCase() && check.isAvailable){
         selectedTemplate = templates[Object.keys(templates)[check.id]];
         elements.mapSelection.value = selectedTemplate.map; 
+        elements.mapSelection_2.value = selectedTemplate.map; 
         selectedMap.mapName = processed[1];
         selectedMap.templatesIndex = check.id;
     }
@@ -596,8 +606,8 @@ function processData(){
         elements.version.innerText = processed[20] || "ver2.18";
     }
     // validates credits
-    if(processed[19].trim().length > 58){
-        showAlert("error","Credits maximum (58) characters exceeded!");
+    if(processed[19].trim().length > 66){
+        showAlert("error","Credits maximum (66) characters exceeded!");
         return
     }else{
         elements.credits.innerHTML = "<span class=\"credits-label\">Credits </span>".concat(processed[19]);
@@ -651,7 +661,7 @@ function processData(){
         }
         
     });
-
+    //
     // populate info-graph with bonus objectives based on selected template
     for(i = 0; i < elements.bonusObjectives.length; i++){
         if(selectedTemplate.bonus[i].objective.length >= 13 && selectedTemplate.bonus[i].objective.length < 20){
@@ -696,10 +706,17 @@ function processData(){
             }
         }));
 
-        elements.weeklyModifiers[0].innerText = processed[2];
-        elements.weeklyModifiers[1].innerText = processed[3];
         elements.weeklyModifiers[0].append(modifier_1);
         elements.weeklyModifiers[1].append(modifier_2);
+        const modifier = document.createElement("p");
+        const hazard = document.createElement("p");
+        modifier.innerText = processed[2];
+        elements.weeklyModifiers[0].append(modifier);
+        hazard.innerText = processed[3];
+        elements.weeklyModifiers[1].append(hazard);
+
+        // elements.weeklyModifiers[0].innerText = processed[2];
+        // elements.weeklyModifiers[1].innerText = processed[3];
     }
 
     const currentDate = new Date();
@@ -743,11 +760,31 @@ function templateToString(template){
     text = text.concat(template.credits[0]+", "+template.credits[1]+","+template.credits[2]+"\n");
     return text;
 }
+// Convert provided string template to template
+function logTemplateObject(input,zones){
+    let stringZones = "";
+    zones.forEach((zone,index)=>{ 
+        if((index+1)%3 == 0){
+            stringZones = stringZones.concat("\""+zone+"\",\n");
+        }else{
+            stringZones = stringZones.concat("\""+zone+"\", ");
+        }
+    });
+    let result = "template: \{\n"
+    + "week: "+parseInt(input[0])+",\n"
+    + "map: \""+input[1]+"\",\n"
+    + "modifiers:[\""+input[2]+"\",\""+input[3]+"\"],\n"
+    + "zones: [\n"+stringZones
+    +"],\n"
+    +"\}";
+    return result;
+}
 // resets app to original state
 function resetState(){
     listOfZones = [];
     processed = [];
     document.querySelectorAll("img").forEach((element)=> element.remove());
+    document.querySelectorAll(".w-modifier").forEach((element) => element.childNodes.forEach(child=> child.remove()));
     elements.zones.forEach(element=> element.classList.remove("specialEnemyRed"))
     if(typeof document.querySelectorAll(".overlay")[0] != "undefined"){
         document.querySelectorAll(".overlay")[0].remove();

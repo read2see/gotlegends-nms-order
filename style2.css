@@ -313,7 +313,7 @@ body{
     border-right: 1px solid #776B4A;
     padding-right: 0.1rem;
     color:#FF4477;
-    flex-basis: 66px;
+    flex-basis: 30px;
 }
 .weekly-modifiers{
     border:1px solid #FF4477;
@@ -349,7 +349,7 @@ hr.decorated-line-2{
     color:#FFBFD1;
     font-size:9px ;
     border-right: 1px solid #FF4477;
-    padding-right: 0.5rem;
+    padding-right: 0.2rem;
 }
 .w-modifiers{
     display: flex;
@@ -359,13 +359,25 @@ hr.decorated-line-2{
     position: relative;
     bottom:5px;
 }
+.w-modifier p {
+    display: block;
+}
 .w-modifier{
+    width: 95px;
+    height: 12px;
     color:#FFBFD1;
     font-size:9px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.w-modifier-1,.w-modifier-2 {
+    display: block;
+    width: 15px;
 }
 .w-modifier:nth-child(2){
     border-right: 1px solid #FF4477;
-    padding: 0 0.5rem;
+    padding:0 0.2rem;
 }
 .designedBy{
     font-size: 8px;
@@ -907,12 +919,12 @@ hr.decorated-line-3{
     .se-45{
         transform: translate(74.5px, -58px);
     } 
-    .w-modifier-1{
+    /* .w-modifier-1{
         transform: translate(-95px, -1px);
     }
     .w-modifier-2{
         transform: translate(-68px, -1px);
-    }
+    } */
 }
 
 @media only Screen and (max-width: 390px){
