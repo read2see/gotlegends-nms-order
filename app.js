@@ -756,8 +756,10 @@ function templateToString(template){
     for(i=0; i<template.zones.length; i++){
       text = text.concat(template.zones[i]+(((i+1) % 3 == 0 && i != 0)? "\n": ", "));
     }
-
-    text = text.concat(template.credits[0]+", "+template.credits[1]+","+template.credits[2]+"\n");
+    let credits = "";
+    template.credits.forEach(element => credits = credits.concat(element+", "));
+    credits = credits.substring(0, credits.length-2);
+    text = text.concat(credits+"\n");
     return text;
 }
 // Convert provided string template to template
