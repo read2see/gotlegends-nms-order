@@ -208,7 +208,7 @@ body{
     border:1px solid;
     border-top:none;
     border-bottom:none;
-    margin-left: 2.5rem;
+    margin-left: 2.65rem;
 }
 
 .normal{
@@ -391,7 +391,15 @@ hr.decorated-line-2{
 .setVisible{
     display: grid;
 }
-
+.success-alert{
+    color: #fff;
+    background-color: rgb(63, 143, 110);
+    border-radius: 10px;
+    padding: 0.5rem;
+    width:380px;
+    text-align: center;
+    margin: 5px 4.1%;
+}
 .error-alert{
     color: #fff;
     background-color: rgb(143, 63, 63);
