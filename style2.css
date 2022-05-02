@@ -66,8 +66,9 @@ body{
     position:static;
     display: flex;
     justify-content: center;
-    background-color: #000000;
+    background-color: #000;
     padding: 0.25rem;
+    margin: 0 0.25rem;
 }
 .heading-container .sp .donateBtn{
     display: flex;
@@ -480,10 +481,7 @@ hr.decorated-line-2{
 .bow:hover{
     filter: invert(99%) sepia(0%) saturate(324%) hue-rotate(264deg) brightness(0) saturate(100%);
 }
-.sp{
-    position: relative;
-    bottom: 20px;
-}
+
 .specialEnemyRed{
     color:#FF7474;
     border-color: #FF7474;
@@ -722,7 +720,7 @@ hr.decorated-line-3{
     #app-container{
         margin: auto 33.82%;
     }
-    .button-container-2{
+    .button-container-2, .heading-container .sp{
         margin: auto 0 ;
     }
 }
@@ -748,11 +746,11 @@ hr.decorated-line-3{
         width: 400px;
         margin: auto 0;
     }
-    .button-container-2, .form{
-        margin: auto 5px ;
+    .button-container-2, .form, .heading-container .sp{
+        margin: auto 7px ;
     }
     .one, .two{
-        margin: 1% 1.5%;
+        margin: 0 7px;
     }
     .two{
         height: 736px;
@@ -796,19 +794,21 @@ hr.decorated-line-3{
         width: 380px;
         margin: 59% 0;
     }
-
+    .heading-container .sp, .button-container-2 {
+        margin: 0 6.5px;
+    }
     .one{
         margin: 0 1.2% ;
     }
     .two{
-        margin: 1% 1.2%;
+        margin: 1% 6.5px;
     }
     .two{
         height: 736px;
     }
     .title, .latestUpdate{
         width: 380px;
-        margin: 1%  1.5%;
+        margin: 1%  6.5px;
     }
     .back-drop{
         width: 100%;
@@ -994,11 +994,32 @@ hr.decorated-line-3{
         font-size: 6px;
         padding-top: 0.25rem;
     }
+    .heading-container .sp, .form {
+        margin: 0 5px;
+    }
+    .one{
+        margin: 0px 5px;
+    }
+    .two{
+        margin: 0 5px;
+    }
+    .title, .latestUpdate{
+        margin: 5px 5px;
+    }
+    .button-container-2{
+        margin: 0 5px;
+    }
 }
 @media only screen and (max-width:375px){
     .app-container{
         width: 370px;
         margin: 59% 1px;
+    }
+    .form{
+        margin: 0;
+    }
+    .heading-container .sp {
+        margin: 0;
     }
     .one{
         margin: 5px 0;
@@ -1036,7 +1057,9 @@ hr.decorated-line-3{
     .title, .latestUpdate{
         margin: 1% .25%;
     }
+    .heading-container .sp {
 
+    }
     .two{
         width: 99.5%;
     }
