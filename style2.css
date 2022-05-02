@@ -55,6 +55,7 @@ body{
     margin: 5px 0;
     text-align: center;
     width: 414px;
+    font-size: 1rem;
 }
 
 .heading-container{
@@ -243,7 +244,7 @@ body{
     height:20px;
     padding: 0.1rem 0.25rem;
     border-radius: 0rem 1rem 1rem 1rem;
-    font-size: 9px;
+    font-size: 8px;
     text-align: center;
     font-weight: bold;
     color:#fff;
@@ -408,6 +409,7 @@ hr.decorated-line-2{
 }
 .w-modifier p {
     display: block;
+    font-size: 8px;
 }
 .w-modifier{
     width: 95px;

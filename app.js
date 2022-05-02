@@ -751,6 +751,9 @@ function processData(){
             elements.bonusObjectives[i].classList.add("tooLong");
         }
         if(selectedTemplate.bonus[i].objective.length >= 20){
+            elements.bonusObjectives[i].classList.contains("tooLong")?
+            elements.bonusObjectives[i].classList.remove("tooLong"): ""
+             
             elements.bonusObjectives[i].classList.add("toooLong");
         }
         elements.bonusObjectives[i].innerText = selectedTemplate.bonus[i].objective;
@@ -758,8 +761,8 @@ function processData(){
     }
     // populate info-graph with boss modifiers
     for(i = 0; i < elements.bossModifiers.length; i++){
-        if(selectedTemplate.bossWave[i].length > 12){
-            elements.bossModifiers[i].classList.add("tooLong");
+        if(selectedTemplate.bossWave[i].length > 11){
+            elements.bossModifiers[i].classList.add("toooLong");
         }
         elements.bossModifiers[i].innerText =  selectedTemplate.bossWave[i].modifier;
         elements.bossModifiers[i].previousSibling.previousSibling.previousSibling.previousSibling.style="background:url(img/svg/"+selectedTemplate.bossWave[i].svg+") no-repeat center center";
