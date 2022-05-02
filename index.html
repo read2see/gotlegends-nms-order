@@ -12,13 +12,23 @@
 </head>
 <body>
     <div id="app-container">
-        <div class="button-container-2">
-            <button class="input-method active-method" type="button">Text (Faster/Constrained)</button>
-            <button class="input-method" type="button">Form (Slower/Informative)</button>
+        <div class="heading-container">
+            <form class="sp" action="https://www.paypal.com/paypalme/read2see">  
+                <button class="donateBtn">
+                    <img class="bow" src="img/svg/donate.svg" alt="bow">
+                    <span class="extend">Donate</span>
+                    <img class="bow reverse" src="img/svg/donate.svg" alt="bow">
+                </button>
+            </form>
         </div>
+        <div class="button-container-2">
+            <button class="input-method active-method" type="button">Latest Update</button>
+            <button class="input-method" type="button">Text (Recommended)</button>
+            <button class="input-method" type="button">Form</button>
+        </div>
+        <h2 class="latestUpdate">Updated On ['Missing Data']</h2>
         <div class="form">
             <label for="zoneData" class="standardLabel white">Enter Zones data</label>
-            <form class="sp" action="https://www.paypal.com/paypalme/read2see"><button class="donateBtn">Donate</button></form>
             <div class="subform-1">
                 <h2>Form 1/4</h2>
                 <ul class="inputs">
@@ -161,7 +171,6 @@
         </div>
         <section class="one">
             <label for="zoneData" class="standardLabel white">Enter Zones data</label>
-            <form class="sp" action="https://www.paypal.com/paypalme/read2see"><button class="donateBtn">Donate</button></form>
             <textArea id="zoneData" class="textArea-1"></textArea>
             <label for="mapSelection" class="selectionLabel">Select Map</label>
             <select id="mapSelection">

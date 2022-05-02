@@ -80,6 +80,7 @@ const templates = {
         background: "Blood-In-The-Snow.webp",
         key: "bloodInTheSnow",
         selected:false,
+        latestUpdate:"8/04/2022",
     },
     shadowsOfWar:{
         week:4,
@@ -124,6 +125,7 @@ const templates = {
         background:"The-Shadows-Of-War.webp",
         key: "shadowsOfWar",
         selected:false,
+        latestUpdate:"8/04/2022",
     },
     defenseOfAoiVillage:{
         week:5,
@@ -168,6 +170,7 @@ const templates = {
         background: "The-Defense-Of-Aoi-Village.webp",
         key: "defenseOfAoiVillage",
         selected:false,
+        latestUpdate:"8/04/2022",
     },
     shoresOfVengeance:{
         week:1,
@@ -212,10 +215,11 @@ const templates = {
         background:"The-Shores-Of-Vengeance.webp",
         key:"shoresOfVengeance",
         selected:false,
+        latestUpdate:"8/04/2022",
     },
     twilightAndAshes:{
         week: 5,
-        map: "Twilight and Ashes",
+        map: "Twilight And Ashes",
         modifiers:["Incapacitated","Disciples of Iyo"],
         zones:[
             "Obelisk", "Boulder L", "Side LH",
@@ -257,6 +261,7 @@ const templates = {
         background: "Twilight-And-Ashes.webp",
         key:"twilightAndAshes",
         selected: true,
+        latestUpdate:"1/05/2022",
     },
     bloodAndSteel:{
         week:4,
@@ -301,13 +306,12 @@ const templates = {
         background: "Blood-And-Steel.webp",
         key:"bloodAndSteel",
         selected:false,
+        latestUpdate:"8/04/2022",
     }
 }
 let previousMap = "";
 let updatedTemplates = templates;
-// Stores the selected map name and index within the templates array of objects
-let selectedMap = {mapName: "Twilight And Ashes", templatesIndex: isMapAvailable("Twilight And Ashes").id};
-previousMap = Object.keys(updatedTemplates)[selectedMap.templatesIndex];
+
 // Interactive elements
 const elements = {
     textField: document.getElementsByClassName('textArea-1')[0],
@@ -331,6 +335,8 @@ const elements = {
     date: document.querySelectorAll(".date")[0],
     version: document.querySelectorAll(".version")[0],
     title: document.querySelectorAll(".title")[0],
+    latestTitle: document.querySelectorAll(".latestUpdate")[0],
+    headingContainer: document.querySelectorAll(".heading-container")[0],
     wave_9: document.querySelectorAll(".wave")[8],
     wave_12: document.querySelectorAll(".wave")[11],
     wave_15:document.querySelectorAll(".wave")[14],
@@ -343,6 +349,7 @@ const elements = {
     subform_4: document.querySelectorAll(".subform-4")[0],
     nextBtns: document.querySelectorAll(".next"),
     previousBtns: document.querySelectorAll(".previous"),
+    donateBtn: document.querySelectorAll(".donateBtn"),
     // legendBtn: document.querySelectorAll(".btn")[3],
     // legend: document.querySelectorAll(".legend")[0],
 }
@@ -369,12 +376,17 @@ const formElements = {
     wave_14: document.getElementById("wave-14"),
     wave_15: document.getElementById("wave-15"),
 }
-elements.mapSelection.value = selectedMap.mapName;
-elements.mapSelection_2.value = selectedMap.mapName;
+// Stores the selected map name and index within the templates array of objects
+let initMap = "Blood And Steel";
 // Properties
 // Method mode
-let mode = "text";
-let selected = {};
+let mode = "latest";
+let selected = {
+    index: isMapAvailable(initMap).id,
+    template: Object.entries(updatedTemplates)[isMapAvailable(initMap).id][1],
+};
+updateMapSelection(initMap);
+
 // fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates/-N0u1CLDaCNqIoo2OoH2.json",{
 //     method:'PUT',
 //     headers:{
@@ -392,10 +404,26 @@ fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.a
     )
     .then(
         (data) => {
-            updatedTemplates = data["-N0u1CLDaCNqIoo2OoH2"];
-            selected = Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0];
-            // Stores the selected map name and index within the templates array of objects
-            selectedMap = {mapName: selected[1].map, templatesIndex:isMapAvailable(selected[1].map).id};
+            if(
+                typeof data["-N0u1CLDaCNqIoo2OoH2"] == "undefined" ||
+                Object.keys(data["-N0u1CLDaCNqIoo2OoH2"]).length > 6 ||
+                Object.keys(data["-N0u1CLDaCNqIoo2OoH2"]).length > 6
+                ){
+                updatedTemplates = templates;
+                elements.latestTitle.innerText = "Data missing and desynced!";
+            }else{
+                updatedTemplates = data["-N0u1CLDaCNqIoo2OoH2"];
+                // Stores the selected map name and index within the templates array of objects
+                selected = {
+                    index: isMapAvailable(Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0][1].map).id,
+                    template: Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0][1],
+                }
+                updateMapSelection(selected.template.map);
+                const foundDate = new Date(selected.template.latestUpdate);
+                elements.latestTitle.innerText = "Updated On ".concat(foundDate.getDate()+" "+getAlphaMonth(foundDate.getMonth())+" "+ foundDate.getFullYear());
+                addTemplateToTextArea()
+                processData()
+            }
         }
         );
 
@@ -416,6 +444,7 @@ elements.processBtn.addEventListener("click",processData);
 elements.zones.forEach( element => element.addEventListener("click", editZone));
 elements.methodBtns[0].addEventListener("click", toggleMethod);
 elements.methodBtns[1].addEventListener("click", toggleMethod);
+elements.methodBtns[2].addEventListener("click", toggleMethod);
 elements.nextBtns.forEach(element => element.addEventListener("click", goNext));
 elements.previousBtns.forEach(element => element.addEventListener("click", goBack));
 // elements.legendBtn.addEventListener("click", toggleLegend);
@@ -423,22 +452,24 @@ elements.previousBtns.forEach(element => element.addEventListener("click", goBac
 
 // Selects a template then adds it to text area
 function selectMapTemplate(e){
+    selected.template = Object.entries(updatedTemplates).filter(element => element[1].map == this.value)[0][1]
+    clear()
+    addTemplateToTextArea();
     if(e.target == elements.mapSelection){
         elements.mapSelection_2.value = e.target.value;
+        processData()
     }else{
         elements.mapSelection.value = e.target.value;
     }    
-    selectedMap.mapName = this.value;
-    const check = isMapAvailable(selectedMap.mapName);
+    const check = isMapAvailable(selected.template.map);
     if(check.isAvailable){
-        selectedMap.templatesIndex = check.id;
+        selected.index = check.id;
     }
-    addTemplateToTextArea();
 }
 
 // Adds the template to text area
 function addTemplateToTextArea(){
-    const check =  isMapAvailable(selectedMap.mapName);
+    const check =  isMapAvailable(selected.template.map);
        if(check.isAvailable){
             elements.textField.value = templateToString(updatedTemplates[Object.keys(updatedTemplates)[check.id]]).concat("ver2.18");
         }
@@ -454,7 +485,7 @@ function processData(){
         return
     }
     // Finds the selected templates object and stores it based on selectedMap index property
-    let selectedTemplate = updatedTemplates[Object.keys(updatedTemplates)[selectedMap.templatesIndex]];
+    let selectedTemplate = updatedTemplates[Object.keys(updatedTemplates)[selected.index]];
     // Add dogs and bears to the info-graph based on template info
     addSpecialEnemySideKick(selectedTemplate);
     // Storing the raw text area value
@@ -570,12 +601,11 @@ function processData(){
     processed = rawData.split("\n").filter((element)=> element != "");
     // Select map from text area 
     const check = isMapAvailable(processed[1]);
-    if(processed[1].toLowerCase() != selectedMap.mapName.toLowerCase() && check.isAvailable){
+    if(processed[1].toLowerCase() != selectedTemplate.map.toLowerCase() && check.isAvailable){
         selectedTemplate = updatedTemplates[Object.keys(updatedTemplates)[check.id]];
-        elements.mapSelection.value = selectedTemplate.map; 
-        elements.mapSelection_2.value = selectedTemplate.map; 
-        selectedMap.mapName = processed[1];
-        selectedMap.templatesIndex = check.id;
+        selected.template.map = selectedTemplate.map;
+        selected.index = check.id;
+        updateMapSelection(selectedTemplate.map);
     }
     //Validations
     // Validate and show alert if insufficent lines are available does all other validations 
@@ -640,7 +670,10 @@ function processData(){
         }
     }
     // validate version line
-    if (processed[20].trim().length > 11) {
+    if (typeof processed[20] == "undefined"){
+        showAlert("error","Missing Modifier(s)");
+        return
+    }else if (processed[20].trim().length > 11) {
         showAlert("error","Maximum version (11) characters exceeded!");
         return
     } else {
@@ -682,6 +715,9 @@ function processData(){
                 element.parentElement.parentElement.classList
                 .replace(element.parentElement.parentElement.classList[element.parentElement.parentElement.classList.length-1]
                     ,"intersectIconPath-"+findTotalIntersects(intersectCounter));
+                if(!element.parentElement.parentElement.classList.contains("wave")){
+                    element.parentElement.parentElement.classList.add("wave");
+                }
             }
             switch(flag){
                 case "T#1":
@@ -761,17 +797,19 @@ function processData(){
         elements.weeklyModifiers[0].append(modifier);
         hazard.innerText = processed[3];
         elements.weeklyModifiers[1].append(hazard);
-        updatedTemplates[previousMap].credits = ["player#1", "player#2", "player#n"];
-        let newTemplate = selectedTemplate;
-        newTemplate.week = parseInt(processed[0]);
-        newTemplate.zones = listOfZones;
-        newTemplate.credits = processed[19].trim().split(",").map( element => element.trim());
-        for( const template in updatedTemplates){
-            updatedTemplates[template].selected = false;
-        }
-        newTemplate.selected = true;
-        updatedTemplates[newTemplate.key] = newTemplate;
+        previousMap = Object.keys(updatedTemplates)[selected.index];
         if(typeof processed[21] != "undefined" && processed[21] == "updateTemplate"){
+            updatedTemplates[previousMap].credits = ["player#1", "player#2", "player#n"];
+            let newTemplate = selectedTemplate;
+            newTemplate.week = parseInt(processed[0]);
+            newTemplate.zones = listOfZones;
+            newTemplate.credits = processed[19].trim().split(",").map( element => element.trim());
+            for( const template in updatedTemplates){
+                updatedTemplates[template].selected = false;
+            }
+            newTemplate.selected = true;
+            newTemplate.latestUpdate = new Date();
+            updatedTemplates[newTemplate.key] = newTemplate;
             fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates/-N0u1CLDaCNqIoo2OoH2.json",
             {
                 method: "PUT",
@@ -787,12 +825,11 @@ function processData(){
                     }
                 }
             );
-            selectedMap.mapName = newTemplate.map;
-            selectedMap.templatesIndex = isMapAvailable(newTemplate.map).id;
+            selected.template.map = newTemplate.map;
+            selected.index = isMapAvailable(newTemplate.map).id;
         }
     }
-
-    const currentDate = new Date();
+    const currentDate = new Date(selectedTemplate.latestUpdate);
     elements.date.innerText = "".concat(currentDate.getDate()+" "+(getAlphaMonth(currentDate.getMonth()))+" "+currentDate.getFullYear());
     const image = document.createElement("img");
     const overlay = document.createElement("div");
@@ -858,7 +895,11 @@ function logTemplateObject(input,zones){
 function resetState(){
     listOfZones = [];
     processed = [];
-    document.querySelectorAll("img").forEach((element)=> element.remove());
+    document.querySelectorAll("img").forEach((element)=> {
+        if(!element.classList.contains("bow")){
+            element.remove()
+        }
+    });
     document.querySelectorAll(".w-modifier").forEach((element) => element.childNodes.forEach(child=> child.remove()));
     elements.zones.forEach(element=> element.classList.remove("specialEnemyRed"))
     if(typeof document.querySelectorAll(".overlay")[0] != "undefined"){
@@ -874,7 +915,7 @@ function showAlert(type, message){
     window.scroll(0,0);
     const alert = document.createElement("p");
     alert.innerText = message;
-    elements.appContainer.insertBefore(alert,elements.btnsContainer_2);
+    elements.appContainer.insertBefore(alert,elements.headingContainer);
     if(type=="error"){
         alert.classList.add("error-alert", "slide-in");
     }else if(type=="success"){
@@ -1082,18 +1123,49 @@ function editZone(e){
 function toggleMethod(e){
     if(typeof e.target.classList[1] == "undefined"){
         e.target.classList.add("active-method");
-        Array.from(elements.methodBtns).filter(element => element != e.target)[0].classList.remove("active-method");
-        if(e.target.innerText == "Form (Slower/Informative)" ){
+        Array.from(elements.methodBtns).filter(element => element != e.target).forEach(element => element.classList.remove("active-method"));
+        if(e.target.innerText == "Form" ){
             elements.form.style.display = "block";
             elements.sectionOneContainer.style.display = "none";
+            elements.latestTitle.style.display = "none";
             mode = "form";
-        }else{
+        }else if(e.target.innerText == "Text (Recommended)"){
             elements.sectionOneContainer.style.display = "block";
             elements.form.style.display = "none";
+            elements.latestTitle.style.display = "none";
             mode = "text";
+        }else{
+            elements.latestTitle.style.display = "block";
+            elements.sectionOneContainer.style.display = "none";
+            elements.form.style.display = "none";
+            mode = "latest";
+            fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates.json")
+                .then(
+                    (response) =>{
+                        if(response.ok){
+                        return response.json()
+                        }
+                    }
+                )
+                .then(
+                    (data) => {
+                        updatedTemplates = data["-N0u1CLDaCNqIoo2OoH2"];
+                        newSelection = Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0];
+                        // Stores the selected map name and index within the templates array of objects
+                        selected = {
+                            index: isMapAvailable(newSelection[1].map).id,
+                            template: newSelection[1],
+                        };
+                        updateMapSelection(selected.template.map);
+                        addTemplateToTextArea();
+                        processData();
+                    }
+                    );
         }
+
     }
 }
+
 
 function goNext(e){
     index = Array.from(elements.nextBtns).indexOf(e.target);
@@ -1123,13 +1195,16 @@ function goBack(e){
     }
 }
 
+function updateMapSelection(map){
+    elements.mapSelection.value = map;
+    elements.mapSelection_2.value = map;
+}
 
 function camelize(str) {
   return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
     return index === 0 ? word.toLowerCase() : word.toUpperCase();
   }).replace(/\s+/g, '');
 }
-
 
 // function toggleLegend(e){
 //     if(elements.legend.style.display == "none"){

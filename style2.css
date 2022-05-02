@@ -25,6 +25,7 @@ body{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 5px;
     overflow: hidden;
+    display: none;
 }
 
 .two{
@@ -34,7 +35,7 @@ body{
     grid-template-rows: repeat(1fr,5) ;
     grid-template-columns: none;
     padding: .001rem;
-    margin: 10px 0;
+    margin: 5px 0;
     background-color: rgb(10, 10, 10);
     border-radius: 5px;
     color: rgb(66, 119, 168);
@@ -42,6 +43,51 @@ body{
     overflow: hidden;
     position: relative;
     display: none;;
+}
+
+.latestUpdate{
+    color: #fff;
+    margin: auto 40%;
+    background-color: rgba(134, 26, 49, 0.5);
+    padding: 1rem;
+    border-radius: 5px;
+    width: 80%;
+    margin: 5px 0;
+    text-align: center;
+    width: 414px;
+}
+
+.heading-container{
+    width: 100%;
+    margin-block: 5px;
+}
+.heading-container .sp {
+    width: 100%;
+    position:static;
+    display: flex;
+    justify-content: center;
+    background-color: #000000;
+    padding: 0.25rem;
+}
+.heading-container .sp .donateBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 120px;
+    float:none;
+    margin: 0 ;
+    overflow: hidden;
+}
+
+.bow{
+    width: 20px;
+    display: inline-block;
+}
+.reverse{
+    transform:scaleX(-1);
+}
+.extend{
+    display: inline-block;
 }
 
 .standardLabel{
@@ -98,7 +144,7 @@ body{
     padding: 1rem;
     border-radius: 5px;
     width: 80%;
-    margin: 10px 0;
+    margin: 5px 0;
     text-align: center;
     width: 414px;
     display: none;
@@ -416,6 +462,7 @@ hr.decorated-line-2{
     visibility: visible;
 }
 
+
 .donateBtn{
     color:#fff;
     background-color: #FF4477;
@@ -427,10 +474,12 @@ hr.decorated-line-2{
     cursor: pointer;
 }
 .donateBtn:hover{
-    background-color: rgb(255, 0, 76);
+    background-color: rgb(0, 140, 255);
     color: rgb(20, 20, 20);
 }
-
+.bow:hover{
+    filter: invert(99%) sepia(0%) saturate(324%) hue-rotate(264deg) brightness(0) saturate(100%);
+}
 .sp{
     position: relative;
     bottom: 20px;
@@ -494,7 +543,9 @@ hr.decorated-line-2{
 }
 
 .active-method{
-    background-color: rgb(32, 19, 24);
+    background-color: rgb(255, 36, 120);
+    border: 2px solid #df3eff;
+    color:rgb(255, 255, 255);
 }
 
 .form{
@@ -706,7 +757,7 @@ hr.decorated-line-3{
     .two{
         height: 736px;
     }
-    .title{
+    .title, .latestUpdate{
         width: 400px;
         margin: 1% 1.5%;
     }
@@ -746,15 +797,18 @@ hr.decorated-line-3{
         margin: 59% 0;
     }
 
-    .one,.two{
+    .one{
+        margin: 0 1.2% ;
+    }
+    .two{
         margin: 1% 1.2%;
     }
     .two{
         height: 736px;
     }
-    .title{
+    .title, .latestUpdate{
         width: 380px;
-        margin: auto  1.5%;
+        margin: 1%  1.5%;
     }
     .back-drop{
         width: 100%;
@@ -950,9 +1004,137 @@ hr.decorated-line-3{
         margin: 5px 0;
     }
     .two{
+        width: 99.5%;
+        margin: 0 .93px;
+    }
+    .title, .latestUpdate{
+        margin: 5px 0;
+    }
+    .button-container-2{
         margin: 0;
     }
-    .title{
-        margin: 5px 0;
+    /* margin-top increase will push the bottom bar below */
+    .overlay:after{
+        content: "";
+        width: 100%;
+        height: 30px;
+        color: white;
+        margin-top:188%;
+        display: block;
+        background-color: black;
+        opacity: 0.75;
+    }
+    .version{
+        right:8px;
+    }
+    .date{
+        left:5px;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    .title, .latestUpdate{
+        margin: 1% .25%;
+    }
+
+    .two{
+        width: 99.5%;
+    }
+    .type_1{
+        margin: 0.05rem;
+    }
+    .wave{
+        min-width: 88px;
+        min-height: 90px;
+    }
+    /* margin-top increase will push the bottom bar below */
+    .overlay:after{
+        content: "";
+        width: 100%;
+        height: 30px;
+        color: white;
+        margin-top:187.9%;
+        display: block;
+        background-color: black;
+        opacity: 0.75;
+    }
+    .se-1, .se-13, .se-22, .se-31{
+        transform: translate(80px, -78px);
+    }
+    .se-2, .se-14, .se-23, .se-32{
+        transform: translate(80px, -57px);
+    }
+    .se-3, .se-15, .se-24, .se-33{
+        transform: translate(80px, -35.5px);
+    }
+    .se-4,.se-10, .se-19, .se-28{
+        transform: translate(80px, -117px);
+    }
+    .se-5,.se-11, .se-20, .se-29{
+        transform: translate(80px, -96px);
+    }
+    .se-6, .se-12, .se-21, .se-30{
+        transform: translate(80px, -74.5px);
+    }
+    .se-7, .se-16, .se-25, .se-34{
+        transform: translate(80px, -103px);
+    }
+    .se-8, .se-17, .se-26, .se-35{
+        transform: translate(80px, -80px);
+    }
+    .se-9, .se-18, .se-27, .se-36{
+        transform: translate(80px, -60.5px);
+    }
+    .se-37{
+        transform: translate(68px, -117px);
+    }
+    .se-38{
+        transform: translate(68px, -96px);
+    }
+    .se-39{
+        transform: translate(68px, -75px);
+    }
+    .se-40{
+        transform: translate(68px, -78px);
+    }
+    .se-41{
+        transform: translate(68px, -57px);
+    }
+    .se-42{
+        transform: translate(68px, -36px);
+    }
+    .se-43{
+        transform: translate(68px, -102px);
+    }
+    .se-44{
+        transform: translate(68px, -81px);
+    }
+    .se-45{
+        transform: translate(68px, -60px);
+    }  
+    
+
+    .se-dogs-9{
+        transform: translate(50px, -80.3px);
+    }
+    
+    .se-bears-9{
+        transform: translate(65px, -80px);
+    }
+    .se-dogs-12{
+        transform: translate(50px, -80.3px);
+    }
+    
+    .se-bears-12{
+        transform: translate(65px, -80px);
+    }
+    
+    
+    .se-dogs-15{
+        
+    }
+    
+    .se-bears-15{
+        transform: translate(60px, -80px);
     }
 }
