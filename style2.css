@@ -541,6 +541,7 @@ hr.decorated-line-2{
     color: #fff;
     border: none;
     flex-basis: 129px;
+    border: 2px solid transparent;
 }
 
 .active-method{
