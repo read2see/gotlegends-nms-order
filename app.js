@@ -387,8 +387,8 @@ let selected = {
 };
 updateMapSelection(initMap);
 
-// fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates/-N0u1CLDaCNqIoo2OoH2.json",{
-//     method:'PUT',
+// fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates.json",{
+//     method:'POST',
 //     headers:{
 //         'Content-Type': 'application/json'
 //     },
@@ -405,14 +405,14 @@ fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.a
     .then(
         (data) => {
             if(
-                typeof data["-N0u1CLDaCNqIoo2OoH2"] == "undefined" ||
-                Object.keys(data["-N0u1CLDaCNqIoo2OoH2"]).length > 6 ||
-                Object.keys(data["-N0u1CLDaCNqIoo2OoH2"]).length > 6
+                typeof data["-N1PQsiG9k6mmevCQqcW"] == "undefined" ||
+                Object.keys(data["-N1PQsiG9k6mmevCQqcW"]).length > 6 ||
+                Object.keys(data["-N1PQsiG9k6mmevCQqcW"]).length > 6
                 ){
                 updatedTemplates = templates;
                 elements.latestTitle.innerText = "Data missing and desynced!";
             }else{
-                updatedTemplates = data["-N0u1CLDaCNqIoo2OoH2"];
+                updatedTemplates = data["-N1PQsiG9k6mmevCQqcW"];
                 // Stores the selected map name and index within the templates array of objects
                 selected = {
                     index: isMapAvailable(Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0][1].map).id,
@@ -470,8 +470,8 @@ function selectMapTemplate(e){
 // Adds the template to text area
 function addTemplateToTextArea(){
     const check =  isMapAvailable(selected.template.map);
-       if(check.isAvailable){
-            elements.textField.value = templateToString(updatedTemplates[Object.keys(updatedTemplates)[check.id]]).concat("ver2.18");
+    if(check.isAvailable){
+        elements.textField.value = templateToString(updatedTemplates[Object.keys(updatedTemplates)[check.id]]).concat("ver2.18");
         }
 }
 
@@ -519,6 +519,8 @@ function processData(){
             let uniqueZones = rawData.split("\n");
             let matchedWeek = uniqueZones[0].charAt(uniqueZones[0].length-2);
             let matchedMap = uniqueZones[0].substring(0,uniqueZones[0].indexOf("(")).trim();
+            let matchedTemplate = Object.entries(updatedTemplates).filter(element => element[1].map.toLowerCase() == matchedMap.toLowerCase())[0][1];
+            selected = {index: isMapAvailable(matchedMap).id, template: matchedTemplate }
             let matchedModifier = uniqueZones[1].substring(uniqueZones[1].indexOf(":")+1, uniqueZones[1].length).trim();
             let matchedHazard = 
                 uniqueZones[2].substring(
@@ -529,20 +531,17 @@ function processData(){
                         )
                     ).trim();
             let matchedCredits = uniqueZones[uniqueZones.length-1];
-            matches = [...rawData.matchAll(/(?![\w\s]*[\)])\b[^0-9.(,]+\b/g)];
+            selected.template.modifiers = [matchedModifier, matchedHazard]
+            matches = [...rawData.matchAll(/(?![\w\s]*[/:)])\b[^0-9.(&\n,]+\b/g)];
             // let matches = rawData.matchAll(/(?<!\()(?![\w\s]*[\)])\b[^0-9.(,]+\b/g);
             if(matches.length > 45){
                 matches.shift();
-                matches.shift();
-                matches.shift();
-                matches.shift();
-                matches.shift();
-                matches.pop();
-                if(matches.length  == 46)
-                    matches.pop();
             }
+            while(matches.length > 45){
+                matches.pop();
+            }
+            console.log(matches.length)
             if(!rawData.includes("*")){
-                let matchedTemplate = Object.entries(updatedTemplates).filter(element => element[1].map.toLowerCase() == matchedMap.toLowerCase())[0][1];
                 let tcounter = 0;
                 let dcounter = 0;
                 for(i = 0; i < matches.length; i++){
@@ -562,9 +561,9 @@ function processData(){
             }
             rawData = "";
             rawData = matchedWeek+"\n"
-                    +matchedMap+"\n"
-                    +matchedModifier+"\n"
-                    +matchedHazard+"\n";
+                    +selected.template.map+"\n"
+                    +selected.template.modifiers[0]+"\n"
+                    +selected.template.modifiers[1]+"\n";
             for(i = 0; i < matches.length; i++){
                 if((i+1)%3 == 0){
                     rawData = rawData.concat(matches[i][0].trim()+"\n");
@@ -573,6 +572,7 @@ function processData(){
                 }
             }
             rawData  = rawData.concat(matchedCredits+"\n"+"ver2.18");
+            console.log(rawData)
             elements.textField.value = rawData;
         }
         
@@ -607,6 +607,10 @@ function processData(){
         selected.index = check.id;
         updateMapSelection(selectedTemplate.map);
     }
+    selected.template.modifiers = [
+         w_modifiers_1.filter(element => element.modifier.toLowerCase() == processed[2].trim().toLowerCase())[0].modifier,
+         w_modifiers_2.filter(element => element.modifier.toLowerCase().includes(processed[3].trim().toLowerCase()))[0].modifier
+        ]
     //Validations
     // Validate and show alert if insufficent lines are available does all other validations 
     if(processed.length < 18){
@@ -622,6 +626,7 @@ function processData(){
             for(i = 4; i < processed.length-2; i++){
                 // Validate zones separation character
                 if(!processed[i].includes(",")){
+                    console.log(processed[i])
                     showAlert("error", "Zones must be separated with \",\" except for the last zone.")
                     return
                 }
@@ -659,16 +664,13 @@ function processData(){
         showAlert("error", "Map name is not valid!");
         return
     }
-    tempValidaitonList = Object.entries(w_modifiers_2).map(anotherElement => anotherElement[1].modifier);
-    for(i = 0; i < tempValidaitonList.length; i++){
-        let isValid = processed[3].trim().toLowerCase() != tempValidaitonList[i].toLowerCase()
-        if(!isValid){
-            showAlert("error", "Weekly modifier is not valid!");
-            return
-        }else{
-            break;
-        }
+ 
+    let checkModifier = w_modifiers_2.filter(element => element.modifier.toLowerCase().includes(processed[3].trim().toLowerCase()))[0];
+    if(typeof checkModifier == "undefiend"){
+        showAlert("error", "Weekly modifier is not valid!");
+        return
     }
+
     // validate version line
     if (typeof processed[20] == "undefined"){
         showAlert("error","Missing Modifier(s)");
@@ -772,8 +774,8 @@ function processData(){
         elements.amounts[i].innerText =  selectedTemplate.bonus[i].amount;
     }
     // Validate/Populate w-modifiers
-    if (processed[2].trim().length > 16 || processed[3].trim().length > 16 ) {
-        showAlert("error","Weekly modifiers (16) characters exceeded!");
+    if (processed[2].trim().length > 16 || processed[3].trim().length > 21 ) {
+        showAlert("error","Weekly modifiers (21) characters exceeded!");
         return
     } else {
         const modifier_1 = document.createElement("img");
@@ -813,7 +815,7 @@ function processData(){
             newTemplate.selected = true;
             newTemplate.latestUpdate = new Date();
             updatedTemplates[newTemplate.key] = newTemplate;
-            fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates/-N0u1CLDaCNqIoo2OoH2.json",
+            fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates/-N1PQsiG9k6mmevCQqcW.json",
             {
                 method: "PUT",
                 headers: {
@@ -1152,7 +1154,7 @@ function toggleMethod(e){
                 )
                 .then(
                     (data) => {
-                        updatedTemplates = data["-N0u1CLDaCNqIoo2OoH2"];
+                        updatedTemplates = data["-N1PQsiG9k6mmevCQqcW"];
                         newSelection = Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0];
                         // Stores the selected map name and index within the templates array of objects
                         selected = {
@@ -1208,6 +1210,8 @@ function camelize(str) {
     return index === 0 ? word.toLowerCase() : word.toUpperCase();
   }).replace(/\s+/g, '');
 }
+
+
 
 // function toggleLegend(e){
 //     if(elements.legend.style.display == "none"){
