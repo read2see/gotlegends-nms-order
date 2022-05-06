@@ -540,7 +540,6 @@ function processData(){
             while(matches.length > 45){
                 matches.pop();
             }
-            console.log(matches.length)
             if(!rawData.includes("*")){
                 let tcounter = 0;
                 let dcounter = 0;
@@ -572,7 +571,6 @@ function processData(){
                 }
             }
             rawData  = rawData.concat(matchedCredits+"\n"+"ver2.18");
-            console.log(rawData)
             elements.textField.value = rawData;
         }
         
@@ -626,7 +624,6 @@ function processData(){
             for(i = 4; i < processed.length-2; i++){
                 // Validate zones separation character
                 if(!processed[i].includes(",")){
-                    console.log(processed[i])
                     showAlert("error", "Zones must be separated with \",\" except for the last zone.")
                     return
                 }
