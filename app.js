@@ -405,14 +405,14 @@ fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.a
     .then(
         (data) => {
             if(
-                typeof data["-N1PQsiG9k6mmevCQqcW"] == "undefined" ||
-                Object.keys(data["-N1PQsiG9k6mmevCQqcW"]).length > 6 ||
-                Object.keys(data["-N1PQsiG9k6mmevCQqcW"]).length > 6
+                typeof data["-N0u1CLDaCNqIoo2OoH2"] == "undefined" ||
+                Object.keys(data["-N0u1CLDaCNqIoo2OoH2"]).length > 6 ||
+                Object.keys(data["-N0u1CLDaCNqIoo2OoH2"]).length > 6
                 ){
                 updatedTemplates = templates;
                 elements.latestTitle.innerText = "Data missing and desynced!";
             }else{
-                updatedTemplates = data["-N1PQsiG9k6mmevCQqcW"];
+                updatedTemplates = data["-N0u1CLDaCNqIoo2OoH2"];
                 // Stores the selected map name and index within the templates array of objects
                 selected = {
                     index: isMapAvailable(Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0][1].map).id,
@@ -815,7 +815,7 @@ function processData(){
             newTemplate.selected = true;
             newTemplate.latestUpdate = new Date();
             updatedTemplates[newTemplate.key] = newTemplate;
-            fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates/-N1PQsiG9k6mmevCQqcW.json",
+            fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates/-N0u1CLDaCNqIoo2OoH2.json",
             {
                 method: "PUT",
                 headers: {
@@ -1154,7 +1154,7 @@ function toggleMethod(e){
                 )
                 .then(
                     (data) => {
-                        updatedTemplates = data["-N1PQsiG9k6mmevCQqcW"];
+                        updatedTemplates = data["-N0u1CLDaCNqIoo2OoH2"];
                         newSelection = Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0];
                         // Stores the selected map name and index within the templates array of objects
                         selected = {
