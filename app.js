@@ -1220,3 +1220,15 @@ function camelize(str) {
 //     }
 // }
 // debugger
+const shareData = {
+    title: "NMS Order",
+    url:window.location.href,
+}
+document.getElementById("share").addEventListener('click', async () => {
+    try {
+      await navigator.share(shareData)
+      resultPara.textContent = 'NMS Order Shared Successfully.'
+    } catch(err) {
+      resultPara.textContent = 'Error: ' + err
+    }
+  });
