@@ -720,6 +720,21 @@ hr.decorated-line-3{
         visibility: hidden;
 	}	
 }
+
+#share{
+    background-color: rgb(121, 52, 153);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor:pointer;
+    /* position: fixed;
+    right:20px;
+    top:790px; */
+    z-index: 5;
+    border:none;
+}
+
 @media only Screen and (max-width:1280px){
     #app-container{
         margin: auto 33.82%;
