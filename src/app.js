@@ -1124,7 +1124,11 @@ function dumpToGraph(){
     const hazard = document.createElement("p");
     modifier.innerText = processed[2];
     infoGraph.weeklyModifiers[0].append(modifier);
-    hazard.innerText = processed[3];
+    if(processed[3].trim().toLowerCase().includes("hwachas")){
+        hazard.innerText = "Hwachas";
+    }else{
+        hazard.innerText = processed[3];
+    } 
     infoGraph.weeklyModifiers[1].append(hazard);
     // 
     const currentDate = isDefined(processed[21]) ? constructGraphDateFormat(convertStringToDate(processed[21])) : constructGraphDateFormat(new Date());
