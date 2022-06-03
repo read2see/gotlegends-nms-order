@@ -1206,7 +1206,8 @@ function updateTemplate(currentTemplate){
     currentTemplate = newTemplate;
 }
 function getSVG(value, collection){
-    return collection.filter(element => element.modifier.toLowerCase() == value.toLowerCase().trim())[0].svg
+
+    return collection.filter(element => element.modifier.toLowerCase().includes(value.toLowerCase().trim()))[0].svg
 }
 
 function addSpecialEnemySideKick(selected){
