@@ -1116,8 +1116,8 @@ function dumpToGraph(){
     modifier_1.classList.add("w-modifier-1");
     const modifier_2 = document.createElement("img");
     modifier_2.classList.add("w-modifier-2");
-    modifier_1.src = "img/svg/".concat(getSVG(currentTemplate.modifiers[0], w_modifiers_1));
-    modifier_2.src = "img/svg/".concat(getSVG(currentTemplate.modifiers[1], w_modifiers_2)); 
+    modifier_1.src = "img/svg/".concat(getSVG(processed[2], w_modifiers_1));
+    modifier_2.src = "img/svg/".concat(getSVG(processed[3], w_modifiers_2)); 
     infoGraph.weeklyModifiers[0].append(modifier_1);
     infoGraph.weeklyModifiers[1].append(modifier_2);
     const modifier = document.createElement("p");
@@ -1206,7 +1206,6 @@ function updateTemplate(currentTemplate){
     currentTemplate = newTemplate;
 }
 function getSVG(value, collection){
-
     return collection.filter(element => element.modifier.toLowerCase().includes(value.toLowerCase().trim()))[0].svg
 }
 
