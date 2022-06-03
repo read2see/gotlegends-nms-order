@@ -28,19 +28,18 @@
         </div>
         <h2 class="latestUpdate">Updated On ['Missing Data']</h2>
         <div class="form">
-            <label for="zoneData" class="standardLabel white">Enter Zones data</label>
             <div class="subform-1">
                 <h2>Form 1/4</h2>
                 <ul class="inputs">
                     <li class="input-item">
                         <label for="mapSelection-2" class="selectionLabel">Select Map</label>
                         <select id="mapSelection-2">
-                            <option value="Blood In The Snow">Blood In The Snow</option>
-                            <option value="The Shadows Of War">The Shadows Of War</option>
-                            <option value="The Defense Of Aoi Village">The Defense Of Aoi Village</option>
-                            <option value="The Shores Of Vengeance">The Shores Of Vengeance</option>
-                            <option value="Twilight And Ashes">Twilight And Ashes</option>
-                            <option value="Blood And Steel">Blood And Steel</option>
+                            <option value="blood-in-the-snow">Blood In The Snow</option>
+                            <option value="the-shadows-of-war">The Shadows Of War</option>
+                            <option value="the-defense-of-aoi-village">The Defense Of Aoi Village</option>
+                            <option value="the-shores-of-vengeance">The Shores Of Vengeance</option>
+                            <option value="twilight-and-ashes">Twilight And Ashes</option>
+                            <option value="blood-and-steel">Blood And Steel</option>
                         </select>
                     </li>
                     <li class="input-item">
@@ -50,21 +49,21 @@
                     <li class="input-item">
                         <label for="weeklyModifier">Weekly Modifier</label>
                         <select name="weeklyModifier" id="weeklyModifier">
-                            <option value="Barbed Arrows">Barbed Arrows</option>
-                            <option value="Empowered Foes">Empowered Foes</option>
-                            <option value="Immunity">Immunity</option>
-                            <option value="Incapacitated">Incapacitated</option>
-                            <option value="Reduced Healing">Reduced Healing</option>
-                            <option value="Slowed Revives">Slowed Revives</option>
-                            <option value="Tool Shortage">Tool Shortage</option>
+                            <option value="barbed-arrows">Barbed Arrows</option>
+                            <option value="empowered-foes">Empowered Foes</option>
+                            <option value="immunity">Immunity</option>
+                            <option value="incapacitated">Incapacitated</option>
+                            <option value="reduced-healing">Reduced Healing</option>
+                            <option value="slowed-revives">Slowed Revives</option>
+                            <option value="tool-shortage">Tool Shortage</option>
                         </select>
                     </li>
                     <li class="input-item">
                         <label for="weeklyHazard">Weekly Hazard</label>
                         <select name="weeklyHazard" id="weeklyHazard">
-                            <option value="Hwachas">Hwachas</option>
-                            <option value="Eyes of Iyo">Eyes of Iyo</option>
-                            <option value="Disciples">Disciples</option>
+                            <option value="fire-spirits-hwachas">Hwachas</option>
+                            <option value="eyes-of-iyo">Eyes Of Iyo</option>
+                            <option value="disciples-of-iyo">Disciples</option>
                         </select>
                     </li>
                     <li class="input-item">
@@ -74,6 +73,10 @@
                     <li class="input-item">
                         <label for="credits">Credits</label>
                         <input type="text" name="credits" id="credits" placeholder="player#1, player#2, player#3, player#n">
+                    </li>
+                    <li class="input-item">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date">
                     </li>
                     <li class="input-item">
                         <button class="previous" type="button" disabled>Back</button>
@@ -174,12 +177,12 @@
             <textArea id="zoneData" class="textArea-1"></textArea>
             <label for="mapSelection" class="selectionLabel">Select Map</label>
             <select id="mapSelection">
-                <option value="Blood In The Snow">Blood In The Snow</option>
-                <option value="The Shadows Of War">The Shadows Of War</option>
-                <option value="The Defense Of Aoi Village">The Defense Of Aoi Village</option>
-                <option value="The Shores Of Vengeance">The Shores Of Vengeance</option>
-                <option value="Twilight And Ashes">Twilight And Ashes</option>
-                <option value="Blood And Steel">Blood And Steel</option>
+                <option value="blood-in-the-snow">Blood In The Snow</option>
+                <option value="the-shadows-of-war">The Shadows Of War</option>
+                <option value="the-defense-of-aoi-village">The Defense Of Aoi Village</option>
+                <option value="the-shores-of-vengeance">The Shores Of Vengeance</option>
+                <option value="twilight-and-ashes">Twilight And Ashes</option>
+                <option value="blood-and-steel">Blood And Steel</option>
             </select>
             <div class="button-container">
                 <button class="btn">Template</button>
@@ -187,8 +190,51 @@
                 <button class="btn">Clear</button>
                 <!-- <button class="btn" type="button">Legend</button> -->
             </div>
-        </section>    
-        <h2 class="title white">Waves</h2>
+        </section>
+        <div class="wrapper">
+            <h2 class="title white">Waves</h2>
+            <button id="share" type="button">Share</button>
+        </div> 
+        <div class="legend-container hide-legend">
+            <button id="legendBtn" type="button">Legend</button>
+            <hr class="legend-divider">
+            <div class="legend-wrapper">
+                <ul class="legend-list">
+                    <li class="legend-item normal-font-color">
+                        <div class="line normal-fill"></div>
+                        <p>Normal Wave</p>
+                    </li>
+                    <li class="legend-item bonus-font-color">
+                        <div class="line bonus-fill"></div>
+                        <p>Bonus Wave</p>
+                    </li>
+                    <li class="legend-item boss-font-color">
+                        <div class="line boss-fill"></div>
+                        <p>Boss Wave</p>
+                    </li>
+                </ul>
+                <ul class="legend-list-2">
+                    <li class="legend-item">
+                        <img src="img/svg/x-3-tengu.svg" alt="tengu">
+                        <p>Tengu</p>
+                    </li>
+                    <li class="legend-item">
+                        <img src="img/svg/x-2-disciple.svg" alt="disciple">
+                        <p>Disciple</p>
+                    </li>
+                </ul>
+                <ul class="legend-list-3">
+                    <li class="legend-item">
+                        <img src="img/svg/se-bears.svg" alt="bears">
+                        <p>Bears</p>
+                    </li>
+                    <li class="legend-item">
+                        <img src="img/svg/se-dogs.svg" alt="dogs">
+                        <p>Dogs</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <section class="two">
             <div class="list-container">
                 <ul class="type_1">
@@ -420,48 +466,13 @@
                 </ul>
             </div>
         </section>
-        <!-- <div class="legend">
-            <h2 class="legend-title">Legend</h2>
-            <hr class="decorated-line-3">
-            <div class="legend-wrapper">
-                <ul class="legend-list">
-                    <li class="legend-item normal-font-color">
-                        <div class="line normal-fill"></div>
-                        Normal Wave
-                    </li>
-                    <li class="legend-item bonus-font-color">
-                        <div class="line bonus-fill"></div>
-                        Bonus Wave
-                    </li>
-                    <li class="legend-item boss-font-color">
-                        <div class="line boss-fill"></div>
-                        Boss Wave
-                    </li>
-                </ul>
-                <ul class="legend-list-2">
-                    <li class="legend-item">
-                        <img src="/img/svg/x-3-tengu.svg" alt="tengu">
-                        Tengu
-                    </li>
-                    <li class="legend-item">
-                        <img src="img/svg/x-2-disciple.svg" alt="disciple">
-                        Disciple
-                    </li>
-                </ul>
-                <ul class="legend-list-3">
-                    <li class="legend-item">
-                        <img src="img/svg/se-bears.svg" alt="bears">
-                        Bears
-                    </li>
-                    <li class="legend-item">
-                        <img src="img/svg/se-dogs.svg" alt="dogs">
-                        Dogs
-                    </li>
-                </ul>
-            </div>
-        </div> -->
     </div>
-    <button id="share" type="button">Share</button>
 </body>
-<script src="app.js"></script>
+<!-- <script type="module" src="node_modules/dom-to-image/"></script> -->
+<script type="text/javascript" src="src/bonusObjectives.json"></script>
+<script type="text/javascript" src="src/bossWaves.json"></script>
+<script type="text/javascript" src="src/weeklyModifiers.json"></script>
+<script type="text/javascript" src="src/weeklyHazards.json"></script>
+<script src="src/dom-to-image.js"></script>
+<script src="src/app.js"></script>
 </html>

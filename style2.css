@@ -20,8 +20,8 @@ body{
 .one{
     width: 100%;
     padding: 0.7rem;
-    margin: auto;
-    background-color: rgb(32, 19, 24);
+    margin: 5px auto;
+    background-color: rgb(24, 0, 19);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 5px;
     overflow: hidden;
@@ -69,7 +69,7 @@ body{
     justify-content: center;
     background-color: #000;
     padding: 0.25rem;
-    margin: 0 0.25rem;
+    margin: 0;
 }
 .heading-container .sp .donateBtn{
     display: flex;
@@ -105,6 +105,12 @@ body{
     border: none;
     padding: 0.5rem;
     font-size: 1rem;
+    color:#fff;
+    background-color: rgb(73, 40, 73);
+}
+
+.red-border{
+    border: 1px solid rgb(202, 52, 52);
 }
 
 .white{
@@ -116,19 +122,36 @@ body{
 }
 #mapSelection{
     border-radius: 5px;
+    padding: 0.15rem;
+    width: 60%;
+    background-color: rgb(134, 56, 134);
+    color: #fff;
+    -webkit-padding: 0.15rem;
+}
+#mapSelection-2, #weeklyModifier, #weeklyHazard, #date{
+    border-radius: 5px;
+    padding: 0.25rem;
+    width: 100%;
+    background-color: rgb(134, 56, 134);
+    color: #fff;
+}
+
+#date {
+    -webkit-appearance: none;
+    border:none;
 }
 .btn{
     width: 80px;
     cursor: pointer;
     margin: 0 0.5rem;
-    background-color: rgb(159, 118, 170);
+    background-color: rgb(223, 109, 255);
     border: none;
-    border-radius: 2px ;
-    padding: 0.1rem;
-    color:#333
+    border-radius: 5px ;
+    padding:0.25rem 0.1rem;
+    color:#000
 }
 .btn:hover{
-   background-color:rgb(89, 53, 99); 
+   background-color:rgb(120, 62, 136); 
    color:#DDD
 }
 .button-container{
@@ -141,12 +164,10 @@ body{
 }
 
 .title{
-    margin: auto 40%;
+    margin-block: 5px;
     background-color: rgba(134, 26, 49, 0.5);
     padding: 1rem;
     border-radius: 5px;
-    width: 80%;
-    margin: 5px 0;
     text-align: center;
     width: 414px;
     display: none;
@@ -331,6 +352,7 @@ body{
 .date{
     position: absolute;
     bottom: 2px;
+    left: 5px;
 }
 .version{
     position: absolute;
@@ -554,7 +576,7 @@ hr.decorated-line-2{
     display: none;
     width: 100%;
     padding: 0.7rem;
-    margin: 0px;
+    margin: 5px 0px;
     background-color: rgb(32, 19, 24);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 5px;
@@ -595,6 +617,10 @@ hr.decorated-line-2{
     font-size: 1rem;
     padding: 0.2rem;;
     width: 100%;
+    border-radius: 5px;
+    border: none;
+    color:#fff;
+    background-color: rgb(134, 56, 134);
 }
 
 .subform-1 .inputs .input-item:nth-last-child(1),
@@ -634,7 +660,7 @@ hr.decorated-line-2{
 .legend-wrapper{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .legend-title{
     width:135px;
@@ -656,7 +682,7 @@ hr.decorated-line-3{
 }
 .line{
     width: 20px;
-    height: 10px;
+    height: 5px;
     border-radius: 20px;
     margin-right: 5px;
 }
@@ -679,18 +705,114 @@ hr.decorated-line-3{
     background-color: #FF7474;
 }
 .legend-item{
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-block:0.3rem;
+    z-index: 1;
 }
+
 .legend-list-2, .legend-list-3 {
+    width: 85px;
     color:#fff;
 }
 
-.legend-list-2 img, .legend-list-3 img {
-    margin-right: 10px;
+.legend-list-2 li p, .legend-list-3 li p {
+    text-align: center;
+    margin-left: 10px ;
+}
+.list-item > img {
+    margin-right: 20px;
     transform: scale(1.2);
+    display: inline-block;
+}
+
+.caught-errors{
+    color:#fff;
+    background-color: rgb(194, 45, 77);
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-block:5px;
+
+}
+
+.caught-errors-title{
+    text-align: center;
+    border-bottom:solid 1px #fff;
+    padding-bottom: 0.5rem ;
+}
+
+.error-list{
+
+}
+.error-item{
+    background-color: rgb(105, 22, 22);
+    border-radius: 5px;
+    margin-block: 2px;
+    padding: 0.5rem;
+}
+
+.form-error{
+    color:rgb(207, 93, 93);
+}
+
+.form-errors-container{
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+.wrapper{
     position: relative;
+}
+#share{
+    background-color: rgb(135, 67, 167);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor:pointer;
+    position: absolute;
+    top:7px;
+    right:20px;
+    z-index: 3;
+    border:1px solid black;
+}
+
+.legend-container{
+    width: 100%;
+    background-color: #000;
+    border:#776B4A 2px solid;
+    border-radius: 5px;
+    margin-block:5px;
+    overflow: hidden;
+    transition: height 0.5s;
+}
+
+.hide-legend{
+    height: 50px;
+}
+
+.show-legend{
+    height:150px;
+}
+
+#legendBtn {
+    width:100%;
+    text-align: center;
+    color:#776B4A;
+    background-color: transparent;
+    padding: 0.5rem 2rem;
+    text-align: center;
+    border:none;
+    cursor:pointer;
+    font-size: 22px;
+    font-weight:800;
+}
+
+.legend-divider{
+    width: 96%;
+    margin: 1% 2%;
+    border:1px solid #776B4A;
 }
 @keyframes slide-in{
     0% {
@@ -720,21 +842,6 @@ hr.decorated-line-3{
         visibility: hidden;
 	}	
 }
-
-#share{
-    background-color: rgb(121, 52, 153);
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor:pointer;
-    /* position: fixed;
-    right:20px;
-    top:790px; */
-    z-index: 5;
-    border:none;
-}
-
 @media only Screen and (max-width:1280px){
     #app-container{
         margin: auto 33.82%;
@@ -768,11 +875,19 @@ hr.decorated-line-3{
     .button-container-2, .form, .heading-container .sp{
         margin: auto 7px ;
     }
-    .one, .two{
-        margin: 0 7px;
+    .legend-container{
+        margin: 5px 6px;
     }
+    .one{
+        margin: 5px 7px;
+    }
+
     .two{
+        margin: 0 7px;
         height: 736px;
+    }
+    .form{
+        margin-block: 5px;
     }
     .title, .latestUpdate{
         width: 400px;
@@ -813,16 +928,22 @@ hr.decorated-line-3{
         width: 380px;
         margin: 59% 0;
     }
+    .caught-errors{
+        width: 100%;
+        margin: 5px 1.2%;
+    }
+
+    .legend-container{
+        margin: 5px ;
+    }
     .heading-container .sp, .button-container-2 {
         margin: 0 6.5px;
     }
     .one{
-        margin: 0 1.2% ;
+        margin: 5px 1.2% ;
     }
     .two{
         margin: 1% 6.5px;
-    }
-    .two{
         height: 736px;
     }
     .title, .latestUpdate{
@@ -870,6 +991,7 @@ hr.decorated-line-3{
     }
     .date{
         font-size: 9px;
+        margin-left: 2px;
     }
     .version{
         font-size: 9px;
@@ -1017,10 +1139,13 @@ hr.decorated-line-3{
         margin: 0 5px;
     }
     .one{
-        margin: 0px 5px;
+        margin: 5px 5px;
     }
     .two{
         margin: 0 5px;
+    }
+    .form{
+        margin-block: 5px;
     }
     .title, .latestUpdate{
         margin: 5px 5px;
@@ -1030,6 +1155,9 @@ hr.decorated-line-3{
     }
 }
 @media only screen and (max-width:375px){
+    .legend-container{
+        margin:0;
+    }
     .app-container{
         width: 370px;
         margin: 59% 1px;
@@ -1068,7 +1196,7 @@ hr.decorated-line-3{
         right:8px;
     }
     .date{
-        left:5px;
+        left:2px;
     }
 }
 
