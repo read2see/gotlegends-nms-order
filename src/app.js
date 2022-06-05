@@ -651,6 +651,7 @@ const buttons = {
     // legendBtn: document.querySelectorAll(".btn")[3],
     shareBtn:document.getElementById("share"),
     legendBtn: document.getElementById("legendBtn"),
+    howTo: document.getElementById("how-to"),
 }
 //  UI components
 const ui = {
@@ -669,6 +670,7 @@ const ui = {
     subform_4: document.querySelectorAll(".subform-4")[0],
     // legend: document.querySelectorAll(".legend")[0],
     legendContainer: document.querySelectorAll(".legend-container")[0],
+    howToSection: document.querySelectorAll(".how-to")[0],
 }
 // info-graph components
 const infoGraph = {
@@ -2003,6 +2005,7 @@ function toggleMethod(e){
                     (data) => {
                         updatedTemplates = data[record];
                         newSelection = Object.entries(updatedTemplates).filter(element => element[1].selected == true)[0];
+                        currentTemplate = newSelection[1];
                         updateMapSelection(currentTemplate.mapKey);
                         addTemplateToTextArea();
                         processData();
@@ -2070,6 +2073,14 @@ function toggleLegend(){
     }
 }
 
+function expandHowToSection(e){
+    if(ui.howToSection.classList.contains("how-to-expand")){
+        ui.howToSection.classList.remove("how-to-expand");
+    }else{
+        ui.howToSection.classList.add("how-to-expand");
+    }
+}
+
 function wireEvents(){
     inputs.mapSelection.addEventListener("change", selectMapTemplate);
     inputs.mapSelection_2.addEventListener("change", selectMapTemplate);
@@ -2082,6 +2093,7 @@ function wireEvents(){
     buttons.methodBtns[2].addEventListener("click", toggleMethod);
     buttons.nextBtns.forEach(element => element.addEventListener("click", goNext));
     buttons.previousBtns.forEach(element => element.addEventListener("click", goBack));
+    buttons.howTo.addEventListener("click", expandHowToSection);
     buttons.shareBtn.addEventListener('click', async () => {
     const shareData = {
         title: "NMS Order",
