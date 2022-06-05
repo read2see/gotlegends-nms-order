@@ -651,7 +651,7 @@ const buttons = {
     // legendBtn: document.querySelectorAll(".btn")[3],
     shareBtn:document.getElementById("share"),
     legendBtn: document.getElementById("legendBtn"),
-    howTo: document.getElementById("how-to"),
+    // howTo: document.getElementById("how-to"),
 }
 //  UI components
 const ui = {
@@ -2073,13 +2073,13 @@ function toggleLegend(){
     }
 }
 
-function expandHowToSection(e){
-    if(ui.howToSection.classList.contains("how-to-expand")){
-        ui.howToSection.classList.remove("how-to-expand");
-    }else{
-        ui.howToSection.classList.add("how-to-expand");
-    }
-}
+// function expandHowToSection(e){
+//     if(ui.howToSection.classList.contains("how-to-expand")){
+//         ui.howToSection.classList.remove("how-to-expand");
+//     }else{
+//         ui.howToSection.classList.add("how-to-expand");
+//     }
+// }
 
 function wireEvents(){
     inputs.mapSelection.addEventListener("change", selectMapTemplate);
@@ -2093,7 +2093,7 @@ function wireEvents(){
     buttons.methodBtns[2].addEventListener("click", toggleMethod);
     buttons.nextBtns.forEach(element => element.addEventListener("click", goNext));
     buttons.previousBtns.forEach(element => element.addEventListener("click", goBack));
-    buttons.howTo.addEventListener("click", expandHowToSection);
+    // buttons.howTo.addEventListener("click", expandHowToSection);
     buttons.shareBtn.addEventListener('click', async () => {
     const shareData = {
         title: "NMS Order",
