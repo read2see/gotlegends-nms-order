@@ -648,10 +648,10 @@ const buttons = {
     nextBtns: document.querySelectorAll(".next"),
     previousBtns: document.querySelectorAll(".previous"),
     donateBtn: document.querySelectorAll(".donateBtn"),
-    // legendBtn: document.querySelectorAll(".btn")[3],
     shareBtn:document.getElementById("share"),
     legendBtn: document.getElementById("legendBtn"),
-    // howTo: document.getElementById("how-to"),
+    howTo: document.getElementById("how-to"),
+    toggleBgBtn: document.getElementById("lights-off"),
 }
 //  UI components
 const ui = {
@@ -1981,17 +1981,24 @@ function toggleMethod(e){
             ui.form.style.display = "block";
             ui.sectionOneContainer.style.display = "none";
             ui.latestTitle.style.display = "none";
+            ui.howToSection.style.display = "none"
+            document.getElementById("download-img").style.display = "none";
             mode = "form";
         }else if(e.target.innerText == "Text (Recommended)"){
             ui.sectionOneContainer.style.display = "block";
             ui.form.style.display = "none";
             ui.latestTitle.style.display = "none";
+            ui.howToSection.style.display = "block"
+            document.getElementById("download-img").style.display = "none";
+            
             mode = "text";
         }else{
             removeErrorsReport();
             ui.latestTitle.style.display = "block";
             ui.sectionOneContainer.style.display = "none";
             ui.form.style.display = "none";
+            ui.howToSection.style.display = "none"
+            document.getElementById("download-img").style.display = "block";
             mode = "latest";
             fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/templates.json")
                 .then(
@@ -2064,6 +2071,29 @@ function addTemplateToTextArea(){
     inputs.textField.value = templateToString(currentTemplate);
 }
 
+function toggleBg(){
+    const highlightedContainer = ui.sectionTwoContainer.cloneNode("deep");
+    const container = document.createElement("div");
+    container.classList.add("simulate-app-contianer")
+    container.appendChild(highlightedContainer);
+    const topLevelContainer = document.createElement("section");
+    const removeTopLevel = document.createElement("button");
+    container.appendChild(removeTopLevel);
+    topLevelContainer.appendChild(container);
+    topLevelContainer.classList.add("top-level-container");
+    document.body.insertBefore(topLevelContainer, ui.appContainer);
+    removeTopLevel.classList.add("lights-on");
+    removeTopLevel.textContent = "Lights On"
+    removeTopLevel.addEventListener("click",
+        () => {
+            topLevelContainer.remove()
+            ui.appContainer.style.display = "block"
+        }
+    );
+    ui.appContainer.style.display = "none";
+
+}
+
 function toggleLegend(){
 
     if(ui.legendContainer.classList.contains("hide-legend")){
@@ -2073,13 +2103,13 @@ function toggleLegend(){
     }
 }
 
-// function expandHowToSection(e){
-//     if(ui.howToSection.classList.contains("how-to-expand")){
-//         ui.howToSection.classList.remove("how-to-expand");
-//     }else{
-//         ui.howToSection.classList.add("how-to-expand");
-//     }
-// }
+function expandHowToSection(e){
+    if(ui.howToSection.classList.contains("how-to-expand")){
+        ui.howToSection.classList.remove("how-to-expand");
+    }else{
+        ui.howToSection.classList.add("how-to-expand");
+    }
+}
 
 function wireEvents(){
     inputs.mapSelection.addEventListener("change", selectMapTemplate);
@@ -2093,7 +2123,7 @@ function wireEvents(){
     buttons.methodBtns[2].addEventListener("click", toggleMethod);
     buttons.nextBtns.forEach(element => element.addEventListener("click", goNext));
     buttons.previousBtns.forEach(element => element.addEventListener("click", goBack));
-    // buttons.howTo.addEventListener("click", expandHowToSection);
+    buttons.howTo.addEventListener("click", expandHowToSection);
     buttons.shareBtn.addEventListener('click', async () => {
     const shareData = {
         title: "NMS Order",
@@ -2112,6 +2142,7 @@ function wireEvents(){
             element[1].addEventListener("keyup", validateWaveField);
         }
     );
+    buttons.toggleBgBtn.addEventListener("click", toggleBg)
     formElements.currentWeek.addEventListener("keyup", validateWeekField);
     formElements.version.addEventListener("keyup", validateVersionField);
     formElements.credits.addEventListener("keyup", validateCreditsField);

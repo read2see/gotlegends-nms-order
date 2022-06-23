@@ -1,0 +1,10 @@
+[
+    {"modifier":"Wildfire","svg":"v-wildFire.svg","png":"v-wildFire.png"},
+    {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"},
+    {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.png"},
+    {"modifier":"Burning Blades","svg":"v-burningBlades.svg","png":"v-burningBlades.png"},
+    {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","png":"v-toxicClouds.png"},
+    {"modifier":"Slowed Revives","svg":"v-slowedRevives.svg","png":"v-slowedRevives.png"},
+    {"modifier":"Immunity","svg":"v-immunity.svg","png":"v-immunity.png"},
+    {"modifier":"Tool Shortage","svg":"v-toolShortage.svg","png":"v-toolShortage.png"}
+]

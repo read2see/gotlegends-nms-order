@@ -1,0 +1,9 @@
+[
+    {"modifier":"barbed arrows", "svg":"w-barbedArrows.svg", "png":"w-barbedArrows.png", "key":"barbed-arrows"},
+    {"modifier":"empowered foes", "svg":"w-empoweredFoes.svg", "png":"w-empoweredFoes.png", "key":"empowered-foes"},
+    {"modifier":"immunity", "svg":"w-immunity.svg", "png":"w-immunity.png", "key":"immunity"},
+    {"modifier":"incapacitated", "svg":"w-incapacitated.svg", "png":"w-w-incapacitated.png", "key":"incapcitated"},
+    {"modifier":"reduced healing", "svg":"w-reducedHealing.svg", "png":"w-reducedHealing.png", "key":"reduced-healing"},
+    {"modifier":"slowed revives", "svg":"w-slowedRevives.svg", "png":"w-slowedRevives.png", "key":"slowed-revives"},
+    {"modifier":"tool shortage", "svg":"w-toolShortage.svg", "png":"w-toolShortage.png", "key":"tool-shortage"}
+]

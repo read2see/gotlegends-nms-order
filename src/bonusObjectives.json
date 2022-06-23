@@ -1,0 +1,11 @@
+[
+    {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","png":"b-headshots.png"},
+    {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","png":"b-killsIn.png"},
+    {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
+    {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","png":"b-fireKills.png"},
+    {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","png":"b-killsOut.png"},
+    {"objective": "P.Parry Counter ATK", "amount":15,"svg":"b-parries.svg","png":"b-parries.png"},
+    {"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
+    {"objective": "Ranged Kills", "amount":20,"svg":"b-rangedKills.svg","png":"b-rangedKills.png"},
+    {"objective": "Assassinate | Crits", "amount": 10,"svg":"b-crits.svg","png":"b-crits.png"}
+]

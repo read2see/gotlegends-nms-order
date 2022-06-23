@@ -1,0 +1,5 @@
+[
+    {"modifier":"fire spirits, hwachas", "svg":"w-hwachas.svg", "png":"w-hwachas.png", "key": "fire-spirits-hwachas"},
+    {"modifier":"eyes of iyo", "svg":"w-eyesOfIyo.svg", "png":"w-eyesOfIyo.png", "key": "eyes-of-iyo"},
+    {"modifier":"disciples of iyo", "svg":"w-disciple.svg", "png":"w-disciple.png", "key":"disciples-of-iyo"}
+]
