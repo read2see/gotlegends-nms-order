@@ -172,6 +172,40 @@
                 </ul>
             </div>
         </div>
+        <section class="how-to">
+            <button id="how-to" type="button">How To</button>
+            <hr class="how-to-divider">
+            <p class="how-to-item">
+                Template Skeleton:
+                <br><br>
+                [week number] --> (Required)
+                <br><br>
+                [Map Name] --> (Required)
+                <br><br>
+                [weekly modifier #1] --> (any other modifier) (Required)
+                <br><br>
+                [weekly modifier #2] --> (hwachas / eyes of iyo / disciples) (Required)
+                <br><br>
+                [zone],[zone],[zone] --> wave 1 (Required)
+                <br><br>
+                . (Required)
+                <br><br>
+                . (Required)
+                <br><br>
+                . (Required)
+                <br><br>
+                [zone],[zone],[zone] --> wave 15 (Required)
+                <br><br>
+                [credit-player#1],...,[credit-player#n], --> (Optional)
+                <br><br>
+                [Version]  --> (Optional)
+                <br><br>
+                [Date]  --> (Optional)
+            </p>
+            <!-- <ul>
+                <li class="how-to-item"></li>
+            </ul> -->
+        </section>
         <section class="one">
             <label for="zoneData" class="standardLabel white">Enter Zones data</label>
             <textArea id="zoneData" class="textArea-1"></textArea>
@@ -188,12 +222,33 @@
                 <button class="btn">Template</button>
                 <button class="btn">Process</button>
                 <button class="btn">Clear</button>
-                <!-- <button class="btn" type="button">Legend</button> -->
             </div>
         </section>
         <div class="wrapper">
             <h2 class="title white">Waves</h2>
-            <button id="share" type="button">Share</button>
+            <button id="share" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 160.827 175.769">
+                    <g id="share-svgrepo-com-1" transform="translate(-48.42 -51.989)">
+                      <g id="Group_40" data-name="Group 40" transform="translate(48.42 51.989)">
+                        <circle id="Ellipse_313" data-name="Ellipse 313" cx="31.829" cy="31.829" r="31.829" transform="translate(0 56.582)" fill="#fff"/>
+                        <circle id="Ellipse_314" data-name="Ellipse 314" cx="31.829" cy="31.829" r="31.829" transform="translate(97.168)" fill="#fff"/>
+                        <circle id="Ellipse_315" data-name="Ellipse 315" cx="31.829" cy="31.829" r="31.829" transform="translate(97.168 112.11)" fill="#fff"/>
+                        <rect id="Rectangle_1455" data-name="Rectangle 1455" width="17.115" height="112.435" transform="matrix(-0.503, -0.864, 0.864, -0.503, 36.148, 94.725)" fill="#fff"/>
+                        <rect id="Rectangle_1456" data-name="Rectangle 1456" width="112.435" height="17.115" transform="matrix(-0.864, -0.503, 0.503, -0.864, 124.692, 151.317)" fill="#fff"/>
+                      </g>
+                    </g>
+                  </svg>
+            </button>
+            <a id="download-img" target="_blank" href="img/gotlegends-nms-order-screenshot.png">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 196.309 196.308">
+                    <g id="_-Product-Icons" data-name="🔍-Product-Icons" transform="translate(-3 -3)">
+                      <g id="ic_fluent_screenshot_24_filled" transform="translate(3 3)">
+                        <path id="_-Color" data-name="🎨-Color" d="M158.411,3a40.9,40.9,0,0,1,40.9,40.9V158.411a40.9,40.9,0,0,1-40.9,40.9H43.9A40.9,40.9,0,0,1,3,158.411V43.9A40.9,40.9,0,0,1,43.9,3Zm0,109.06a8.182,8.182,0,0,0-8.105,7.069l-.074,1.11v24.539a5.455,5.455,0,0,1-4.473,5.365l-.98.088H120.24a8.18,8.18,0,0,0-1.11,16.285l1.11.074h24.539a21.812,21.812,0,0,0,21.752-20.184l.06-1.628V120.24A8.18,8.18,0,0,0,158.411,112.06Zm-114.513,0a8.182,8.182,0,0,0-8.1,7.069l-.075,1.11v24.539A21.813,21.813,0,0,0,55.9,166.53l1.628.06H82.069a8.18,8.18,0,0,0,1.11-16.285l-1.11-.074H57.53a5.455,5.455,0,0,1-5.365-4.473l-.088-.98V120.24A8.18,8.18,0,0,0,43.9,112.06ZM82.069,35.718H57.53l-1.628.06A21.816,21.816,0,0,0,35.784,55.822l-.066,1.708V82.069l.075,1.11a8.181,8.181,0,0,0,16.21,0l.075-1.11V57.53l.088-.98a5.458,5.458,0,0,1,4.385-4.385l.98-.088H82.069L83.179,52a8.181,8.181,0,0,0,0-16.21Zm62.71,0H120.24A8.18,8.18,0,0,0,119.129,52l1.11.075h24.539a5.454,5.454,0,0,1,5.365,4.473l.088.98V82.069a8.18,8.18,0,0,0,16.285,1.11l.074-1.11V57.53a21.813,21.813,0,0,0-20.184-21.752Z" transform="translate(-3 -3)" fill="#fff"/>
+                      </g>
+                    </g>
+                  </svg>
+            </a>
+            <button id="lights-off" type="button">Lights Off</button>
         </div> 
         <div class="legend-container hide-legend">
             <button id="legendBtn" type="button">Legend</button>
@@ -468,7 +523,6 @@
         </section>
     </div>
 </body>
-<!-- <script type="module" src="node_modules/dom-to-image/"></script> -->
 <script type="text/javascript" src="src/bonusObjectives.json"></script>
 <script type="text/javascript" src="src/bossWaves.json"></script>
 <script type="text/javascript" src="src/weeklyModifiers.json"></script>
