@@ -1114,6 +1114,7 @@ function dumpToGraph(){
         infoGraph.amounts[i].innerText =  currentTemplate.bonus[i].amount;
     }
     // 
+    infoGraph.currentWeek.textContent = "Week #"+processed[0];
     const modifier_1 = document.createElement("img");
     modifier_1.classList.add("w-modifier-1");
     const modifier_2 = document.createElement("img");
