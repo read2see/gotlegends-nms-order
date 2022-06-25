@@ -120,9 +120,9 @@
         ],
         "bossWave": [
             {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","png":"v-toxicClouds.png"},
+            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.svg"},
             {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"},
-            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.png"},
-            {"modifier":"Slowed Revives","svg":"v-slowedRevives.svg","png":"v-slowedRevives.png"},
+            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.svg"},
             {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"}
         ],
         "credits":["player#1", "player#2", "player#n"],

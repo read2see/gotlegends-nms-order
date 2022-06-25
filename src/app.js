@@ -176,11 +176,11 @@ const templates = {
         ],
         bossWave: [
             bossWaveModifiers[4],
+            bossWaveModifiers[2],
             bossWaveModifiers[1],
             bossWaveModifiers[2],
-            bossWaveModifiers[5],
             bossWaveModifiers[1],
-            "Toxic Clouds", "Eruption", "Fighting Blind", "Slowed Revives", "Eruption"
+            "Toxic Clouds", "Fighting Blind", "Eruption", "Fighting Blind", "Eruption"
         ],
         credits:["player#1", "player#2", "player#n"],
         tengu:["10*T#2","23*T#2"],
@@ -1185,6 +1185,8 @@ function updateTemplate(currentTemplate){
     newTemplate.week = parseInt(processed[0]);
     newTemplate.zones = listOfZones;
     newTemplate.credits = processed[19].trim().split(",").map( element => element.trim());
+    newTemplate.modifiers[0] = processed[2].trim();
+    newTemplate.modifiers[1] = processed[3].trim();
     for( const template in updatedTemplates){
         updatedTemplates[template].selected = false;
     }
