@@ -468,11 +468,11 @@ class MapTemplate {
         ],
         bossWave: [
             bossWaveModifiers[4],
+            bossWaveModifiers[2],
             bossWaveModifiers[1],
             bossWaveModifiers[2],
-            bossWaveModifiers[5],
             bossWaveModifiers[1],
-            "Toxic Clouds", "Eruption", "Fighting Blind", "Slowed Revives", "Eruption"
+            "Toxic Clouds", "Fighting Blind", "Eruption", "Fighting Blind", "Eruption"
         ],
         credits:["player#1", "player#2", "player#n"],
         tengu:["10*T#2","23*T#2"],
