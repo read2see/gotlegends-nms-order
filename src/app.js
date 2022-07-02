@@ -652,6 +652,10 @@ const buttons = {
     legendBtn: document.getElementById("legendBtn"),
     howTo: document.getElementById("how-to"),
     toggleBgBtn: document.getElementById("lights-off"),
+    nextWaveBtn:document.getElementById("next-wave"),
+    previousWaveBtn:document.getElementById("previous-wave"),
+    resetSingleViewBtn:document.getElementById("reset-single-view"),
+    toggleSingleViewBtn: document.getElementById("toggle-single-view-btn"),
 }
 //  UI components
 const ui = {
@@ -671,6 +675,17 @@ const ui = {
     // legend: document.querySelectorAll(".legend")[0],
     legendContainer: document.querySelectorAll(".legend-container")[0],
     howToSection: document.querySelectorAll(".how-to")[0],
+    singleView: {
+        container: document.getElementById("single-wave-view"),
+        wave_g_container: document.querySelector(".sv-wave-container"),
+        wave_count: document.querySelector(".sv-wave-number"),
+        wave_s_container: document.querySelector(".sv-wave"),
+        zones: document.querySelectorAll(".sv-zone"),
+        linkLines: document.querySelector(".sv-link-lines"),
+        bonusObjective: document.querySelector(".sv-bonus-objective"),
+        bossModifier: document.querySelector(".sv-boss-modifier"),
+        amount: document.querySelector(".sv-amount"),
+        }
 }
 // info-graph components
 const infoGraph = {
@@ -1000,6 +1015,12 @@ function processData(){
         convertKenjiFormat();
     }
     // Validate data
+    if(mode == "form"){
+        inputs.textField.value =  formDataToRawData();
+        mode = "text";
+        // processData();
+        // mode="form";
+    }
     if(isValidData()){
         if(mode == "text"){     
             rawData = inputs.textField.value.trim();
@@ -1008,11 +1029,6 @@ function processData(){
             if(rawData.split("\n")[21] == "updateTemplate" || rawData.split("\n")[22] == "updateTemplate"){
                 updateTemplate(currentTemplate);
             }
-        }else if(mode == "form"){
-            inputs.textField.value =  formDataToRawData();
-            mode = "text";
-            processData();
-            mode="form";
         }else{
             dumpToGraph();
         }
@@ -2150,4 +2166,319 @@ function wireEvents(){
     formElements.version.addEventListener("keyup", validateVersionField);
     formElements.credits.addEventListener("keyup", validateCreditsField);
     // elements.legendBtn.addEventListener("click", toggleLegend);
+    buttons.nextWaveBtn.addEventListener("click", nextWave);
+    buttons.previousWaveBtn.addEventListener("click", previousWave);
+    buttons.toggleSingleViewBtn.addEventListener("click", toggleSingleView);
+    buttons.resetSingleViewBtn.addEventListener("click", resetSingleView);
+}
+
+// Single View Implementation
+let singleViewCurrentWave = 1;
+
+function resetSingleView(){
+    ui.singleView.wave_g_container.classList.add("scroll-x-left");
+    setTimeout(() => ui.singleView.wave_g_container.classList.remove("scroll-x-left"), 500)
+    buttons.previousWaveBtn.disabled = true;
+    buttons.nextWaveBtn.disabled = false;
+    singleViewCurrentWave = 1;
+    ui.singleView.wave_count.textContent = singleViewCurrentWave;
+    ui.singleView.zones[0].textContent = currentTemplate.zones[0].replace(/\*[TD#123]+/g, "");
+    ui.singleView.zones[1].textContent = currentTemplate.zones[1].replace(/\*[TD#123]+/g, "");
+    ui.singleView.zones[2].textContent = currentTemplate.zones[2].replace(/\*[TD#123]+/g, "");
+    switchWaveStyle();
+    document.querySelectorAll(".sv-dog").forEach(
+        node => node.remove()
+    );
+    document.querySelectorAll(".sv-bear").forEach(
+        node => node.remove()
+    );
+}
+function toggleSingleView(){
+    if(ui.singleView.container.classList.contains("setInvisible")){
+        ui.singleView.container.classList.replace("setInvisible", "setVisible" );
+        ui.sectionTwoContainer.classList.replace("setVisible", "setInvisible");
+        ui.singleView.wave_count.textContent = singleViewCurrentWave;
+        ui.singleView.zones[0].textContent = currentTemplate.zones[singleViewCurrentWave*3-3].replace(/\*[TD#123]+/g, "");
+        ui.singleView.zones[1].textContent = currentTemplate.zones[singleViewCurrentWave*3-2].replace(/\*[TD#123]+/g, "");
+        ui.singleView.zones[2].textContent = currentTemplate.zones[singleViewCurrentWave*3-1].replace(/\*[TD#123]+/g, "");
+        ui.singleView.zones.forEach(
+            (zone, index) => {
+                if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
+                    const specialEnemy = document.createElement("img");
+                    specialEnemy.classList.add("sv-icon");
+                    flag = currentTemplate.zones[singleViewCurrentWave*3-(index+1)].split("*")[1];
+                    switch(flag){
+                        case "T#1":
+                            specialEnemy.src = "img/svg/x-1-tengu.svg";
+                            break;
+                        case "T#2":
+                            specialEnemy.src = "img/svg/x-2-tengu.svg";
+                            break;
+                        case "T#3":
+                            specialEnemy.src = "img/svg/x-3-tengu.svg";
+                            break;
+                        case "D#1":
+                            specialEnemy.src = "img/svg/x-1-disciple.svg";
+                            break;
+                        case "D#2":
+                            specialEnemy.src = "img/svg/x-2-disciple.svg";
+                            break;
+                    }
+                    zone.append(specialEnemy);
+                }
+            }
+        );
+    }else{
+        ui.singleView.container.classList.replace("setVisible", "setInvisible");
+        ui.sectionTwoContainer.classList.replace("setInvisible", "setVisible");
+    }
+}
+
+function switchWaveStyle(){
+    if((singleViewCurrentWave%2 == 0 || singleViewCurrentWave == 7 || singleViewCurrentWave == 13) && singleViewCurrentWave != 6 && singleViewCurrentWave != 8 && singleViewCurrentWave != 12 && singleViewCurrentWave != 14){
+        ui.singleView.bossModifier.classList.replace("setVisible", "setInvisible");
+        ui.singleView.linkLines.classList.replace("boss", "bonus");
+        ui.singleView.linkLines.classList.add("setVisible");
+        ui.singleView.bonusObjective.classList.add("setVisible");
+        ui.singleView.amount.classList.add("setVisible");
+        ui.singleView.linkLines.classList.replace("boss", "bonus");
+        ui.singleView.wave_s_container.classList.replace("normal", "bonus");
+        ui.singleView.wave_s_container.classList.replace("boss", "bonus");
+        ui.singleView.wave_count.classList.replace("normal", "bonus");
+        ui.singleView.wave_count.classList.replace("boss", "bonus");
+        ui.singleView.zones.forEach( 
+            zone => {
+                zone.classList.replace("normal", "bonus");
+                zone.classList.replace("boss", "bonus");
+        
+            }
+        )
+        switch(singleViewCurrentWave){
+            case 2: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bonus[0].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bonusObjective.textContent = currentTemplate.bonus[0].objective;
+                    ui.singleView.amount.textContent = currentTemplate.bonus[0].amount;
+                break;
+            case 4: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bonus[1].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bonusObjective.textContent = currentTemplate.bonus[1].objective;
+                    ui.singleView.amount.textContent = currentTemplate.bonus[1].amount;
+                break;
+            case 7: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bonus[2].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bonusObjective.textContent = currentTemplate.bonus[2].objective;
+                    ui.singleView.amount.textContent = currentTemplate.bonus[2].amount;
+                break;
+            case 10: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bonus[3].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bonusObjective.textContent = currentTemplate.bonus[3].objective;
+                    ui.singleView.amount.textContent = currentTemplate.bonus[3].amount;
+                break;
+            case 13: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bonus[4].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bonusObjective.textContent = currentTemplate.bonus[4].objective;
+                    ui.singleView.amount.textContent = currentTemplate.bonus[4].amount;
+                break;
+        }
+        
+    }else if(singleViewCurrentWave%3 == 0){
+        ui.singleView.bonusObjective.classList.replace("setVisible", "setInvisible");
+        ui.singleView.amount.classList.replace("setVisible", "setInvisible");
+        ui.singleView.linkLines.classList.add("setVisible");
+        ui.singleView.linkLines.classList.replace("bonus", "boss");
+        ui.singleView.bossModifier.classList.add("setVisible");
+        ui.singleView.wave_s_container.classList.replace("bonus", "boss");
+        ui.singleView.wave_s_container.classList.replace("normal", "boss");
+        ui.singleView.wave_count.classList.replace("bonus", "boss");
+        ui.singleView.wave_count.classList.replace("normal", "boss");
+        ui.singleView.zones.forEach( 
+            zone => {
+                zone.classList.replace("bonus", "boss");
+                zone.classList.replace("normal", "boss");
+        
+            }
+        )
+        switch(singleViewCurrentWave){
+            case 3: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bossWave[0].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bossModifier.textContent = currentTemplate.bossWave[0].modifier;
+                break;
+            case 6: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bossWave[1].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bossModifier.textContent = currentTemplate.bossWave[1].modifier;
+                break;
+            case 9: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bossWave[2].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bossModifier.textContent = currentTemplate.bossWave[2].modifier;
+                break;
+            case 12: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bossWave[3].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bossModifier.textContent = currentTemplate.bossWave[3].modifier;  
+                break;
+            case 15: ui.singleView.wave_s_container.style="background:url(img/svg/"+currentTemplate.bossWave[4].svg+") no-repeat center center; background-size: 45%;";
+                    ui.singleView.bossModifier.textContent = currentTemplate.bossWave[4].modifier;
+                break;
+        }
+        
+        
+    }else{
+        ui.singleView.bonusObjective.classList.replace("setVisible", "setInvisible");
+        ui.singleView.amount.classList.replace("setVisible", "setInvisible");
+        ui.singleView.linkLines.classList.replace("setVisible", "setInvisible");
+        ui.singleView.linkLines.classList.replace("boss", "bonus");
+        ui.singleView.bossModifier.classList.replace("setVisible", "setInvisible");
+        ui.singleView.wave_s_container.classList.replace("bonus", "normal");
+        ui.singleView.wave_s_container.classList.replace("boss", "normal");
+        ui.singleView.wave_count.classList.replace("boss", "normal");
+        ui.singleView.wave_count.classList.replace("bonus", "normal");
+        ui.singleView.zones.forEach( 
+            zone => {
+                zone.classList.replace("bonus", "normal");
+                zone.classList.replace("boss", "normal");
+        
+            }
+        )
+        ui.singleView.wave_s_container.style="background:none;";
+    }
+}
+function nextWave(){
+    ui.singleView.wave_g_container.classList.add("scroll-x-right");
+    setTimeout(() => ui.singleView.wave_g_container.classList.remove("scroll-x-right"), 500);
+
+    ui.singleView.wave_count.textContent = singleViewCurrentWave+1;
+    singleViewCurrentWave++;
+    currentTemplate.bears.forEach(
+        wave_i => {
+            if(wave_i == singleViewCurrentWave){
+                const bear = document.createElement("img");
+                bear.src = "img/svg/se-bears.svg";
+                bear.classList.add("sv-bear");
+                document.querySelector(".sv-special-enemies").append(bear);
+            }else{
+                document.querySelectorAll(".sv-bear").forEach(
+                    node => node.remove()
+                );
+            }
+        }
+    );
+    currentTemplate.dogs.forEach(
+        wave_i => {
+            if(wave_i == singleViewCurrentWave){
+                const dog = document.createElement("img");
+                dog.src = "img/svg/se-dogs.svg";
+                dog.classList.add("sv-dog");
+                document.querySelector(".sv-special-enemies").append(dog);
+            }else{
+                document.querySelectorAll(".sv-dog").forEach(
+                    node => node.remove()
+                );
+            }
+        }
+    );
+    ui.singleView.zones[0].textContent = currentTemplate.zones[singleViewCurrentWave*3-3].replace(/\*[TD#123]+/g, "");
+    ui.singleView.zones[1].textContent = currentTemplate.zones[singleViewCurrentWave*3-2].replace(/\*[TD#123]+/g, "");
+    ui.singleView.zones[2].textContent = currentTemplate.zones[singleViewCurrentWave*3-1].replace(/\*[TD#123]+/g, "");
+    ui.singleView.zones.forEach(
+        (zone, index) => {
+            if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
+                const specialEnemy = document.createElement("img");
+                specialEnemy.classList.add("sv-icon");
+                flag = currentTemplate.zones[singleViewCurrentWave*3-(index+1)].split("*")[1];
+                switch(flag){
+                    case "T#1":
+                        specialEnemy.src = "img/svg/x-1-tengu.svg";
+                        break;
+                    case "T#2":
+                        specialEnemy.src = "img/svg/x-2-tengu.svg";
+                        break;
+                    case "T#3":
+                        specialEnemy.src = "img/svg/x-3-tengu.svg";
+                        break;
+                    case "D#1":
+                        specialEnemy.src = "img/svg/x-1-disciple.svg";
+                        break;
+                    case "D#2":
+                        specialEnemy.src = "img/svg/x-2-disciple.svg";
+                        break;
+                }
+                zone.append(specialEnemy);
+            }
+        }
+    );
+
+    switchWaveStyle();
+    
+    if(singleViewCurrentWave == 15){
+        buttons.nextWaveBtn.disabled = true;
+        buttons.previousWaveBtn.disabled = false;
+    }else{
+        buttons.nextWaveBtn.disabled = false;
+        buttons.previousWaveBtn.disabled = false;
+    }
+
+}
+
+function previousWave(){
+    if(singleViewCurrentWave == 1){
+        buttons.previousWaveBtn.disabled = true;
+    }else{
+        ui.singleView.wave_g_container.classList.add("scroll-x-left");
+        setTimeout(() => ui.singleView.wave_g_container.classList.remove("scroll-x-left"), 500)
+        singleViewCurrentWave--;
+        currentTemplate.bears.forEach(
+            wave_i => {
+                if(wave_i == singleViewCurrentWave){
+                    const bear = document.createElement("img");
+                    bear.src = "img/svg/se-bears.svg";
+                    bear.classList.add("sv-bear");
+                    document.querySelector(".sv-special-enemies").append(bear);
+                }else{
+                    document.querySelectorAll(".sv-bear").forEach(
+                        node => node.remove()
+                    );
+                }
+            }
+        );
+        currentTemplate.dogs.forEach(
+            wave_i => {
+                if(wave_i == singleViewCurrentWave){
+                    const dog = document.createElement("img");
+                    dog.src = "img/svg/se-dogs.svg";
+                    dog.classList.add("sv-dog");
+                    document.querySelector(".sv-special-enemies").append(dog);
+                }else{
+                    document.querySelectorAll(".sv-dog").forEach(
+                        node => node.remove()
+                    );
+                }
+            }
+        );
+        buttons.previousWaveBtn.disabled = false;
+        buttons.nextWaveBtn.disabled = false;
+        ui.singleView.wave_count.textContent = (singleViewCurrentWave);
+        ui.singleView.zones[0].textContent = currentTemplate.zones[singleViewCurrentWave*3-3].replace(/\*[TD#123]+/g, "");
+        ui.singleView.zones[1].textContent = currentTemplate.zones[singleViewCurrentWave*3-2].replace(/\*[TD#123]+/g, "");
+        ui.singleView.zones[2].textContent = currentTemplate.zones[singleViewCurrentWave*3-1].replace(/\*[TD#123]+/g, "");
+        ui.singleView.zones.forEach(
+            (zone, index) => {
+                if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
+                    const specialEnemy = document.createElement("img");
+                    specialEnemy.classList.add("sv-icon");
+                    flag = currentTemplate.zones[singleViewCurrentWave*3-(index+1)].split("*")[1];
+                    switch(flag){
+                        case "T#1":
+                            specialEnemy.src = "img/svg/x-1-tengu.svg";
+                            break;
+                        case "T#2":
+                            specialEnemy.src = "img/svg/x-2-tengu.svg";
+                            break;
+                        case "T#3":
+                            specialEnemy.src = "img/svg/x-3-tengu.svg";
+                            break;
+                        case "D#1":
+                            specialEnemy.src = "img/svg/x-1-disciple.svg";
+                            break;
+                        case "D#2":
+                            specialEnemy.src = "img/svg/x-2-disciple.svg";
+                            break;
+                    }
+                    zone.append(specialEnemy);
+                }
+            }
+        );
+        switchWaveStyle();
+    }
+
+    
 }
