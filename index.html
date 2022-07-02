@@ -7,6 +7,7 @@
     <link rel="icon" href="nms-logo.ico">
     <link rel="stylesheet" href="sePlacements.css">
     <link rel="stylesheet" href="style2.css">
+    <!-- <link rel="stylesheet" href="singleWaveView.css"> -->
     <!-- <link rel="stylesheet" href="mobile-380.css" media="screen and (max-width:380px)"> -->
     <title>NMS Order</title>
 </head>
@@ -291,10 +292,17 @@
                     </ul>
                 </div>
                 <ul class="legend-list-4">
-                    
+
                 </ul>
             </div>
         </div>
+        <button id="toggle-single-view-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 258 261">
+                <path id="Union_148" data-name="Union 148" d="M51,261V78A29,29,0,0,1,80,49H245a13,13,0,0,1,13,13V247a14,14,0,0,1-14,14ZM36,235v0l-12,0V52A28.974,28.974,0,0,1,53,23H218a13,13,0,0,1,12.964,12.035c-.314-.023-.639-.035-.964-.035H65A29.033,29.033,0,0,0,36,64V235ZM12,212H0V29A28.976,28.976,0,0,1,29,0H194a13,13,0,0,1,12.964,12.035c-.315-.023-.639-.035-.965-.035H41A29.033,29.033,0,0,0,12,41V212Z" fill="#fff"/>
+              </svg>
+                           
+            Switch View
+        </button>
         <section class="two">
             <div class="list-container">
                 <ul class="type_1">
@@ -524,6 +532,28 @@
                     <li class="w-modifier">Slowed Revives</li>
                     <li class="w-modifier">Disciples</li>
                 </ul>
+            </div>
+        </section>
+        <section id="single-wave-view" class="setInvisible">
+            <div class="sv-wave-container">
+                <h2 class="sv-wave-number normal">1</h2>
+                <div class="normal sv-wave">
+                    <div class="sv-special-enemies"></div>
+                    <ul class="sv-zones">
+                        <li class="sv-zone normal">Stable</li>
+                        <li class="sv-zone normal">Dojo</li>
+                        <li class="sv-zone normal">Barracks</li>
+                    </ul>
+                </div>
+                <div class="sv-link-lines bonus"></div>
+                <div class="sv-bonus-objective bonus">Assassinate from above</div>
+                <div class="sv-boss-modifier boss">Toxic Clouds</div>
+                <p class="sv-amount">15</p>
+            </div>
+            <div class="control-container">
+                <button id="previous-wave">Previous</button>
+                <button id="reset-single-view">Reset</button>
+                <button id="next-wave">Next</button>
             </div>
         </section>
     </div>
