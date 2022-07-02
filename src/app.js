@@ -1997,7 +1997,7 @@ function toggleMethod(e){
         Array.from(buttons.methodBtns).filter(element => element != e.target).forEach(element => element.classList.remove("active-method"));
         if(e.target.innerText == "Form" ){
             removeErrorsReport();
-            buttons.toggleSingleViewBtn.classList.replace("setVisible","setInvisible");
+            buttons.toggleSingleViewBtn.classList.add("setInvisible");
             ui.form.style.display = "block";
             ui.sectionOneContainer.style.display = "none";
             ui.latestTitle.style.display = "none";
@@ -2005,7 +2005,7 @@ function toggleMethod(e){
             document.getElementById("download-img").style.display = "none";
             mode = "form";
         }else if(e.target.innerText == "Text (Recommended)"){
-            buttons.toggleSingleViewBtn.classList.replace("setVisible","setInvisible");
+            buttons.toggleSingleViewBtn.classList.add("setInvisible");
             ui.sectionOneContainer.style.display = "block";
             ui.form.style.display = "none";
             ui.latestTitle.style.display = "none";
@@ -2015,7 +2015,7 @@ function toggleMethod(e){
             mode = "text";
         }else{
             removeErrorsReport();
-            buttons.toggleSingleViewBtn.classList.replace("setInvisible","setVisible");
+            buttons.toggleSingleViewBtn.classList.remove("setInvisible");
             ui.latestTitle.style.display = "block";
             ui.sectionOneContainer.style.display = "none";
             ui.form.style.display = "none";
