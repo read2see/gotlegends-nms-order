@@ -2189,6 +2189,9 @@ function resetSingleView(){
     buttons.nextWaveBtn.disabled = false;
     singleViewCurrentWave = 1;
     ui.singleView.wave_count.textContent = singleViewCurrentWave;
+    ui.singleView.zones.forEach(
+        zone => zone.classList.remove("specialEnemyRed")
+    );
     ui.singleView.zones[0].textContent = currentTemplate.zones[0].replace(/\*[TD#123]+/g, "");
     ui.singleView.zones[1].textContent = currentTemplate.zones[1].replace(/\*[TD#123]+/g, "");
     ui.singleView.zones[2].textContent = currentTemplate.zones[2].replace(/\*[TD#123]+/g, "");
