@@ -2378,7 +2378,9 @@ function nextWave(){
     ui.singleView.zones[2].textContent = currentTemplate.zones[singleViewCurrentWave*3-1].replace(/\*[TD#123]+/g, "");
     ui.singleView.zones.forEach(
         (zone, index) => {
+            zone.classList.remove("specialEnemyRed");
             if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
+                zone.classList.add("specialEnemyRed");
                 if(isExceedingLength(zone.textContent,"",12)){
                     zone.style.fontSize = "35px";
                 }
@@ -2461,7 +2463,9 @@ function previousWave(){
         ui.singleView.zones[2].textContent = currentTemplate.zones[singleViewCurrentWave*3-1].replace(/\*[TD#123]+/g, "");
         ui.singleView.zones.forEach(
             (zone, index) => {
+                zone.classList.remove("specialEnemyRed");
                 if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
+                    zone.classList.add("specialEnemyRed");
                     if(isExceedingLength(zone.textContent,"",12)){
                         zone.style.fontSize = "35px";
                     }
