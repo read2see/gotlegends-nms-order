@@ -1998,6 +1998,8 @@ function toggleMethod(e){
         if(e.target.innerText == "Form" ){
             removeErrorsReport();
             buttons.toggleSingleViewBtn.classList.add("setInvisible");
+            ui.singleView.container.classList.replace("setVisible", "setInvisible");
+            ui.sectionTwoContainer.classList.replace("setInvisible", "setVisible");
             ui.form.style.display = "block";
             ui.sectionOneContainer.style.display = "none";
             ui.latestTitle.style.display = "none";
@@ -2006,6 +2008,8 @@ function toggleMethod(e){
             mode = "form";
         }else if(e.target.innerText == "Text (Recommended)"){
             buttons.toggleSingleViewBtn.classList.add("setInvisible");
+            ui.singleView.container.classList.replace("setVisible", "setInvisible");
+            ui.sectionTwoContainer.classList.replace("setInvisible", "setVisible");
             ui.sectionOneContainer.style.display = "block";
             ui.form.style.display = "none";
             ui.latestTitle.style.display = "none";
@@ -2375,6 +2379,9 @@ function nextWave(){
     ui.singleView.zones.forEach(
         (zone, index) => {
             if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
+                if(isExceedingLength(zone.textContent,"",12)){
+                    zone.style.fontSize = "35px";
+                }
                 const specialEnemy = document.createElement("img");
                 specialEnemy.classList.add("sv-icon");
                 flag = currentTemplate.zones[singleViewCurrentWave*3-(index+1)].split("*")[1];
@@ -2411,7 +2418,6 @@ function nextWave(){
     }
 
 }
-
 function previousWave(){
     if(singleViewCurrentWave == 1){
         buttons.previousWaveBtn.disabled = true;
@@ -2456,6 +2462,9 @@ function previousWave(){
         ui.singleView.zones.forEach(
             (zone, index) => {
                 if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
+                    if(isExceedingLength(zone.textContent,"",12)){
+                        zone.style.fontSize = "35px";
+                    }
                     const specialEnemy = document.createElement("img");
                     specialEnemy.classList.add("sv-icon");
                     flag = currentTemplate.zones[singleViewCurrentWave*3-(index+1)].split("*")[1];
