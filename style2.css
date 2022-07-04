@@ -155,7 +155,7 @@ button{
 }
 .sv-icon{
     width: 40px;
-    transform: translateX(80px);
+    transform: translateX(30px);
 }
 .intersect-a{
     clip-path: polygon(0 0,100% 0, 100% 10%, 98% 10%, 98% 30%, 100% 30%, 100% 100%, 0 100%);
@@ -1244,7 +1244,7 @@ hr.decorated-line-3{
         transform: translateX(-20px);
     } */
     .sv-icon{
-        transform: translateX(60px);
+        transform: translateX(20px);
     }
     .sv-link-lines{
         transform: translateX(-15px);
