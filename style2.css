@@ -1228,6 +1228,10 @@ hr.decorated-line-3{
     .how-to{
         width:420px;
     }
+    .total-bows{
+        width: 100%;
+        margin-inline: 1%;
+    }
 }
 
 @media only screen and (max-width:424px){
