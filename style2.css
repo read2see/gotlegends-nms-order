@@ -273,7 +273,7 @@ button{
     padding: 0.25rem;
     margin: 0;
 }
-.heading-container .sp .donateBtn{
+.heading-container .sp .donateBtn,  #bow-btn{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -690,7 +690,7 @@ hr.decorated-line-2{
 }
 
 
-.donateBtn{
+.donateBtn, #bow-btn{
     color:#fff;
     background-color: #FF4477;
     border: none;
@@ -700,7 +700,8 @@ hr.decorated-line-2{
     margin-right: 22px;
     cursor: pointer;
 }
-.donateBtn:hover{
+
+.donateBtn:hover, #bow-btn:hover{
     background-color: rgb(0, 140, 255);
     color: rgb(20, 20, 20);
 }
@@ -1155,6 +1156,13 @@ hr.decorated-line-3{
     background-color: transparent;
     cursor: pointer;
     color:#fff;
+}
+
+.total-bows{
+    text-align: center;
+    color: #776B4A;
+    background-color: #000;
+    margin-top: 0.25rem;
 }
 @media only Screen and (max-width:1280px){
     #app-container{
