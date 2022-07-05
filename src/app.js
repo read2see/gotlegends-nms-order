@@ -629,7 +629,7 @@ class MapTemplate {
         }
     }
 }
-
+let bows = 0;
 let updatedTemplates = templates;
 
 // Interactive elements
@@ -656,6 +656,7 @@ const buttons = {
     previousWaveBtn:document.getElementById("previous-wave"),
     resetSingleViewBtn:document.getElementById("reset-single-view"),
     toggleSingleViewBtn: document.getElementById("toggle-single-view-btn"),
+    bowBtn: document.getElementById("bow-btn"),
 }
 //  UI components
 const ui = {
@@ -685,7 +686,8 @@ const ui = {
         bonusObjective: document.querySelector(".sv-bonus-objective"),
         bossModifier: document.querySelector(".sv-boss-modifier"),
         amount: document.querySelector(".sv-amount"),
-        }
+        },
+    bows: document.getElementById("bows"),
 }
 // info-graph components
 const infoGraph = {
@@ -768,8 +770,35 @@ function requestTemplatesData(){
             }
         }
     );
+    getBows();
 }
 
+function getBows(){
+    fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/bows.json")
+    .then(
+        response => response.json()
+    )
+    .then(
+        data => {
+            bows = parseInt(data);
+            ui.bows.textContent = bows;
+        }
+    )
+}
+function bow(){
+    fetch("https://gotlegends-nms-order-default-rtdb.europe-west1.firebasedatabase.app/bows.json", 
+    {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify((bows+1))
+    }
+    ).then(
+        response => getBows()
+    )
+    
+}
 // Data stores
 async function getTemplates(){
     const response = await fetch("src/templates.json");
@@ -2177,6 +2206,7 @@ function wireEvents(){
     buttons.previousWaveBtn.addEventListener("click", previousWave);
     buttons.toggleSingleViewBtn.addEventListener("click", toggleSingleView);
     buttons.resetSingleViewBtn.addEventListener("click", resetSingleView);
+    buttons.bowBtn.addEventListener("click", bow)
 }
 
 // Single View Implementation
