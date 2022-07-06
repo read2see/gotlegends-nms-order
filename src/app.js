@@ -2412,33 +2412,38 @@ function nextWave(){
     ui.singleView.zones.forEach(
         (zone, index) => {
             zone.classList.remove("specialEnemyRed");
-            if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
-                zone.classList.add("specialEnemyRed");
-                if(isExceedingLength(zone.textContent,"",12)){
-                    zone.style.fontSize = "35px";
+            currentTemplate.tengu.forEach(
+                element => {
+                    if(singleViewCurrentWave*3-3+index == parseInt(element.split("*")[0])-1 ){
+                        console.log(singleViewCurrentWave*3-3);
+                        zone.classList.add("specialEnemyRed");
+                        if(isExceedingLength(zone.textContent,"",12)){
+                            zone.style.fontSize = "35px";
+                        }
+                        const specialEnemy = document.createElement("img");
+                        specialEnemy.classList.add("sv-icon");
+                        flag = element.split("*")[1];
+                        switch(flag){
+                            case "T#1":
+                                specialEnemy.src = "img/svg/x-1-tengu.svg";
+                                break;
+                            case "T#2":
+                                specialEnemy.src = "img/svg/x-2-tengu.svg";
+                                break;
+                            case "T#3":
+                                specialEnemy.src = "img/svg/x-3-tengu.svg";
+                                break;
+                            case "D#1":
+                                specialEnemy.src = "img/svg/x-1-disciple.svg";
+                                break;
+                            case "D#2":
+                                specialEnemy.src = "img/svg/x-2-disciple.svg";
+                                break;
+                        }
+                        zone.append(specialEnemy);
+                    }
                 }
-                const specialEnemy = document.createElement("img");
-                specialEnemy.classList.add("sv-icon");
-                flag = currentTemplate.zones[singleViewCurrentWave*3-(index+1)].split("*")[1];
-                switch(flag){
-                    case "T#1":
-                        specialEnemy.src = "img/svg/x-1-tengu.svg";
-                        break;
-                    case "T#2":
-                        specialEnemy.src = "img/svg/x-2-tengu.svg";
-                        break;
-                    case "T#3":
-                        specialEnemy.src = "img/svg/x-3-tengu.svg";
-                        break;
-                    case "D#1":
-                        specialEnemy.src = "img/svg/x-1-disciple.svg";
-                        break;
-                    case "D#2":
-                        specialEnemy.src = "img/svg/x-2-disciple.svg";
-                        break;
-                }
-                zone.append(specialEnemy);
-            }
+            )
         }
     );
 
@@ -2497,33 +2502,38 @@ function previousWave(){
         ui.singleView.zones.forEach(
             (zone, index) => {
                 zone.classList.remove("specialEnemyRed");
-                if(currentTemplate.zones[singleViewCurrentWave*3-(index+1)].includes("*")){
-                    zone.classList.add("specialEnemyRed");
-                    if(isExceedingLength(zone.textContent,"",12)){
-                        zone.style.fontSize = "35px";
+                currentTemplate.tengu.forEach(
+                    element => {
+                        if(singleViewCurrentWave*3-3+index == parseInt(element.split("*")[0])-1 ){
+                            console.log(singleViewCurrentWave*3-3);
+                            zone.classList.add("specialEnemyRed");
+                            if(isExceedingLength(zone.textContent,"",12)){
+                                zone.style.fontSize = "35px";
+                            }
+                            const specialEnemy = document.createElement("img");
+                            specialEnemy.classList.add("sv-icon");
+                            flag = element.split("*")[1];
+                            switch(flag){
+                                case "T#1":
+                                    specialEnemy.src = "img/svg/x-1-tengu.svg";
+                                    break;
+                                case "T#2":
+                                    specialEnemy.src = "img/svg/x-2-tengu.svg";
+                                    break;
+                                case "T#3":
+                                    specialEnemy.src = "img/svg/x-3-tengu.svg";
+                                    break;
+                                case "D#1":
+                                    specialEnemy.src = "img/svg/x-1-disciple.svg";
+                                    break;
+                                case "D#2":
+                                    specialEnemy.src = "img/svg/x-2-disciple.svg";
+                                    break;
+                            }
+                            zone.append(specialEnemy);
+                        }
                     }
-                    const specialEnemy = document.createElement("img");
-                    specialEnemy.classList.add("sv-icon");
-                    flag = currentTemplate.zones[singleViewCurrentWave*3-(index+1)].split("*")[1];
-                    switch(flag){
-                        case "T#1":
-                            specialEnemy.src = "img/svg/x-1-tengu.svg";
-                            break;
-                        case "T#2":
-                            specialEnemy.src = "img/svg/x-2-tengu.svg";
-                            break;
-                        case "T#3":
-                            specialEnemy.src = "img/svg/x-3-tengu.svg";
-                            break;
-                        case "D#1":
-                            specialEnemy.src = "img/svg/x-1-disciple.svg";
-                            break;
-                        case "D#2":
-                            specialEnemy.src = "img/svg/x-2-disciple.svg";
-                            break;
-                    }
-                    zone.append(specialEnemy);
-                }
+                )
             }
         );
         switchWaveStyle();
