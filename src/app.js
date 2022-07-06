@@ -2415,7 +2415,6 @@ function nextWave(){
             currentTemplate.tengu.forEach(
                 element => {
                     if(singleViewCurrentWave*3-3+index == parseInt(element.split("*")[0])-1 ){
-                        console.log(singleViewCurrentWave*3-3);
                         zone.classList.add("specialEnemyRed");
                         if(isExceedingLength(zone.textContent,"",12)){
                             zone.style.fontSize = "35px";
@@ -2505,7 +2504,6 @@ function previousWave(){
                 currentTemplate.tengu.forEach(
                     element => {
                         if(singleViewCurrentWave*3-3+index == parseInt(element.split("*")[0])-1 ){
-                            console.log(singleViewCurrentWave*3-3);
                             zone.classList.add("specialEnemyRed");
                             if(isExceedingLength(zone.textContent,"",12)){
                                 zone.style.fontSize = "35px";
