@@ -14,7 +14,7 @@
 // Prod record = "-N0u1CLDaCNqIoo2OoH2"
 // Testing record = "-N1PQsiG9k6mmevCQqcW"
 const currentVersion = "ver2.18";
-const record = "-N0u1CLDaCNqIoo2OoH2";
+const record = "-N70N_ziMiaukkfPTVb_";
 let bonusObjectives = [
     {objective: "Headshots", amount:25,svg:"b-headshots.svg",png:"b-headshots.png"},
     {objective: "Kill Inside Def. Area", amount:25,svg:"b-killsIn.svg",png:"b-killsIn.png"},
