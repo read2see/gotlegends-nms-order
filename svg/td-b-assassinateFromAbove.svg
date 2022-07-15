@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="66" height="62.668" viewBox="0 0 66 62.668">
-  <g id="Component_206_1" data-name="Component 206 – 1" transform="translate(1)">
+  <g id="td-b-assassinateFromAbove" transform="translate(1)">
     <text id="Assassinate_From_Above" data-name="Assassinate From
 Above" transform="translate(32 49.668)" fill="#fff" font-size="8" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="-32.287" y="0">Assassinate From</tspan><tspan x="-12.031" y="11">Above</tspan></text>
     <g id="Component_160_4" data-name="Component 160 – 4" transform="translate(16)">
@@ -11,7 +11,7 @@ Above" transform="translate(32 49.668)" fill="#fff" font-size="8" font-family="S
         </g>
       </g>
       <circle id="Ellipse_276" data-name="Ellipse 276" cx="8.25" cy="8.25" r="8.25" transform="translate(8 13.492)" opacity="0.6"/>
-      <text id="_5" data-name="5" transform="translate(12.75 26.492)" fill="#fff" stroke="#951c1c" stroke-width="0.5" font-size="12" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">5</tspan></text>
+      <text id="_5" data-name="5" transform="translate(12.75 26.492)" fill="#fff" font-size="12" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">5</tspan></text>
     </g>
   </g>
 </svg>
