@@ -1,274 +1,306 @@
 [
     {
-        "map": "blood in the snow",
-        "mapKey": "blood-in-the-snow",
-        "week":2,
-        "modifiers":["immunity", "hwachas"],
-        "zones":[
-            "Camp", "Mine", "Outpost",
-            "Camp", "Outpost", "Mine",
-            "Outpost", "Camp", "Mine",
-            "Outpost*T#2", "Mine", "Outpost",
-            "Camp", "Outpost", "Camp",
-            "Mine", "Camp", "Outpost",
-            "Mine", "Mine", "Outpost",
-            "Mine", "Mine*T#2", "Outpost",
-            "Camp*T#1", "Mine*T#2", "Outpost*T#3",
-            "Outpost", "Mine", "Outpost",
-            "Outpost", "Mine", "Outpost", 
-            "Camp", "Camp", "Mine",
-            "Mine", "Outpost", "Camp",
-            "Mine", "Camp", "Camp",
-            "Camp", "Camp", "Mine"
-        ],
-        "bonus": [
-            {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","png":"b-headshots.png"},
-            {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","png":"b-killsIn.png"},
-            {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
-            {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","png":"b-fireKills.png"},
-            {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","png":"b-killsOut.png"}
-        ],
-        "bossWave": [
-            {"modifier":"Wildfire","svg":"v-wildFire.svg","png":"v-wildFire.png"},
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"},
-            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.png"},
-            {"modifier":"Burning Blades","svg":"v-burningBlades.svg","png":"v-burningBlades.png"},
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"}
-        ],
-        "credits":["player#1", "player#2", "player#n"],
-        "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
-        "dogs":[12],
-        "bears":[15],
-        "background": "Blood-In-The-Snow.webp",
-        "key": "bloodInTheSnow",
-        "selected":false,
-        "latestUpdate":"8/04/2022"
-    },
-    {
-        "map": "the shadows of war",
-        "mapKey": "the-shadows-of-war",
-        "week":7,
-        "modifiers":["reduced healing", "hwachas"],
-        "zones":[
-            "Dojo Middle", "Stable", "Barracks Left",
-            "Dojo Right", "Stable", "Barracks Right",
-            "Stable", "Dojo Deep", "Barracks Middle",
-            "Stable", "Dojo Middle", "Barracks Right",
-            "Barracks Right", "Stable", "Dojo Right*T#2",
-            "Dojo Deep", "Stable", "Barracks Left",
-            "Barracks Right*T#2", "Dojo Deep", "Barracks Middle",
-            "Barracks Middle", "Dojo Deep", "Stable",
-            "Stable", "Barracks Left", "Barracks Right",
-            "Dojo Right", "Dojo Middle", "Stable",
-            "Dojo Right", "Stable", "Stable",
-            "Stable", "Barracks Right", "Barracks Left", 
-            "Barracks Middle", "Dojo Middle", "Stable",
-            "Dojo Deep", "Stable", "Stable",
-            "Stable", "Dojo Deep", "Dojo Middle"
-        ],
-        "bonus": [
-            {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","png":"b-headshots.png"},
-            {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","png":"b-killsIn.png"},
-            {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
-            {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","png":"b-fireKills.png"},
-            {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","png":"b-killsOut.png"}
-        ],
-        "bossWave": [
-            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.png"},
-            {"modifier":"Burning Blades","svg":"v-burningBlades.svg","png":"v-burningBlades.png"},
-            {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","png":"v-toxicClouds.png"},
-            {"modifier":"Wildfire","svg":"v-wildFire.svg","png":"v-wildFire.png"},
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"}
-        ],
-        "credits":["player#1", "player#2", "player#n"],
-        "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
-        "dogs":[12],
-        "bears":[15],
-        "background": "the-shadows-of-war.webp",
-        "key": "theShadowsOfWar",
-        "selected":false,
-        "latestUpdate":"8/04/2022"
-    },
-    {
-        "map": "the defense of aoi village",
-        "mapKey": "the-defense-of-aoi-village",
-        "week":2,
-        "modifiers":["reduced healing", "hwachas"],
-        "zones":[
-            "Villa", "Farm-Right", "Side",
-            "Beach", "Farm-Right", "Villa",
-            "Villa", "Side", "Farm-Left",
-            "Farm-Right*T#2", "Farm-Left", "Beach",
-            "Beach", "Villa", "Side",
-            "Beach", "Villa", "Farm-Right",
-            "Villa", "Beach", "Farm-Right",
-            "Farm-Left", "Villa*T#2", "Beach",
-            "Villa", "Side", "Side",
-            "Farm-Right", "Beach", "Villa",
-            "Villa", "Villa", "Farm-Left", 
-            "Side", "Villa", "Villa",
-            "Beach", "Beach", "Farm-Left",
-            "Villa", "Farm-Left", "Beach",
-            "Farm-Right", "Villa", "Farm-Left"
-        ],
-        "bonus": [
-            {"objective": "P.Parry Counter ATK", "amount":15,"svg":"b-parries.svg","png":"b-parries.png"},
-            {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","png":"b-killsOut.png"},
-            {"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
-            {"objective": "Ranged Kills", "amount":20,"svg":"b-rangedKills.svg","png":"b-rangedKills.png"},
-            {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","png":"b-fireKills.png"}
-        ],
-        "bossWave": [
-            {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","png":"v-toxicClouds.png"},
-            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.svg"},
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"},
-            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.svg"},
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"}
-        ],
-        "credits":["player#1", "player#2", "player#n"],
-        "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
-        "dogs":[9,12,15],
-        "bears":[9,15],
-        "background": "the-defense-of-aoi-village.webp",
-        "key": "theDefenseOfAoiVillage",
-        "selected":false,
-        "latestUpdate":"8/04/2022"
-    },
-    {
-        "map": "the shores of vengeance",
-        "mapKey": "the-shores-of-vengeance",
-        "week":2,
-        "modifiers":["empowered foes", "disciples"],
-        "zones":[
-            "Beach", "Boat", "Cliff-Hut",
-            "Beach", "Beach", "Boat",
-            "Beach", "Cliff-Hut", "Beach",
-            "Beach", "Cliff-Forest", "Boat",
-            "Boat", "Cliff-Forest", "Beach*T#2",
-            "Beach", "Beach", "Cliff-Forest",
-            "Beach*T#2", "Cliff-Forest", "Beach",
-            "Boat", "Cliff-Forest", "Cliff-Hut",
-            "Boat", "Beach", "Boat",
-            "Boat", "Beach", "Beach",
-            "Beach", "Beach", "Boat", 
-            "Cliff-Forest", "Beach", "Boat",
-            "Beach", "Beach", "Cliff-Hut",
-            "Boat", "Beach", "Cliff-Forest",
-            "Cliff-Forest", "Boat", "Beach"
-        ],
-        "bonus": [
-            {"objective": "Ranged Kills", "amount":20,"svg":"b-rangedKills.svg","png":"b-rangedKills.png"},
-            {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","png":"b-killsIn.png"},
-            {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
-            {"objective": "Assassinate | Crits", "amount": 10,"svg":"b-crits.svg","png":"b-crits.png"},
-            {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","png":"b-headshots.png"}
-        ],
-        "bossWave": [
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"},
-            {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","png":"v-toxicClouds.png"},
-            {"modifier":"Burning Blades","svg":"v-burningBlades.svg","png":"v-burningBlades.png"},
-            {"modifier":"Wildfire","svg":"v-wildFire.svg","png":"v-wildFire.png"},
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"}
-        ],
-        "credits":["player#1", "player#2", "player#n"],
-        "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
-        "dogs":[12],
-        "bears":[12,15],
-        "background": "The-Shores-Of-Vengeance.webp",
-        "key": "theShoresOfVengeance",
-        "selected":false,
-        "latestUpdate":"8/04/2022"
-    },
-    {
-        "map": "twilight and ashes",
-        "mapKey": "twilight-and-ashes",
-        "week":2,
-        "modifiers":["incapacitated", "disciples"],
-        "zones":[
-            "Obelisk", "Boulder L", "Side LH",
-            "Cliff L", "Side LH", "Side LH",
-            "Boulder L*D#2", "Obelisk*D#2", "Cliff L*D#2",
-            "Cliff L", "Boulder L", "Side LH",
-            "Obelisk", "Side LH", "Boulder LH*T#2",
-            "Cliff L", "Obelisk", "Boulder L",
-            "Side LH*T#2", "Obelisk", "Obelisk",
-            "Obelisk", "Boulder LH", "Obelisk",
-            "Obelisk", "Cliff L", "Side LH",
-            "Cliff LH", "Obelisk", "Obelisk",
-            "Side LH", "Boulder L", "Side LH",
-            "Obelisk*D#1", "Boulder LH", "Boulder L",
-            "Boulder LH", "Obelisk", "Boulder L",
-            "Cliff L", "Cliff LH", "Obelisk",
-            "Cliff L", "Side LH", "Obelisk"
-        ],
-        "bonus": [
-            {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","png":"b-headshots.png"},
-            {"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
-            {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","png":"b-fireKills.png"},
-            {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","png":"b-killsOut.png"},
-            {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"}
-        ],
-        "bossWave": [
-            {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","png":"v-toxicClouds.png"},
-            {"modifier":"Wildfire","svg":"v-wildFire.svg","png":"v-wildFire.png"},
-            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.png"},
-            {"modifier":"Immunity","svg":"v-immunity.svg","png":"v-immunity.png"},
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"}
-        ],
-        "credits":["player#1", "player#2", "player#n"],
-        "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
-        "dogs":[],
-        "bears":[12,15],
-        "background": "Twilight-And-Ashes.webp",
-        "key": "twilightAndAshes",
-        "selected":false,
-        "latestUpdate":"8/04/2022"
-    },
-    {
-        "map": "blood and steel",
-        "mapKey": "blood-and-steel",
-        "week":2,
-        "modifiers":["tool shortage", "eyes of iyo"],
-        "zones":[
-            "Cliff-Cart", "Island-Cart", "Camp-Right",
-            "Island-Left", "Island-Cart", "Camp-Right",
-            "Cliff-Cart", "Cliff-Top", "Camp-Right",
-            "Island-Left", "Island-Cart", "Camp-Left",
-            "Island-Left", "Camp-Right", "Island-Cart*T#2",
-            "Cliff-Cart", "Camp-Left", "Island-Cart",
-            "Camp-Right*T#2", "Cliff-Top", "Cliff-Top",
-            "Camp-Left", "Island-Cart", "Island-Cart",
-            "Camp-Right", "Island-Left", "Island-Cart",
-            "Cliff-Top", "Island-Left", "Cliff-Top",
-            "Island-Left", "Camp-Left", "Cliff-Cart", 
-            "Cliff-Top*T#2", "Island-Left*T#2", "Camp-Right*T#2",
-            "Island-Cart", "Cliff-Top", "Island-Left",
-            "Camp-Right", "Island-Cart", "Camp-Right",
-            "Island-Left", "Camp-Right", "Camp-Right"
-        ],
-        "bonus": [
-            {"objective": "Assassinate | Crits", "amount": 10,"svg":"b-crits.svg","png":"b-crits.png"},
-            {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","png":"b-killsIn.png"},
-            {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","png":"b-headshots.png"},
-            {"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
-            {"objective": "P.Parry Counter ATK", "amount":15,"svg":"b-parries.svg","png":"b-parries.png"}
-
-        ],
-        "bossWave": [
-            {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","png":"v-fightingBlind.png"},
-            {"modifier":"Slowed Revives","svg":"v-slowedRevives.svg","png":"v-slowedRevives.png"},
-            {"modifier":"Burning Blades","svg":"v-burningBlades.svg","png":"v-burningBlades.png"},
-            {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","png":"v-toxicClouds.png"},
-            {"modifier":"Eruption","svg":"v-eruption.svg","png":"v-eruption.png"}
-        ],
-        "credits":["player#1", "player#2", "player#n"],
-        "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
-        "dogs":[12],
-        "bears":[12,15],
-        "shaman":[9],
-        "background": "Blood-And-Steel.webp",
-        "key": "bloodAndSteel",
-        "selected":false,
-        "latestUpdate":"8/04/2022"
+        "bloodAndSteel":{
+            "map": "blood and steel",
+            "mapKey": "blood-and-steel",
+            "week":6,
+            "modifiers":["tool shortage", "eyes of iyo"],
+            "zones":[
+                "Cliff-Cart", "Island-Cart", "Camp-Right",
+                "Island-Left", "Island-Cart", "Camp-Right",
+                "Cliff-Cart", "Cliff-Top", "Camp-Right",
+                "Island-Left", "Island-Cart", "Camp-Left",
+                "Island-Left", "Camp-Right", "Island-Cart*T#2",
+                "Cliff-Cart", "Camp-Left", "Island-Cart",
+                "Camp-Right*T#2", "Cliff-Top", "Cliff-Top",
+                "Camp-Left", "Island-Cart", "Island-Cart",
+                "Camp-Right", "Island-Left", "Island-Cart",
+                "Cliff-Top", "Island-Left", "Cliff-Top",
+                "Island-Left", "Camp-Left", "Cliff-Cart", 
+                "Cliff-Top*T#2", "Island-Left*T#2", "Camp-Right*T#2",
+                "Island-Cart", "Cliff-Top", "Island-Left",
+                "Camp-Right", "Island-Cart", "Camp-Right",
+                "Island-Left", "Camp-Right", "Camp-Right"
+            ],
+            "bonus": [
+                {"objective": "Assassinate | Crits", "amount": 10,"svg":"b-crits.svg","tsvg":"td-b-assassinationsCrits.svg","png":"b-crits.png"},
+                {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","tsvg":"td-b-killInsideDefArea.svg","png":"b-killsIn.png"},
+                {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","tsvg":"td-b-headshots.svg","png":"b-headshots.png"},
+                {"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","tsvg":"td-b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
+                {"objective": "P.Parry Counter ATK", "amount":15,"svg":"b-parries.svg","tsvg":"td-b-pParryCounters.svg","png":"b-parries.png"}
+    
+            ],
+            "bossWave": [
+                {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","tsvg":"td-m-fightingBlind.svg","png":"v-fightingBlind.png"},
+                {"modifier":"Slowed Revives","svg":"v-slowedRevives.svg","tsvg":"td-m-slowedRevives.svg","png":"v-slowedRevives.png"},
+                {"modifier":"Burning Blades","svg":"v-burningBlades.svg","tsvg":"td-m-burningBlades.svg","png":"v-burningBlades.png"},
+                {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","tsvg":"td-m-toxicClouds.svg","png":"v-toxicClouds.png"},
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"}
+            ],
+            "credits":["player#1", "player#2", "player#n"],
+            "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
+            "dogs":[12],
+            "bears":[12,15],
+            "shaman":[9],
+            "background": "Blood-And-Steel.webp",
+            "key": "bloodAndSteel",
+            "selected":false,
+            "latestUpdate":"8/04/2022",
+            "version":"ver2.18",
+            "updatedBy":"",
+            "legend": {
+                
+            }
+        },
+        "bloodInTheSnow":{
+            "map": "blood in the snow",
+            "mapKey": "blood-in-the-snow",
+            "week":5,
+            "modifiers":["immunity", "hwachas"],
+            "zones":[
+                "Camp", "Mine", "Outpost",
+                "Camp", "Outpost", "Mine",
+                "Outpost", "Camp", "Mine",
+                "Outpost*T#2", "Mine", "Outpost",
+                "Camp", "Outpost", "Camp",
+                "Mine", "Camp", "Outpost",
+                "Mine", "Mine", "Outpost",
+                "Mine", "Mine*T#2", "Outpost",
+                "Camp*T#1", "Mine*T#2", "Outpost*T#3",
+                "Outpost", "Mine", "Outpost",
+                "Outpost", "Mine", "Outpost", 
+                "Camp", "Camp", "Mine",
+                "Mine", "Outpost", "Camp",
+                "Mine", "Camp", "Camp",
+                "Camp", "Camp", "Mine"
+            ],
+            "bonus": [
+                {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","tsvg":"td-b-headshots.svg","png":"b-headshots.png"},
+                {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","tsvg":"td-b-killInsideDefArea.svg","png":"b-killsIn.png"},
+                {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","tsvg":"td-b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
+                {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","tsvg":"td-b-fireDmgKills.svg","png":"b-fireKills.png"},
+                {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","tsvg":"td-b-killOutsideDefArea.svg","png":"b-killsOut.png"}
+            ],
+            "bossWave": [
+                {"modifier":"Wildfire","svg":"v-wildFire.svg","tsvg":"td-m-wildfire.svg","png":"v-wildFire.png"},
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"},
+                {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","tsvg":"td-m-fightingBlind.svg","png":"v-fightingBlind.png"},
+                {"modifier":"Burning Blades","svg":"v-burningBlades.svg","tsvg":"td-m-burningBlades.svg","png":"v-burningBlades.png"},
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"}
+            ],
+            "credits":["player#1", "player#2", "player#n"],
+            "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
+            "dogs":[12],
+            "bears":[15],
+            "background": "Blood-In-The-Snow.webp",
+            "key": "bloodInTheSnow",
+            "selected":false,
+            "latestUpdate":"8/04/2022",
+            "version":"ver2.18",
+            "updatedBy":"",
+            "legend": {
+                
+            }
+        },
+        "theDefenseOfAoiVillage":{
+            "map": "the defense of aoi village",
+            "mapKey": "the-defense-of-aoi-village",
+            "week":2,
+            "modifiers":["reduced healing", "hwachas"],
+            "zones":[
+                "Villa", "Farm-Right", "Side",
+                "Beach", "Farm-Right", "Villa",
+                "Villa", "Side", "Farm-Left",
+                "Farm-Right*T#2", "Farm-Left", "Beach",
+                "Beach", "Villa", "Side",
+                "Beach", "Villa", "Farm-Right",
+                "Villa", "Beach", "Farm-Right",
+                "Farm-Left", "Villa*T#2", "Beach",
+                "Villa", "Side", "Side",
+                "Farm-Right", "Beach", "Villa",
+                "Villa", "Villa", "Farm-Left", 
+                "Side", "Villa", "Villa",
+                "Beach", "Beach", "Farm-Left",
+                "Villa", "Farm-Left", "Beach",
+                "Farm-Right", "Villa", "Farm-Left"
+            ],
+            "bonus": [
+                {"objective": "P.Parry Counter ATK", "amount":15,"svg":"b-parries.svg","tsvg":"td-b-pParryCounters.svg","png":"b-parries.png"},
+                {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","tsvg":"td-b-killOutsideDefArea.svg","png":"b-killsOut.png"},
+                {"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","tsvg":"td-b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
+                {"objective": "Ranged Kills", "amount":20,"svg":"b-rangedKills.svg","tsvg":"td-b-rangedKills.svg","png":"b-rangedKills.png"},
+                {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","tsvg":"td-b-fireDmgKills.svg","png":"b-fireKills.png"}
+            ],
+            "bossWave": [
+                {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","tsvg":"td-m-toxicClouds.svg","png":"v-toxicClouds.png"},
+                {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","tsvg":"td-m-fightingBlind.svg","png":"v-fightingBlind.svg"},
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"},
+                {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","tsvg":"td-m-fightingBlind.svg","png":"v-fightingBlind.svg"},
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"}
+            ],
+            "credits":["player#1", "player#2", "player#n"],
+            "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
+            "dogs":[9,12,15],
+            "bears":[9,15],
+            "background": "the-defense-of-aoi-village.webp",
+            "key": "theDefenseOfAoiVillage",
+            "selected":false,
+            "latestUpdate":"8/04/2022",
+            "version":"ver2.18",
+            "updatedBy":"",
+            "legend": {
+                
+            }
+        },
+        "theShadowsOfWar":{
+            "map": "the shadows of war",
+            "mapKey": "the-shadows-of-war",
+            "week":7,
+            "modifiers":["reduced healing", "hwachas"],
+            "zones":[
+                "Dojo Middle", "Stable", "Barracks Left",
+                "Dojo Right", "Stable", "Barracks Right",
+                "Stable", "Dojo Deep", "Barracks Middle",
+                "Stable", "Dojo Middle", "Barracks Right",
+                "Barracks Right", "Stable", "Dojo Right*T#2",
+                "Dojo Deep", "Stable", "Barracks Left",
+                "Barracks Right*T#2", "Dojo Deep", "Barracks Middle",
+                "Barracks Middle", "Dojo Deep", "Stable",
+                "Stable", "Barracks Left", "Barracks Right",
+                "Dojo Right", "Dojo Middle", "Stable",
+                "Dojo Right", "Stable", "Stable",
+                "Stable", "Barracks Right", "Barracks Left", 
+                "Barracks Middle", "Dojo Middle", "Stable",
+                "Dojo Deep", "Stable", "Stable",
+                "Stable", "Dojo Deep", "Dojo Middle"
+            ],
+            "bonus": [
+                {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","tsvg":"td-b-headshots.svg","png":"b-headshots.png"},
+                {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","tsvg":"td-b-killInsideDefArea.svg","png":"b-killsIn.png"},
+                {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","tsvg":"td-b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
+                {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","tsvg":"td-b-fireDmgKills.svg","png":"b-fireKills.png"},
+                {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","tsvg":"td-b-killOutsideDefArea.svg","png":"b-killsOut.png"}
+            ],
+            "bossWave": [
+                {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","tsvg":"td-m-fightingBlind.svg","png":"v-fightingBlind.png"},
+                {"modifier":"Burning Blades","svg":"v-burningBlades.svg","tsvg":"td-m-burningBlades.svg","png":"v-burningBlades.png"},
+                {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","tsvg":"td-m-toxicClouds.svg","png":"v-toxicClouds.png"},
+                {"modifier":"Wildfire","svg":"v-wildFire.svg","tsvg":"td-m-wildfire.svg","png":"v-wildFire.png"},
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"}
+            ],
+            "credits":["player#1", "player#2", "player#n"],
+            "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
+            "dogs":[12],
+            "bears":[15],
+            "background": "the-shadows-of-war.webp",
+            "key": "theShadowsOfWar",
+            "selected":false,
+            "latestUpdate":"8/04/2022",
+            "version":"ver2.18",
+            "updatedBy":"",
+            "legend": {
+                
+            }
+        },
+        "theShoresOfVengeance":{
+            "map": "the shores of vengeance",
+            "mapKey": "the-shores-of-vengeance",
+            "week":4,
+            "modifiers":["empowered foes", "disciples"],
+            "zones":[
+                "Beach", "Boat", "Cliff-Hut",
+                "Beach", "Beach", "Boat",
+                "Beach", "Cliff-Hut", "Beach",
+                "Beach", "Cliff-Forest", "Boat",
+                "Boat", "Cliff-Forest", "Beach*T#2",
+                "Beach", "Beach", "Cliff-Forest",
+                "Beach*T#2", "Cliff-Forest", "Beach",
+                "Boat", "Cliff-Forest", "Cliff-Hut",
+                "Boat", "Beach", "Boat",
+                "Boat", "Beach", "Beach",
+                "Beach", "Beach", "Boat", 
+                "Cliff-Forest", "Beach", "Boat",
+                "Beach", "Beach", "Cliff-Hut",
+                "Boat", "Beach", "Cliff-Forest",
+                "Cliff-Forest", "Boat", "Beach"
+            ],
+            "bonus": [
+                {"objective": "Ranged Kills", "amount":20,"svg":"b-rangedKills.svg","tsvg":"td-b-rangedKills.svg","png":"b-rangedKills.png"},
+                {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","tsvg":"td-b-killInsideDefArea.svg","png":"b-killsIn.png"},
+                {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","tsvg":"td-b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
+                {"objective": "Assassinate | Crits", "amount": 10,"svg":"b-crits.svg","tsvg":"td-b-assassinationsCrits.svg","png":"b-crits.png"},
+                {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","tsvg":"td-b-headshots.svg","png":"b-headshots.png"}
+            ],
+            "bossWave": [
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"},
+                {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","tsvg":"td-m-toxicClouds.svg","png":"v-toxicClouds.png"},
+                {"modifier":"Burning Blades","svg":"v-burningBlades.svg","tsvg":"td-m-burningBlades.svg","png":"v-burningBlades.png"},
+                {"modifier":"Wildfire","svg":"v-wildFire.svg","tsvg":"td-m-wildfire.svg","png":"v-wildFire.png"},
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"}
+            ],
+            "credits":["player#1", "player#2", "player#n"],
+            "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
+            "dogs":[12],
+            "bears":[12,15],
+            "background": "The-Shores-Of-Vengeance.webp",
+            "key": "theShoresOfVengeance",
+            "selected":false,
+            "latestUpdate":"8/04/2022",
+            "version":"ver2.18",
+            "updatedBy":"",
+            "legend": {
+                
+            }
+        },
+        "twilightAndAshes":{
+            "map": "twilight and ashes",
+            "mapKey": "twilight-and-ashes",
+            "week":3,
+            "modifiers":["incapacitated", "disciples"],
+            "zones":[
+                "Obelisk", "Boulder L", "Side LH",
+                "Cliff L", "Side LH", "Side LH",
+                "Boulder L*D#2", "Obelisk*D#2", "Cliff L*D#2",
+                "Cliff L", "Boulder L", "Side LH",
+                "Obelisk", "Side LH", "Boulder LH*T#2",
+                "Cliff L", "Obelisk", "Boulder L",
+                "Side LH*T#2", "Obelisk", "Obelisk",
+                "Obelisk", "Boulder LH", "Obelisk",
+                "Obelisk", "Cliff L", "Side LH",
+                "Cliff LH", "Obelisk", "Obelisk",
+                "Side LH", "Boulder L", "Side LH",
+                "Obelisk*D#1", "Boulder LH", "Boulder L",
+                "Boulder LH", "Obelisk", "Boulder L",
+                "Cliff L", "Cliff LH", "Obelisk",
+                "Cliff L", "Side LH", "Obelisk"
+            ],
+            "bonus": [
+                {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","tsvg":"td-b-headshots.svg","png":"b-headshots.png"},
+                {"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","tsvg":"td-b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
+                {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","tsvg":"td-b-fireDmgKills.svg","png":"b-fireKills.png"},
+                {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","tsvg":"td-b-killOutsideDefArea.svg","png":"b-killsOut.png"},
+                {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","tsvg":"td-b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"}
+            ],
+            "bossWave": [
+                {"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","tsvg":"td-m-toxicClouds.svg","png":"v-toxicClouds.png"},
+                {"modifier":"Wildfire","svg":"v-wildFire.svg","tsvg":"td-m-wildfire.svg","png":"v-wildFire.png"},
+                {"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","tsvg":"td-m-fightingBlind.svg","png":"v-fightingBlind.png"},
+                {"modifier":"Immunity","svg":"v-immunity.svg","tsvg":"td-m-immunity.svg","png":"v-immunity.png"},
+                {"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"}
+            ],
+            "credits":["player#1", "player#2", "player#n"],
+            "tengu":["10*T#2","23*T#2","25*T#1", "26*T#2", "27*T#3"],
+            "dogs":[],
+            "bears":[12,15],
+            "background": "Twilight-And-Ashes.webp",
+            "key": "twilightAndAshes",
+            "selected":false,
+            "latestUpdate":"8/04/2022",
+            "version":"ver2.18",
+            "updatedBy":"",
+            "legend": {
+                
+            }
+        }
     }
 ]

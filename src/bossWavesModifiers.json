@@ -1,0 +1,12 @@
+[
+    {
+        "wildfire":{"modifier":"Wildfire","svg":"v-wildFire.svg","tsvg":"td-m-wildfire.svg","png":"v-wildFire.png"},
+        "eruption":{"modifier":"Eruption","svg":"v-eruption.svg","tsvg":"td-m-eruption.svg","png":"v-eruption.png"},
+        "fightingBlind":{"modifier":"Fighting Blind","svg":"v-fightingBlind.svg","tsvg":"td-m-fightingBlind.svg","png":"v-fightingBlind.png"},
+        "burningBlades":{"modifier":"Burning Blades","svg":"v-burningBlades.svg","tsvg":"td-m-burningBlades.svg","png":"v-burningBlades.png"},
+        "toxicClouds":{"modifier":"Toxic Clouds","svg":"v-toxicClouds.svg","tsvg":"td-m-toxicClouds.svg","png":"v-toxicClouds.png"},
+        "slowedRevives":{"modifier":"Slowed Revives","svg":"v-slowedRevives.svg","tsvg":"td-m-slowedRevives.svg","png":"v-slowedRevives.png"},
+        "immunity":{"modifier":"Immunity","svg":"v-immunity.svg","tsvg":"td-m-immunity.svg","png":"v-immunity.png"},
+        "toolShortage":{"modifier":"Tool Shortage","svg":"v-toolShortage.svg","tsvg":"td-m-toolShortage.svg","png":"v-toolShortage.png"}
+    }
+]

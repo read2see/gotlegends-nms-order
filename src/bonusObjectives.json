@@ -1,11 +1,13 @@
 [
-    {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","png":"b-headshots.png"},
-    {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","png":"b-killsIn.png"},
-    {"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
-    {"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","png":"b-fireKills.png"},
-    {"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","png":"b-killsOut.png"},
-    {"objective": "P.Parry Counter ATK", "amount":15,"svg":"b-parries.svg","png":"b-parries.png"},
-    {"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
-    {"objective": "Ranged Kills", "amount":20,"svg":"b-rangedKills.svg","png":"b-rangedKills.png"},
-    {"objective": "Assassinate | Crits", "amount": 10,"svg":"b-crits.svg","png":"b-crits.png"}
+    {
+        "headshots" : {"objective": "Headshots", "amount":25,"svg":"b-headshots.svg","tsvg":"td-b-headshots.svg","png":"b-headshots.png"},
+        "killInsideDefArea": {"objective": "Kill Inside Def. Area", "amount":25,"svg":"b-killsIn.svg","tsvg":"td-b-killInsideDefArea.svg","png":"b-killsIn.png"},
+        "ghostWeaponKills":{"objective": "Ghost Weapon Kills", "amount":5,"svg":"b-ghostWeaponKills.svg","tsvg":"td-b-ghostWeaponKills.svg","png":"b-ghostWeaponKills.png"},
+        "fireDmgKills":{"objective": "Fire DMG Kills", "amount": 15,"svg":"b-fireKills.svg","tsvg":"td-b-fireDmgKills.svg","png":"b-fireKills.png"},
+        "killOutsideDefArea":{"objective": "Kill Outside Def. Area", "amount":25,"svg":"b-killsOut.svg","tsvg":"td-b-killOutsideDefArea.svg","png":"b-killsOut.png"},
+        "pParryCounterAtk":{"objective": "P.Parry Counter ATK", "amount":15,"svg":"b-parries.svg","tsvg":"td-b-pParryCounters.svg","png":"b-parries.png"},
+        "assassinateFromAbove":{"objective": "Assassinate From Above", "amount":5,"svg":"b-assassinateFromAbove.svg","tsvg":"td-b-assassinateFromAbove.svg","png":"b-assassinateFromAbove.png"},
+        "rangedKills":{"objective": "Ranged Kills", "amount":20,"svg":"b-rangedKills.svg","tsvg":"td-b-rangedKills.svg","png":"b-rangedKills.png"},
+        "assassinateCrits":{"objective": "Assassinate | Crits", "amount": 10,"svg":"b-crits.svg","tsvg":"td-b-assassinationsCrits.svg","png":"b-crits.png"}
+    }
 ]
