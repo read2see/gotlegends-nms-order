@@ -1,0 +1,13 @@
+<svg id="Component_172_1" data-name="Component 172 – 1" xmlns="http://www.w3.org/2000/svg" width="15" height="16.7" viewBox="0 0 15 16.7">
+  <g id="Component_103_3" data-name="Component 103 – 3" transform="translate(2.5)">
+    <g id="Component_31_123" data-name="Component 31 – 123" transform="translate(0 5.011)">
+      <path id="Path_354" data-name="Path 354" d="M0,0H1.6A1.465,1.465,0,0,1,3.086,1.447l-.25,2.066V6.368l.25,3.611H0L.257,6.368V3.513Z" transform="translate(3.423)" fill="#ff6363"/>
+      <path id="Path_355" data-name="Path 355" d="M0,0H.605c.918.069,2.323.311,2.269,2.121V9.934H1.543A1.539,1.539,0,0,1,0,8.4L.266,6.11Z" transform="translate(9.934 3.43) rotate(90)" fill="#ff6363"/>
+    </g>
+    <text id="_1" data-name="1" transform="translate(6 8)" fill="#fff" font-size="7" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">1</tspan></text>
+  </g>
+  <g id="Rectangle_1449" data-name="Rectangle 1449" transform="translate(0 0.7)" fill="none" stroke="#e95050" stroke-width="1">
+    <path d="M5,0h8a2,2,0,0,1,2,2V13a3,3,0,0,1-3,3H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0Z" stroke="none"/>
+    <path d="M5,.5h8A1.5,1.5,0,0,1,14.5,2V13A2.5,2.5,0,0,1,12,15.5H5A4.5,4.5,0,0,1,.5,11V5A4.5,4.5,0,0,1,5,.5Z" fill="none"/>
+  </g>
+</svg>

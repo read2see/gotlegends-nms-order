@@ -1,0 +1,14 @@
+<svg id="Component_200_1" data-name="Component 200 – 1" xmlns="http://www.w3.org/2000/svg" width="40" height="45.556" viewBox="0 0 40 45.556">
+  <g id="Component_199_1" data-name="Component 199 – 1" transform="translate(3)">
+    <g id="Component_193_1" data-name="Component 193 – 1">
+      <path id="Subtraction_212" data-name="Subtraction 212" d="M16,32A16,16,0,0,1,9.772,1.257,16,16,0,0,1,22.228,30.743,15.9,15.9,0,0,1,16,32ZM16,2.8A13.2,13.2,0,1,0,29.2,16,13.219,13.219,0,0,0,16,2.8Z" fill="#50c774" opacity="0.57"/>
+      <path id="Subtraction_214" data-name="Subtraction 214" d="M8,16A8,8,0,0,1,4.886.629a8,8,0,0,1,6.228,14.743A7.95,7.95,0,0,1,8,16ZM8,3.478a4.522,4.522,0,1,0,0,9.043,4.541,4.541,0,0,0,3.017-1.146,4.4,4.4,0,0,0,1.466-2.782A4.9,4.9,0,0,0,12.522,8,4.522,4.522,0,0,0,8,3.478ZM8,9.044A1.043,1.043,0,1,1,9.044,8,1.045,1.045,0,0,1,8,9.044Z" transform="translate(8 7.703)" fill="#50c774" opacity="0.57"/>
+      <path id="Union_150" data-name="Union 150" d="M23.709,23.774,17.928,16.41l-5.781,7.364L3.183,31.825l7.155-8.912,6.807-6.505.39-.5-.378-.481L10.339,8.912,3.183,0l8.962,8.051,5.781,7.362,5.781-7.361L32.669,0,25.513,8.914l-6.807,6.5-.389.495.379.482,6.82,6.518,7.155,8.912Z" transform="translate(-2.184)" fill="#fff" opacity="0.57"/>
+    </g>
+    <g id="Component_194_1" data-name="Component 194 – 1" transform="translate(7.875 7.056)">
+      <ellipse id="Ellipse_324" data-name="Ellipse 324" cx="8.125" cy="8.5" rx="8.125" ry="8.5" opacity="0.6"/>
+      <text id="_25" data-name="25" transform="translate(1.5 13)" fill="#fff" stroke="#951c1c" stroke-width="0.5" font-size="12" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">25</tspan></text>
+    </g>
+  </g>
+  <text id="Headshots" transform="translate(0 43.556)" fill="#fff" font-size="8" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">Headshots</tspan></text>
+</svg>
